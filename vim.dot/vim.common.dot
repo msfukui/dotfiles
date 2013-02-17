@@ -164,7 +164,6 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "----------------------------------------
 """"""""""""""""""""""""""""""
 " ファイルを開いたら前回のカーソル位置へ移動
-" $VIMRUNTIME/vimrc_example.vim
 """"""""""""""""""""""""""""""
 augroup vimrcEx
   autocmd!
