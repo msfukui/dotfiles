@@ -4,7 +4,7 @@ foreach file ( *.dot )
   if ( -d $file ) then
     cd $file
     foreach subfile ( *.dot )
-      cp -p ${HOME}/.$file:r/.$subfile:r
+      cp -p $subfile ${HOME}/.$file:r/.$subfile:r
     end
     cd ..
   else
