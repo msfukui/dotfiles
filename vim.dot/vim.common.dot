@@ -75,8 +75,6 @@ set ts=2 sw=2 sts=2
 set autoindent
 " Cインデントの設定
 set cinoptions+=:0
-" タイトルを表示
-set title
 " コマンドラインの高さ (gvimはgvimrcで指定)
 " set cmdheight=2
 set laststatus=2
@@ -98,24 +96,6 @@ syntax on
 "----------------------------------------
 " diff/patch
 "----------------------------------------
-" diffの設定
-if has('win32') || has('win64')
-  set diffexpr=MyDiff()
-  function! MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let cmd = '!diff ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-    silent execute cmd
-  endfunction
-endif
-
 " 現バッファの差分表示(変更箇所の表示)
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 " ファイルまたはバッファ番号を指定して差分表示。#なら裏バッファと比較
@@ -193,25 +173,3 @@ function! s:GetHighlight(hi)
   let hl = substitute(hl, 'xxx', '', '')
   return hl
 endfunction
-
-""""""""""""""""""""""""""""""
-" 全角スペースを表示
-""""""""""""""""""""""""""""""
-" コメント以外で全角スペースを指定しているので、scriptencodingと、
-" このファイルのエンコードが一致するよう注意！
-" 強調表示されない場合、ここでscriptencodingを指定するとうまくいく事があります。
-" scriptencoding cp932
-function! ZenkakuSpace()
-  silent! let hi = s:GetHighlight('ZenkakuSpace')
-  if hi =~ 'E411' || hi =~ 'cleared$'
-    highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
-  endif
-endfunction
-if has('syntax')
-  augroup ZenkakuSpace
-    autocmd!
-    autocmd ColorScheme       * call ZenkakuSpace()
-    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-  augroup END
-  call ZenkakuSpace()
-endif
