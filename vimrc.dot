@@ -43,3 +43,5 @@ set notitle
 "----------------------------------------
 " その他設定
 "----------------------------------------
+:runtime macros/matchit.vim
+:let b:match_words = &matchpairs . ',begin:end,if:endif,if:end if,foreach:end'
