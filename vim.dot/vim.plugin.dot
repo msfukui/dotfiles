@@ -22,9 +22,10 @@ NeoBundle 'Shougo/vimproc'
 
 " colorscheme 'molokai'
 NeoBundle 'tomasr/molokai'
-
 " colorscheme 'solarized'
 NeoBundle 'altercation/vim-colors-solarized'
+" colorscheme 'jellybeans'
+NeoBundle 'nanotech/jellybeans.vim'
 
 " ステータスラインをかっこよくする。
 NeoBundle 'Lokaltog/vim-powerline'

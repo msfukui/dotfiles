@@ -33,8 +33,9 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "colorscheme molokai
+colorscheme jellybeans
 
 "----------------------------------------
 " 画面表示の設定
