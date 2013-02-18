@@ -2,15 +2,102 @@
 " ~/.vim/.vim.common
 " author: m.fukui
 "========================================
+
 "----------------------------------------
-" システム設定
+" 言語、文字コード、ファイルフォーマットの設定
 "----------------------------------------
-" ファイルの上書きの前にバックアップを作る/作らない
-" set writebackupを指定してもオプション 'backup' がオンでない限り、
-" バックアップは上書きに成功した後に削除される。
-set nowritebackup
-" バックアップ/スワップファイルを作成する/しない
-set nobackup
+
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8,ucs-bom
+set fileformats=unix,dos,mac
+
+"----------------------------------------
+" help言語設定
+"----------------------------------------
+
+" 英語は書かなくても検索対称にしてくれる。
+" 事前に日本語ヘルプのセットアップが必要。
+set helplang=ja
+
+"----------------------------------------
+" syntax color の設定
+"----------------------------------------
+
+set t_Co=256
+syntax on
+let g:solarized_termcolors=256
+
+" I use xterm-256color as my terminfo on tmux 1.7 & Terminal.app on OS X Lion, so enable termtrans by manually.
+" see https://github.com/altercation/vim-colors-solarized
+let g:solarized_termtrans=1
+
+set background=dark
+colorscheme solarized
+"colorscheme molokai
+
+"----------------------------------------
+" 画面表示の設定
+"----------------------------------------
+
+" スプラッシュ(起動時のメッセージ)を表示しない
+set shortmess+=I
+" タイトルを非表示
+set notitle
+" マクロ実行中などの画面再描画を行わない
+" set lazyredraw
+" エラー時の音とビジュアルベルの抑制
+set noerrorbells
+set novisualbell
+set visualbell t_vb=
+" Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
+set shellslash
+" 行番号表示
+set number
+" 括弧の対応表示時間
+set showmatch matchtime=1
+" 画面最後の行をできる限り表示する
+set display=lastline
+" Tab、行末の半角スペースを明示的に表示する
+set list
+set listchars=tab:^\ ,trail:~
+
+"----------------------------------------
+" ステータスラインの設定
+"----------------------------------------
+
+" コマンドラインの高さ
+" set cmdheight=2
+set laststatus=2
+" コマンドをステータス行に表示
+set showcmd
+
+"----------------------------------------
+" インデントの設定
+"----------------------------------------
+
+" タブを設定
+set ts=2 sw=2 sts=2
+set expandtab
+set smarttab
+set shiftround
+set nowrap
+" 自動的にインデントする
+set autoindent
+set smartindent
+" Cインデントの設定
+set cinoptions+=:0
+" カーソルキーで行末／行頭の移動可能に設定
+set whichwrap=b,s,[,],<,>
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=indent,eol,start
+" □や○の文字があってもカーソル位置がずれないようにする
+set ambiwidth=double
+
+"----------------------------------------
+" 編集の設定
+"----------------------------------------
+
 " クリップボードを共有
 set clipboard+=unnamed
 " 8進数を無効にする。<C-a>,<C-x>に影響する
@@ -19,28 +106,17 @@ set nrformats-=octal
 set timeout timeoutlen=3000 ttimeoutlen=100
 " 編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
 set hidden
-" ヒストリの保存数
-set history=50
 " 日本語の行の連結時には空白を入力しない
 set formatoptions+=mM
 " Visual blockモードでフリーカーソルを有効にする
 "set virtualedit=block
-" カーソルキーで行末／行頭の移動可能に設定
-set whichwrap=b,s,[,],<,>
-" バックスペースでインデントや改行を削除できるようにする
-set backspace=indent,eol,start
-" □や○の文字があってもカーソル位置がずれないようにする
-set ambiwidth=double
 " コマンドライン補完するときに強化されたものを使う
 set wildmenu
-" plugin, indent を使用可能にする
-filetype on
-filetype plugin on
-filetype indent on
 
 "----------------------------------------
-" 検索
+" 検索の設定
 "----------------------------------------
+
 " 検索の時に大文字小文字を区別しない
 " ただし大文字小文字の両方が含まれている場合は大文字小文字を区別する
 set ignorecase
@@ -51,51 +127,40 @@ set wrapscan
 set incsearch
 " 検索文字の強調表示
 set hlsearch
+" <ESC>を二回押したら検索をキャンセル
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "----------------------------------------
-" 表示設定
+" バックアップの設定
 "----------------------------------------
-" スプラッシュ(起動時のメッセージ)を表示しない
-" set shortmess+=I
-" エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
-set noerrorbells
-set novisualbell
-set visualbell t_vb=
-" マクロ実行中などの画面再描画を行わない
-" set lazyredraw
-" Windowsでディレクトリパスの区切り文字表示に / を使えるようにする
-set shellslash
-" 行番号表示
-set number
-" 括弧の対応表示時間
-set showmatch matchtime=1
-" タブを設定
-set ts=2 sw=2 sts=2
-" 自動的にインデントする
-set autoindent
-" Cインデントの設定
-set cinoptions+=:0
-" コマンドラインの高さ (gvimはgvimrcで指定)
-" set cmdheight=2
-set laststatus=2
-" コマンドをステータス行に表示
-set showcmd
-" 画面最後の行をできる限り表示する
-set display=lastline
-" Tab、行末の半角スペースを明示的に表示する
-set list
-set listchars=tab:^\ ,trail:~
 
-" ハイライトを有効にする
-syntax on
-" 色テーマ設定
-" gvimの色テーマは.gvimrcで指定する
-" plugin を使うためここでは指定しない
-" colorscheme mycolor
+" ファイルの上書きの前にバックアップを作る/作らない
+" set writebackupを指定してもオプション 'backup' がオンでない限り、
+" バックアップは上書きに成功した後に削除される。
+set nowritebackup
+" バックアップ/スワップファイルを作成する/しない
+set nobackup
 
 "----------------------------------------
+" 履歴の設定
+"----------------------------------------
+
+" ヒストリの保存数
+set history=50
+" ファイルを開いたら前回のカーソル位置へ移動
+augroup vimrcEx
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
+augroup END
+
+"----------------------------------------
+" その他の設定
+"----------------------------------------
+
+"--
 " diff/patch
-"----------------------------------------
+"--
+
 " 現バッファの差分表示(変更箇所の表示)
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 " ファイルまたはバッファ番号を指定して差分表示。#なら裏バッファと比較
@@ -106,6 +171,9 @@ function! MyPatch()
    call system($VIM."\\'.'patch -o " . v:fname_out . " " . v:fname_in . " < " . v:fname_diff)
 endfunction
 
+"----------------------------------------
+" キーマップの設定
+"----------------------------------------
 "----------------------------------------
 " ノーマルモード
 "----------------------------------------
@@ -138,38 +206,3 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 "----------------------------------------
 " コマンドモード
 "----------------------------------------
-
-"----------------------------------------
-" Vimスクリプト
-"----------------------------------------
-""""""""""""""""""""""""""""""
-" ファイルを開いたら前回のカーソル位置へ移動
-""""""""""""""""""""""""""""""
-augroup vimrcEx
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
-augroup END
-
-""""""""""""""""""""""""""""""
-" 挿入モード時、ステータスラインのカラー変更
-""""""""""""""""""""""""""""""
-let s:slhlcmd = ''
-function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-    redraw
-  endif
-endfunction
-
-function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
-endfunction
