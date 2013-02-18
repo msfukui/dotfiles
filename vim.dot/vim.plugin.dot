@@ -128,3 +128,7 @@ let g:quickrun_config['phpunit']['outputter/buffer/split'] = 'vertical 35'
 let g:quickrun_config['phpunit']['command'] = 'php'
 let g:quickrun_config['phpunit']['cmdopt'] = 'D:/ProgramData/PHP/PEAR/phpunit'
 let g:quickrun_config['phpunit']['exec'] = '%c %o `cygpath -m %s`'
+
+" EasyMotion
+" 移動先のハイライト表示を行う。
+NeoBundle 'Lokaltog/vim-easymotion'
