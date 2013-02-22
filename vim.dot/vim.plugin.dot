@@ -31,7 +31,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'Lokaltog/vim-powerline'
 
 " NERDTree （エクスプローラ）
-" NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 
 " syntastic （シンタックスチェック）
 "NeoBundle 'scrooloose/syntastic'
@@ -40,6 +40,9 @@ NeoBundle 'Lokaltog/vim-powerline'
 "NeoBundle 'kana/vim-smartchr'
 " = 入力時に両端に半角空白
 "inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+
+" Smarty のシンタックスハイライト
+NeoBundle 'sifue/smarty.vim'
 
 " Quickrun
 NeoBundle 'thinca/vim-quickrun'
