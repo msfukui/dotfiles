@@ -122,6 +122,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 alias ls='ls -CF --color=auto'                              #
 alias man='LANG=ja_JP.UTF-8 man'
 alias phpunit='php D:/ProgramData/PHP/PEAR/phpunit'
+alias phpcb='phpCB.exe --space-after-if --space-after-switch --space-after-while --space-before-start-angle-bracket --space-after-end-angle-bracket --glue-amperscore --change-shell-comment-to-double-slashes-comment --indent-with-tab --force-large-php-code-tag --force-true-false-null-contant-lowercase --align-equal-statements --comment-rendering-style PEAR --padding-char-count 1 --optimize-eol'
 alias javac='javac -J-Dfile.encoding=UTF-8'
 
 # Umask
