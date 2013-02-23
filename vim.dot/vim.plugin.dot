@@ -33,6 +33,15 @@ NeoBundle 'Lokaltog/vim-powerline'
 " NERDTree （エクスプローラ）
 "NeoBundle 'scrooloose/nerdtree'
 
+" プロジェクト管理
+NeoBundle 'project.tar.gz'
+" ファイルが選択されたらウインドウを閉じる。
+:let g:proj_flags = "imstc"
+" \P でプロジェクトをトグルで開閉する。
+:nmap <silent> <Leader>P <Plug>ToggleProject
+" 最初からディレクトリを全部展開した状態にする。
+autocmd BufAdd .vimprojects silent! %foldopen!
+
 " syntastic （シンタックスチェック）
 "NeoBundle 'scrooloose/syntastic'
 
