@@ -18,8 +18,10 @@ foreach file ( *.dot )
 end
 
 # neobundle.vim だけはなければ手で取ってくる。
-if ( !(-d "${HOME}/bundle/neobundle.vim") ) then
-  mkdir -p "${HOME}/bundle"
-  cd "${HOME}/bundle"
+if ( !(-d "${HOME}/.vim/bundle") ) then
+  mkdir -p "${HOME}/.vim/bundle"
+endif
+if ( !(-d "${HOME}/.vim/bundle/neobundle.vim") ) then
+  cd "${HOME}/.vim/bundle"
   git clone git://github.com/Shougo/neobundle.vim neobundle.vim
 endif
