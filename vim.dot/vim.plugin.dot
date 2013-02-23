@@ -20,6 +20,17 @@ NeoBundle 'Shougo/neobundle.vim'
 " 非同期実行を可能にする。
 NeoBundle 'Shougo/vimproc'
 
+" オートコンプリートを有効にする。
+NeoBundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup = 1
+" 候補選択を英数字でできるようにする。
+" neocomplcache_enable_quick_match は廃止されたため別にキーバインドを設定。
+"imap <expr> -  pumvisible() ?
+"    \ "\<Plug>(neocomplcache_start_unite_quick_match)" : '-'
+
+" unite.vim
+NeoBundle 'Shougo/unite.vim'
+
 " colorscheme 'molokai'
 NeoBundle 'tomasr/molokai'
 " colorscheme 'solarized'
