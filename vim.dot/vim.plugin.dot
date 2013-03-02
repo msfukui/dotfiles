@@ -67,6 +67,9 @@ NeoBundle 'tomtom/tcomment_vim'
 " Smarty のシンタックスハイライト
 NeoBundle 'sifue/smarty.vim'
 
+" Ruby on Rails 支援
+"NeoBundle 'rails.vim'
+
 " Quickrun
 NeoBundle 'thinca/vim-quickrun'
 

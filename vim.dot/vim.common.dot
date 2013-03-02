@@ -64,6 +64,10 @@ set list
 set listchars=tab:^\ ,trail:~
 " 長い行を折り返す
 set wrap
+" 折りたたみの初期値を100に（折りたたみ無し）
+set foldlevel=100
+" 折りたたみの種類はシンタックスキーワードで認識させる
+set fdm=syntax
 
 "----------------------------------------
 " ステータスラインの設定
@@ -182,10 +186,21 @@ au BufRead,BufNewFile *.tmpl set filetype=smarty
 au BufRead,BufNewFile *.inc  set filetype=smarty
 
 "--
-" 各言語の文法チェック
+" 各言語の文法チェック＆固有の定義
 "--
+" Ruby
 au Filetype ruby :map <C-n> <ESC>:!ruby -cW%<CR>
+au FileType ruby setlocal makeprg=ruby\ -c\ %
+au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+let ruby_folding=1
+" PHP
 au Filetype php  :map <C-n> <ESC>:!php -l%<CR>
+au FileType php setlocal makeprg=php\ -l\ %
+au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+let php_sql_query=1
+let php_htmlInStrings=1
+let php_noShortTags=1
+let php_folding=1
 
 "----------------------------------------
 " キーマップの設定
