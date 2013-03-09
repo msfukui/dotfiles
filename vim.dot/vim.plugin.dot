@@ -68,7 +68,12 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'sifue/smarty.vim'
 
 " Ruby on Rails 支援
-"NeoBundle 'rails.vim'
+NeoBundle 'rails.vim'
+
+" Ruby on Rails 支援その２
+" database.yml 読み込んで :Select * from xxx とかできる。
+" ref: http://qiita.com/items/57e726312ffe47592867
+NeoBundle 'dbext.vim'
 
 " Quickrun
 NeoBundle 'thinca/vim-quickrun'
