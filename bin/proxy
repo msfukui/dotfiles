@@ -1,8 +1,18 @@
 #!/bin/csh -f
 
 if ( $1 == "" ) then
-  echo "usage: $ proxy [on|off]" ;
-  exit 1 ;
+	set reg_value = `reg query "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable | tail -2 | head -1 | awk '{ print $3; }'`
+	if ( $reg_value == "0x0" ) then
+		echo "proxy off" ;
+		exit 0 ;
+	else if ( $reg_value == "0x1" ) then
+		echo "proxy on" ;
+		exit 0 ;
+	else
+		echo "[$reg_value]" ;
+		echo "usage: $ proxy [on|off]" ;
+		exit 1 ;
+	endif
 endif
 
 set PROXY = "proxygate2.nic.nec.co.jp:8080"
