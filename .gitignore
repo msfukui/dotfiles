@@ -1,1 +1,4 @@
+# Project.vim project file
 .vimprojects
+# Ignore Vim Swap files
+.*.swp
