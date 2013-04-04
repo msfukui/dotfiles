@@ -124,7 +124,8 @@ alias man='LANG=ja_JP.UTF-8 man'
 alias phpcb='phpCB.exe --space-after-if --space-after-switch --space-after-while --space-before-start-angle-bracket --space-after-end-angle-bracket --glue-amperscore --change-shell-comment-to-double-slashes-comment --indent-with-tab --force-large-php-code-tag --force-true-false-null-contant-lowercase --align-equal-statements --comment-rendering-style PEAR --padding-char-count 1 --optimize-eol'
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias vip='vim -u ~/.vimrcp'
-alias more="less '-E -P?f--More-- (%pb\%):--More--.'"
+alias more="\less '-E -P?f--More-- (%pb\%):--More--.'"
+alias less="less -M -X -i -r"
 
 # Umask
 #
@@ -223,4 +224,4 @@ export CPATH=/usr/local/include
 
 # pager
 export LESSCHARSET=utf-8
-export PAGER='less'
+export PAGER='less -M -X -i -r'
