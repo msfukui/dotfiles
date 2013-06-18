@@ -82,4 +82,12 @@ NeoBundle 'thinca/vim-quickrun'
 " 移動先のハイライト表示を行う。
 NeoBundle 'Lokaltog/vim-easymotion'
 
+" Markdown 記法のハイライト表示
+NeoBundle 'plasticboy/vim-markdown'
+" 開いた時の folding を無効に。
+let g:vim_markdown_folding_disabled=1
+
+" 指定したURLをブラウザで立ち上げる。
+NeoBundle 'tyru/open-browser.vim'
+
 filetype plugin indent on
