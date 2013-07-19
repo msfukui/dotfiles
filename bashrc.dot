@@ -214,6 +214,8 @@ if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
+# pythonbrew configuration.
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
 # php configuration
 #export PATH="$HOME/bin/vendor/bin:$PATH"
