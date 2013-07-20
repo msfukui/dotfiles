@@ -39,8 +39,11 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'nanotech/jellybeans.vim'
 
 " ステータスラインをかっこよくする。
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"NeoBundle 'alpaca-tc/alpaca_powertabline'
+"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
+"let g:Powerline_theme='solarized'
+"let g:Powerline_colorscheme='solarized'
+NeoBundle 'Lokaltog/vim-powerline'
 
 " NERDTree （エクスプローラ）
 "NeoBundle 'scrooloose/nerdtree'
