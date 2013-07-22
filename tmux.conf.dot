@@ -4,9 +4,9 @@ set-option -g prefix C-t
 set-window-option -g mode-keys vi
 set-window-option -g automatic-rename off
 set-option -g status-justify "centre"
-#set-option -g default-terminal screen-256color
 bind / list-keys -t vi-copy
 bind-key C-[ copy-mode
+bind-key C-c new-window
 bind-key C-n next-window
 bind-key C-p previous-window
 
