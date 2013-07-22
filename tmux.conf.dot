@@ -26,4 +26,4 @@ set -g message-attr bold
 set -g status-left '#[default] ❐ #S#[fg=colour238,bg=colour234,nobold] > #[default]#(whoami)@#(hostname -s)#[fg=colour238,bg=colour234,nobold]'
 set -g window-status-format "#[fg=white,bg=colour234] #I:#W "
 set -g window-status-current-format "#[fg=red,bg=yellow] #I:#W "
-set -g status-right '#[fg=colour238,bg=colour234,nobold]#[default]up #(~/bin/pc-running-time)#[fg=colour238,bg=colour234,nobold] < #[default]Mem #(~/bin/used-mem)#[fg=colour238,bg=colour234,nobold] < #[default]%Y/%m/%d(%a) %H:%M:%S#[default] '
+set -g status-right '#[fg=colour238,bg=colour234,nobold]#[default]up #(~/bin/pc-running-time)#[fg=colour238,bg=colour234,nobold] < #[default]Mem #(~/bin/used-mem)#[fg=colour238,bg=colour234,nobold] < #[default]%Y/%m/%d(%a) %H:%M#[default] '
