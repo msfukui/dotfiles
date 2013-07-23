@@ -217,6 +217,7 @@ fi
 # pythonbrew configuration.
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 # tmuxinator configuration.
+[[ $EDITOR == "" ]] && export EDITOR="/usr/local/bin/view"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # php configuration
