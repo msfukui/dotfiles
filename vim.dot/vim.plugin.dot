@@ -72,7 +72,7 @@ NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'sifue/smarty.vim'
 
 " Ruby on Rails 支援
-"NeoBundle 'rails.vim'
+NeoBundle 'rails.vim'
 
 " Ruby on Rails 支援その２
 " database.yml 読み込んで :Select * from xxx とかできる。
