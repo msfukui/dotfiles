@@ -10,6 +10,8 @@ bind-key C-c new-window
 bind-key C-n next-window
 bind-key C-p previous-window
 
+set-window-option -g mode-mouse on
+
 set -g status-attr dim
 set -g status-left-length 32
 set -g status-right-length 150
