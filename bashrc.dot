@@ -232,3 +232,11 @@ eval "$(plenv init -)"
 # pager
 export LESSCHARSET=utf-8
 export PAGER="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
+
+# git settings
+if [ -f ~/bin/git-completion.bash ]; then
+	source ~/bin/git-prompt.sh
+	source ~/bin/git-completion.bash
+	GIT_PS1_SHOWDIRTYSTATE=true
+	export PS1='[ \W]$(__git_ps1)\$ '
+fi

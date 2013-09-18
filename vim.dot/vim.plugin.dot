@@ -94,4 +94,21 @@ let g:vim_markdown_folding_disabled=1
 " 指定したURLをブラウザで立ち上げる。
 NeoBundle 'tyru/open-browser.vim'
 
+" ctags を自動実行する。
+NeoBundle 'alpaca-tc/alpaca_tags'
+
+let g:alpaca_tags_config = {
+\ '_'   : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
+\ 'js'  : '--languages=+js',
+\ 'ruby': '--languages=+Ruby',
+\ }
+augroup AlpacaTags
+  autocmd!
+  if exists(':Tags')
+    autocmd BufWritePost * TagsUpdate ruby
+    autocmd BufWritePost Gemfile TagsBundle
+    autocmd BufEnter * TagsSet
+  endif
+augroup END
+
 filetype plugin indent on

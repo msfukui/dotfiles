@@ -17,6 +17,9 @@ foreach file ( *.dot )
   endif
 end
 
+# bin/ 配下のスクリプトもコピーする。
+cp -p bin/* ${HOME}/bin/
+
 # neobundle.vim だけはなければ手で取ってくる。
 if ( !(-d "${HOME}/.vim/bundle") ) then
   mkdir -p "${HOME}/.vim/bundle"
