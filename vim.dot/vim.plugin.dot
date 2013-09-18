@@ -18,7 +18,14 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 " 非同期実行を可能にする。
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+  \   'windows' : 'make -f make_mingw32.mak',
+  \   'cygwin' : 'make -f make_cygwin.mak',
+  \   'mac' : 'make -f make_mac.mak',
+  \   'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
 
 " オートコンプリートを有効にする。
 NeoBundle 'Shougo/neocomplcache'
@@ -97,6 +104,7 @@ NeoBundle 'tyru/open-browser.vim'
 " ctags を自動実行する。
 NeoBundle 'alpaca-tc/alpaca_tags'
 
+let g:alpaca_tags_ctags_bin = '/usr/bin/ctags'
 let g:alpaca_tags_config = {
 \ '_'   : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
 \ 'js'  : '--languages=+js',
@@ -105,10 +113,13 @@ let g:alpaca_tags_config = {
 augroup AlpacaTags
   autocmd!
   if exists(':Tags')
-    autocmd BufWritePost * TagsUpdate ruby
     autocmd BufWritePost Gemfile TagsBundle
     autocmd BufEnter * TagsSet
+    autocmd BufWritePost * TagsUpdate
   endif
 augroup END
+
+" unite.vim の 設定。(tt とすると Unite を起動。)
+nnoremap <silent><expr>tt ':Unite tags -horizontal -buffer-name=tags -input='.expand("<cword>").'<CR>'
 
 filetype plugin indent on
