@@ -242,6 +242,8 @@ nnoremap k gk
 nnoremap l <Right>zv
 " .vimrc をコマンド<Space> - . で開く。
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
 
 "----------------------------------------
 " 挿入モード
