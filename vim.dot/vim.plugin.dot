@@ -51,7 +51,8 @@ NeoBundle 'nanotech/jellybeans.vim'
 "let g:Powerline_theme='solarized'
 "let g:Powerline_colorscheme='solarized'
 "NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'bling/vim-airline'
+"NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 
 " NERDTree （エクスプローラ）
 "NeoBundle 'scrooloose/nerdtree'
