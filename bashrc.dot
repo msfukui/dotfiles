@@ -210,9 +210,12 @@ umask 027
 # 
 # alias cd=cd_func
 #
+# local bin setting
+export PATH="$HOME/bin:$PATH"
+
 # rbenv configuration.
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # php configuration
 export PATH="$HOME/bin/vendor/bin:$PATH"
@@ -225,3 +228,8 @@ export CPATH=/usr/local/include
 # pager
 export LESSCHARSET=utf-8
 export PAGER="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
+
+# pkg-config setting
+if [ -d "/lib/pkgconfig" ]; then
+  export PKG_CONFIG_PATH="/lib/pkgconfig"
+fi
