@@ -209,11 +209,19 @@ umask 027
 # 
 # alias cd=cd_func
 #
+# local bin setting
+export PATH="$HOME/bin:$PATH"
+
 # rbenv configuration.
+<<<<<<< HEAD
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+=======
 if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
+>>>>>>> 7bca8510606fb812fdbeeb9fb12df76edfdcc345
 
 # plenv configuration.
 export PATH="$HOME/.plenv/bin:$PATH"
@@ -232,6 +240,11 @@ eval "$(plenv init -)"
 # pager
 export LESSCHARSET=utf-8
 export PAGER="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
+
+# pkg-config setting
+if [ -d "/lib/pkgconfig" ]; then
+  export PKG_CONFIG_PATH="/lib/pkgconfig"
+fi
 
 # git settings
 if [ -f ~/bin/git-completion.bash ]; then
