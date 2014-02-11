@@ -26,15 +26,32 @@ set helplang=ja
 
 set t_Co=256
 syntax on
+
+"--
+" solarized の場合
+"--
+set background=dark
 let g:solarized_termcolors=256
 
 " I use xterm-256color as my terminfo on tmux 1.7 & Terminal.app on OS X Lion, so enable termtrans by manually.
 " see https://github.com/altercation/vim-colors-solarized
 let g:solarized_termtrans=1
 
-set background=dark
 "colorscheme solarized
+"hi Normal     ctermbg=none ctermfg=lightgray
+"hi Comment    ctermfg=darkgray
+"hi LineNr     ctermbg=none ctermfg=darkgray
+"hi SpecialKey ctermbg=none ctermfg=black
+"hi FoldColumn ctermbg=none ctermfg=darkgreen
+
+"--
+" molokai の場合
+"--
 "colorscheme molokai
+
+"--
+" jellybeans の場合
+"--
 colorscheme jellybeans
 
 "----------------------------------------
@@ -225,6 +242,8 @@ nnoremap k gk
 nnoremap l <Right>zv
 " .vimrc をコマンド<Space> - . で開く。
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
 
 "----------------------------------------
 " 挿入モード

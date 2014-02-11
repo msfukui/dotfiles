@@ -48,6 +48,11 @@ fi
 #   INFOPATH="${HOME}/info:${INFOPATH}"
 # fi
 
+# Heroku configuration.
+if [ -x "/usr/local/heroku/bin/heroku" ] ; then
+	PATH="/usr/local/heroku/bin:${PATH}"
+fi
+
 # keychain settings.
 if [ -x "/usr/bin/keychain" ]; then
   keychain -q id_rsa
