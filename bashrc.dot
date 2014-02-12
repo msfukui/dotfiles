@@ -212,16 +212,10 @@ umask 027
 # local bin setting
 export PATH="$HOME/bin:$PATH"
 
-# rbenv configuration.
-<<<<<<< HEAD
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-=======
 if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
->>>>>>> 7bca8510606fb812fdbeeb9fb12df76edfdcc345
 
 # plenv configuration.
 export PATH="$HOME/.plenv/bin:$PATH"
@@ -248,8 +242,8 @@ fi
 
 # git settings
 if [ -f ~/bin/git-completion.bash ]; then
-	source ~/bin/git-prompt.sh
-	source ~/bin/git-completion.bash
-	GIT_PS1_SHOWDIRTYSTATE=true
-	export PS1='[ \W]$(__git_ps1)\$ '
+  source ~/bin/git-prompt.sh
+  source ~/bin/git-completion.bash
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='[ \W]$(__git_ps1)\$ '
 fi
