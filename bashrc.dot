@@ -209,7 +209,9 @@ umask 027
 # 
 # alias cd=cd_func
 #
-# rbenv configuration.
+# local bin setting
+export PATH="$HOME/bin:$PATH"
+
 if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
@@ -233,10 +235,15 @@ eval "$(plenv init -)"
 export LESSCHARSET=utf-8
 export PAGER="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
 
+# pkg-config setting
+if [ -d "/lib/pkgconfig" ]; then
+  export PKG_CONFIG_PATH="/lib/pkgconfig"
+fi
+
 # git settings
 if [ -f ~/bin/git-completion.bash ]; then
-	source ~/bin/git-prompt.sh
-	source ~/bin/git-completion.bash
-	GIT_PS1_SHOWDIRTYSTATE=true
-	export PS1='[ \W]$(__git_ps1)\$ '
+  source ~/bin/git-prompt.sh
+  source ~/bin/git-completion.bash
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='[ \W]$(__git_ps1)\$ '
 fi

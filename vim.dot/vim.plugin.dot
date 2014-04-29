@@ -110,7 +110,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'alpaca-tc/alpaca_tags'
 
 let g:alpaca_tags_ctags_bin = '/usr/bin/ctags'
-let g:alpaca_tags_config = {
+let g:alpaca_update_tags_config = {
 \ '_'   : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
 \ 'js'  : '--languages=+js',
 \ 'ruby': '--languages=+Ruby',
