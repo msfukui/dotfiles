@@ -44,6 +44,14 @@ let g:solarized_termtrans=1
 "hi SpecialKey ctermbg=none ctermfg=black
 "hi FoldColumn ctermbg=none ctermfg=darkgreen
 
+" 全角空白文字をハイライトする
+scriptencoding utf-8
+augroup highlightIdegraphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
 "--
 " molokai の場合
 "--
@@ -103,7 +111,7 @@ set showcmd
 " タブを設定
 set ts=2 sw=2 sts=2
 " タブの代わりに ts 分のスペースを挿入する
-"set expandtab
+set expandtab
 set smarttab
 set shiftround
 " 自動的にインデントする
