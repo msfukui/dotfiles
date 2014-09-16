@@ -218,8 +218,10 @@ if [ -d "${HOME}/.rbenv/bin" ]; then
 fi
 
 # plenv configuration.
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init -)"
+if [ -d "${HOME}/.plenv/bin" ]; then
+  export PATH="$HOME/.plenv/bin:$PATH"
+  eval "$(plenv init -)"
+fi
 
 # pythonbrew configuration.
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
