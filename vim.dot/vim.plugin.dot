@@ -109,18 +109,18 @@ NeoBundle 'tyru/open-browser.vim'
 " ctags を自動実行する。
 NeoBundle 'alpaca-tc/alpaca_tags'
 
-let g:alpaca_tags_ctags_bin = '/usr/bin/ctags'
-let g:alpaca_update_tags_config = {
+let g:alpaca_tags#ctags_bin = '/usr/bin/ctags'
+let g:alpaca_tags#config = {
 \ '_'   : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
 \ 'js'  : '--languages=+js',
 \ 'ruby': '--languages=+Ruby',
 \ }
-augroup AlpacaTags
+augroup AlpacaTagsAuto
   autocmd!
-  if exists(':Tags')
-    autocmd BufWritePost Gemfile TagsBundle
-    autocmd BufEnter * TagsSet
-    autocmd BufWritePost * TagsUpdate
+  if exists(':AlpacaTags')
+    autocmd BufWritePost Gemfile AlpacaTagsBundle
+    autocmd BufEnter * AlpacaTagsSet
+    autocmd BufWritePost * AlpacaTagsUpdate
   endif
 augroup END
 
