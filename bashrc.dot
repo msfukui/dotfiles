@@ -208,9 +208,23 @@ umask 027
 # 
 # alias cd=cd_func
 #
+
+if [ "$EDITOR" = "" ]; then
+  if [ -x /usr/local/bin/view ]; then
+    export EDITOR="/usr/local/bin/view"
+  elif [ -x /usr/bin/view ]; then
+    export EDITOR="/usr/bin/view"
+  fi
+fi
+
 # local bin setting
 export PATH="$HOME/bin:$PATH"
+# local command alias.
+if [ -x "~/bin/s2print" ]; then
+  alias h = 's2print ~/server_name'
+fi
 
+# rbenv configuration
 if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
@@ -226,7 +240,6 @@ fi
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
 # tmuxinator configuration.
-[[ $EDITOR == "" ]] && export EDITOR="/usr/local/bin/view"
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # php configuration
