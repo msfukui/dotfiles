@@ -220,8 +220,8 @@ fi
 # local bin setting
 export PATH="$HOME/bin:$PATH"
 # local command alias.
-if [ -x "~/bin/s2print" ]; then
-  alias h = 's2print ~/server_name'
+if [ -x ~/bin/s2print ]; then
+  alias h='s2print ~/server_name'
 fi
 
 # rbenv configuration
