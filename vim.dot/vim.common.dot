@@ -176,6 +176,9 @@ augroup vimrcEx
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
 augroup END
+" .*.un~ ファイルを作らない様にする。
+" >= 7.4.227
+set noundofile
 
 "----------------------------------------
 " その他の設定
