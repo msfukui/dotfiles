@@ -261,3 +261,4 @@ if [ -f ~/bin/git-completion.bash ]; then
   GIT_PS1_SHOWDIRTYSTATE=true
   export PS1='[ \W]$(__git_ps1)\$ '
 fi
+alias g='git'

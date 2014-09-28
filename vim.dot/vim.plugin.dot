@@ -132,23 +132,12 @@ nnoremap <silent><expr>tt ':Unite tags -horizontal -buffer-name=tags -input='.ex
 "
 " syntax + auto-compile
 NeoBundle 'kchmck/vim-coffee-script'
+" coloring indents
+NeoBundle 'Yggdroot/indentLine'
+let g:indentLine_color_term=239
+let g:indentLine_char='|'
+let g:indentLine_fileType=['coffee','ruby','javascript','python','php','c','cpp']
 " js BDD tools
 "NeoBundle 'claco/jasmine.vim'
-" coloring indents
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" ----------------------------------
-" indent_guides
-" ----------------------------------
-let g:indent_guides_start_level=2
-let g:indent_guides_auto_colors=0
-let g:indent_guides_enable_on_vim_startup=2
-let g:indent_guides_color_change_percent=20
-let g:indent_guides_guide_size=1
-let g:indent_guides_space_guides=1
-
-hi IndentGuidesOdd ctermbg=235
-hi IndentGuidesEven ctermbg=237
-au Filetype coffee,ruby,javascript,python IndentGuidesEnable
-nmap <silent><Leader>ig <Plug>IndentGuidesToggle
 
 filetype plugin indent on

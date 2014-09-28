@@ -1,0 +1,19 @@
+[user]
+  name = msfukui
+  email = msfukui@gmail.com
+[color]
+  ui = auto
+[merge]
+  ff = false
+[push]
+  default = matching
+[core]
+  quotepath = false
+[alias]
+  mylog = log --graph --name-status --pretty=format:\"%C(red)%h %C(green)%an %Creset%s %C(yellow)%d%Creset\"
+  today = "log --oneline --since='12 hour ago'"
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  df = diff
