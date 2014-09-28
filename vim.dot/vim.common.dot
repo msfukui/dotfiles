@@ -209,9 +209,9 @@ endfunction
 "--
 " Smarty 用のファイルタイプ設定
 "--
-au BufRead,BufNewFile *.html set filetype=smarty
-au BufRead,BufNewFile *.tmpl set filetype=smarty
-au BufRead,BufNewFile *.inc  set filetype=smarty
+"au BufRead,BufNewFile *.html set filetype=smarty
+"au BufRead,BufNewFile *.tmpl set filetype=smarty
+"au BufRead,BufNewFile *.inc  set filetype=smarty
 
 "--
 " 各言語の文法チェック＆固有の定義
@@ -233,6 +233,9 @@ let php_folding=1
 if $GOROOT != ''
   set rtp+=$GOROOT/misc/vim
 endif
+" CoffeeScript
+au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 
 "----------------------------------------
 " キーマップの設定

@@ -81,7 +81,7 @@ inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 NeoBundle 'tomtom/tcomment_vim'
 
 " Smarty のシンタックスハイライト
-NeoBundle 'sifue/smarty.vim'
+"NeoBundle 'sifue/smarty.vim'
 
 " Ruby on Rails 支援
 NeoBundle 'rails.vim'
@@ -126,5 +126,29 @@ augroup END
 
 " unite.vim の 設定。(tt とすると Unite を起動。)
 nnoremap <silent><expr>tt ':Unite tags -horizontal -buffer-name=tags -input='.expand("<cword>").'<CR>'
+
+"
+" CoffeeScript 周りの設定。
+"
+" syntax + auto-compile
+NeoBundle 'kchmck/vim-coffee-script'
+" js BDD tools
+"NeoBundle 'claco/jasmine.vim'
+" coloring indents
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" ----------------------------------
+" indent_guides
+" ----------------------------------
+let g:indent_guides_start_level=2
+let g:indent_guides_auto_colors=0
+let g:indent_guides_enable_on_vim_startup=2
+let g:indent_guides_color_change_percent=20
+let g:indent_guides_guide_size=1
+let g:indent_guides_space_guides=1
+
+hi IndentGuidesOdd ctermbg=235
+hi IndentGuidesEven ctermbg=237
+au Filetype coffee,ruby,javascript,python IndentGuidesEnable
+nmap <silent><Leader>ig <Plug>IndentGuidesToggle
 
 filetype plugin indent on
