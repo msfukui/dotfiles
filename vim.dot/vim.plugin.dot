@@ -136,7 +136,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Yggdroot/indentLine'
 let g:indentLine_color_term=239
 let g:indentLine_char='|'
-let g:indentLine_fileType=['coffee','ruby','javascript','python','php','c','cpp']
+let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','python','php','c','cpp']
 " js BDD tools
 "NeoBundle 'claco/jasmine.vim'
 
