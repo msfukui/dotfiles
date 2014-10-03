@@ -130,7 +130,7 @@ nnoremap <silent><expr>tt ':Unite tags -horizontal -buffer-name=tags -input='.ex
 "
 " CoffeeScript 周りの設定。
 "
-" syntax + auto-compile
+" syntax high-light + auto-compile
 NeoBundle 'kchmck/vim-coffee-script'
 " coloring indents
 NeoBundle 'Yggdroot/indentLine'
@@ -139,5 +139,16 @@ let g:indentLine_char='|'
 let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','python','php','c','cpp']
 " js BDD tools
 "NeoBundle 'claco/jasmine.vim'
+
+NeoBundle 'scrooloose/syntastic'
+" check ruby syntax.
+let g:syntastic_ruby_checkers = ['rubocop']
+" check when opening files, too.
+" if only saving files, this flag is 0.
+let g:syntastic_check_on_open = 1
+" active mode when only ruby files.
+let g:syntastic_mode_map = { "mode": "passive",
+                            \"active_filetypes": ["ruby"],
+                            \"passive_filetypes": [] }
 
 filetype plugin indent on
