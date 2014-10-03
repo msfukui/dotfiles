@@ -4,7 +4,7 @@
 [color]
   ui = auto
 [merge]
-  ff = false
+  ff = true
 [push]
   default = matching
 [core]
