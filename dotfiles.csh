@@ -32,3 +32,15 @@ if ( !(-d "${HOME}/.vim/bundle/neobundle.vim") ) then
   cd "${HOME}/.vim/bundle"
   git clone git://github.com/Shougo/neobundle.vim neobundle.vim
 endif
+
+# sl コマンドがなければコンパイルしてコピー。
+if ( !(-f "${HOME}/bin/sl") ) then
+  if ( !(-d "${HOME}/install") ) then
+    mkdir ${HOME}/install
+  endif
+  rm -fr ${HOME}/install/sl
+  cp -pr install/sl ${HOME}/install/sl
+  cd ${HOME}/install/sl
+  make
+  cp -p sl ${HOME}/bin/
+endif
