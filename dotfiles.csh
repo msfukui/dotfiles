@@ -6,6 +6,7 @@ foreach file ( *.dot )
     foreach subfile ( *.dot )
       if ( -d $subfile ) then
         rm -fr ${HOME}/.$file:r/$subfile:r
+        mkdir ${HOME}/.$file:r/$subfile:r
         cp -pr $subfile ${HOME}/.$file:r/$subfile:r
       else
         cp -p $subfile ${HOME}/.$file:r/.$subfile:r
@@ -18,6 +19,9 @@ foreach file ( *.dot )
 end
 
 # bin/ 配下のスクリプトもコピーする。
+if ( !(-d "${HOME}/bin") ) then
+  mkdir ${HOME}/bin
+endif
 cp -p bin/* ${HOME}/bin/
 
 # neobundle.vim だけはなければ手で取ってくる。
