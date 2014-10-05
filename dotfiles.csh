@@ -6,7 +6,6 @@ foreach file ( *.dot )
     foreach subfile ( *.dot )
       if ( -d $subfile ) then
         rm -fr ${HOME}/.$file:r/$subfile:r
-        mkdir ${HOME}/.$file:r/$subfile:r
         cp -pr $subfile ${HOME}/.$file:r/$subfile:r
       else
         cp -p $subfile ${HOME}/.$file:r/.$subfile:r
