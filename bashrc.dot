@@ -236,6 +236,12 @@ if [ -d "${HOME}/.plenv/bin" ]; then
   eval "$(plenv init -)"
 fi
 
+# ndenv configuration
+if [ -d "${HOME}/.ndenv/bin" ]; then
+  export PATH="$HOME/.ndenv/bin:$PATH"
+  eval "$(ndenv init -)"
+fi
+
 # pythonbrew configuration.
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
