@@ -48,9 +48,10 @@ let g:solarized_termtrans=1
 scriptencoding utf-8
 augroup highlightIdegraphicSpace
   autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
+highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
 
 "--
 " molokai の場合
