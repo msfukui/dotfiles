@@ -50,7 +50,7 @@ fi
 
 # Heroku configuration.
 if [ -x "/usr/local/heroku/bin/heroku" ] ; then
-	PATH="/usr/local/heroku/bin:${PATH}"
+  PATH="/usr/local/heroku/bin:${PATH}"
 fi
 
 # keychain settings.
@@ -59,4 +59,45 @@ if [ -x "/usr/bin/keychain" ]; then
   if [ -f "${HOME}/.keychain/$HOSTNAME-sh" ]; then
     . ~/.keychain/$HOSTNAME-sh
   fi
+fi
+
+# man -> jman
+if [ -x "/usr/local/bin/jman" ]; then
+  alias man='env LANG=ja_JP.UTF-8 /usr/local/bin/jman'
+else
+  alias man='env LANG=ja_JP.UTF-8 man'
+fi
+
+# mac ports development settings.
+if [ -x /opt/local/bin/port ]; then
+  export PORTS_HOME=/opt/local
+  export PATH=$PORTS_HOME/bin:$PORTS_HOME/sbin:$PATH
+  export MANPATH=$PORTS_HOME/man:$MANPATH
+  export DISPLAY=:0.0
+  # C のヘッダファイルを探す場所
+  export C_INCLUDE_PATH=$PORTS_HOME/include:$PYTHON_FRAMEWORK/Headers:$C_INCLUDE_PATH
+  # C++ のヘッダファイルを探す場所
+  export CPLUS_INCLUDE_PATH=$PORTS_HOME/include:$PYTHON_FRAMEWORK/Headers:$CPLUS_INCLUDE_PATH
+  # コンパイルオプション -l で指定されたライブラリを探す場所 (for gcc)
+  export LIBRARY_PATH=.:$PORTS_HOME/lib:$LIBRARY_PATH
+  # ランタイムライブラリの場所 (for dyld)
+  #     By default, it is set to $(HOME)/lib:/usr/local/lib:/lib:/usr/lib.
+  # MacPorts のために DYLD_LIBRARY_PATH を使ってはいけない理由
+  #     http://apribase.net/2010/11/13/macports-dyld_library_path/
+  export DYLD_FALLBACK_LIBRARY_PATH=.:$PORTS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
+  # フレームワークの場所 (for dyld)
+  #     By default, it is set to /Library/Frameworks:/Network/Library/Frameworks:/System/Library/Frameworks
+  DYLD_FALLBACK_FRAMEWORK_PATH=$PORTS_HOME/Library/Frameworks:$DYLD_FALLBACK_FRAMEWORK_PATH
+fi
+
+# ls color settings
+if [ -x "/opt/local/bin/gdircolors" ]; then
+  test -r ~/.dircolors-solarized && eval "$(gdircolors ~/.dircolors-solarized)" || eval "$(gdircolors -b)"
+else
+  test -r ~/.dircolors && eval "$(dircolors ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+# pg settings.
+if [ -d "/Applications/Postgres93.app/Contents/MacOS/bin" ]; then
+  export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 fi

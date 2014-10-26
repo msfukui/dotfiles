@@ -80,10 +80,6 @@
 set DIRS=`dirs`
 PS1="[ \W]\$ "
 
-# Coloring
-# 
-test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
 # Aliases
 #
 # Some people use a different file for aliases
@@ -119,11 +115,36 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 # alias vdir='ls --color=auto --format=long'
 # alias ll='ls -l'                              # long list
 # alias la='ls -A'                              # all but . and ..
-alias ls='ls -CF --color=auto'
-alias man='LANG=ja_JP.UTF-8 man'
-alias phpcb='phpCB.exe --space-after-if --space-after-switch --space-after-while --space-before-start-angle-bracket --space-after-end-angle-bracket --glue-amperscore --change-shell-comment-to-double-slashes-comment --indent-with-tab --force-large-php-code-tag --force-true-false-null-contant-lowercase --align-equal-statements --comment-rendering-style PEAR --padding-char-count 1 --optimize-eol'
+
+# ls settings
+if [ -x "/opt/local/bin/gls" ]; then
+  alias ls='gls -CF --color=auto'
+else
+  alias ls='ls -CF --color=auto'
+fi
+
 alias more="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
 alias less="more"
+
+# vim & editor settings
+if [ -d "/Applications/MacVim.app/Contents/MacOS" ]; then
+  # MacVim Alias
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+  alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+  alias view='/Applications/MacVim.app/Contents/MacOS/Vim'
+  alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim'
+  if [ "$EDITOR" = "" ]; then
+    export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
+  fi
+else
+  if [ "$EDITOR" = "" ]; then
+    if [ -x /usr/local/bin/view ]; then
+      export EDITOR="/usr/local/bin/view"
+    elif [ -x /usr/bin/view ]; then
+      export EDITOR="/usr/bin/view"
+    fi
+  fi
+fi
 
 # Umask
 #
@@ -209,14 +230,6 @@ umask 027
 # alias cd=cd_func
 #
 
-if [ "$EDITOR" = "" ]; then
-  if [ -x /usr/local/bin/view ]; then
-    export EDITOR="/usr/local/bin/view"
-  elif [ -x /usr/bin/view ]; then
-    export EDITOR="/usr/bin/view"
-  fi
-fi
-
 # local bin setting
 export PATH="$HOME/bin:$PATH"
 # local command alias.
@@ -247,7 +260,7 @@ fi
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
 # tmuxinator configuration.
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+#[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # php configuration
 #export PATH="$HOME/bin/vendor/bin:$PATH"
@@ -269,3 +282,10 @@ if [ -f ~/bin/git-completion.bash ]; then
   export PS1='[ \W]$(__git_ps1)\$ '
 fi
 alias g='git'
+
+# go settings.
+if [ -d "/opt/local/go" ]; then
+  export GOROOT=/opt/local/go
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:$PATH
+fi
