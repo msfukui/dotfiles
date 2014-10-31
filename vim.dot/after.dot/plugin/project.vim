@@ -2,7 +2,12 @@
 if exists(":Project")
 	if getcwd() != $HOME
 		if filereadable(getcwd().'/.vimprojects')
-			Project .vimprojects
+      if !(&diff)
+        Project .vimprojects
+        if argc() == 0
+          autocmd VimEnter * nested hide
+        endif
+      endif
 		endif
 	endif
 endif
