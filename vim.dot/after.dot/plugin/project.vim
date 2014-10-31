@@ -4,7 +4,7 @@ if exists(":Project")
 		if filereadable(getcwd().'/.vimprojects')
       if !(&diff)
         Project .vimprojects
-        if argc() == 0
+        if argc() != 0
           autocmd VimEnter * nested hide
         endif
       endif
