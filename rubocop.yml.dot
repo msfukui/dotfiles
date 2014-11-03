@@ -1,0 +1,13 @@
+inherit_from: rubocop-todo.yml
+
+# Use UTF-8 as the source file encoding.
+Encoding:
+  Enabled: false
+
+# Use only ascii symbols in comments.
+AsciiComments:
+  Enabled: false
+
+# Document classes and non-namespace modules.
+Style/Documentation:
+  Enabled: false
