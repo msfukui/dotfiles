@@ -75,9 +75,9 @@ if [ -x /opt/local/bin/port ]; then
   export MANPATH=$PORTS_HOME/man:$MANPATH
   export DISPLAY=:0.0
   # C のヘッダファイルを探す場所
-  export C_INCLUDE_PATH=$PORTS_HOME/include:$PYTHON_FRAMEWORK/Headers:$C_INCLUDE_PATH
+  export C_INCLUDE_PATH=$PORTS_HOME/include:$C_INCLUDE_PATH
   # C++ のヘッダファイルを探す場所
-  export CPLUS_INCLUDE_PATH=$PORTS_HOME/include:$PYTHON_FRAMEWORK/Headers:$CPLUS_INCLUDE_PATH
+  export CPLUS_INCLUDE_PATH=$PORTS_HOME/include:$CPLUS_INCLUDE_PATH
   # コンパイルオプション -l で指定されたライブラリを探す場所 (for gcc)
   export LIBRARY_PATH=.:$PORTS_HOME/lib:$LIBRARY_PATH
   # ランタイムライブラリの場所 (for dyld)
