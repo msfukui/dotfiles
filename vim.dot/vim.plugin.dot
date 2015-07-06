@@ -143,12 +143,14 @@ let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','pyt
 NeoBundle 'scrooloose/syntastic'
 " check ruby syntax.
 let g:syntastic_ruby_checkers = ['rubocop']
+" check xml syntax.
+let g:syntastic_xml_checkers = ['xmllint']
 " check when opening files, too.
 " if only saving files, this flag is 0.
 let g:syntastic_check_on_open = 1
 " active mode when only ruby files.
 let g:syntastic_mode_map = { "mode": "passive",
-                            \"active_filetypes": ["ruby"],
+                            \"active_filetypes": ["ruby","xml"],
                             \"passive_filetypes": [] }
 
 if has('vim_starting')
