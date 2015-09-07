@@ -43,3 +43,8 @@ if ( !(-f "${HOME}/bin/sl") ) then
   make
   cp -p sl ${HOME}/bin/
 endif
+
+# fortune コマンドがあれば追加データをコピー。
+if ( -x /usr/bin/fortune ) then
+  cp -p fortune/* /usr/share/games/fortunes/
+endif
