@@ -150,7 +150,7 @@ let g:syntastic_xml_checkers = ['xmllint']
 let g:syntastic_check_on_open = 1
 " active mode when only ruby files.
 let g:syntastic_mode_map = { "mode": "passive",
-                            \"active_filetypes": ["ruby","xml"],
+                            \"active_filetypes": ["ruby","xml","java","groovy"],
                             \"passive_filetypes": [] }
 
 if has('vim_starting')

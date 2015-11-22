@@ -243,6 +243,12 @@ endif
 " CoffeeScript
 au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
 autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
+" Java
+" Eclim Settings.
+autocmd FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
+autocmd FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
+autocmd FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+autocmd FileType java let g:EclimJavaSearchSingleResult = 'edit'
 
 "----------------------------------------
 " キーマップの設定
