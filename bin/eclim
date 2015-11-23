@@ -1,7 +1,7 @@
 #!/bin/csh -f
 
-if ( $1 != "start" && $1 != "stop" ) then
-  echo "ERROR: $ eclim [start|stop]"
+if ( $1 != "start" && $1 != "stop" && $1 != "status" ) then
+  echo "ERROR: $ eclim [start|stop|status]"
   exit 1
 endif
 
@@ -12,6 +12,14 @@ endif
 
 set ps_xvfb   = `ps -fu $USER | grep 'application org.eclim.application' | grep -v 'grep' | awk '{ print $2;}'`
 set ps_eclimd = `ps -fu $USER | grep 'Xvfb :1' | grep -v 'grep' | awk '{ print $2; }'`
+
+if ( $1 == "status" ) then
+  if ( $ps_xvfb != "" && $ps_eclimd != "") then
+    echo "NORMAL: Xvfb and eclimd already started. xvfb: [$ps_xvfb], eclimd: [$ps_eclimd]"
+  else
+    echo "NORMAL: Xvfb and/or eclimd not exist. xvfb: [$ps_xvfb], eclimd: [$ps_eclimd]"
+  endif
+endif
 
 if ( $1 == "start" ) then
   if ( $ps_xvfb != "" || $ps_eclimd != "") then
