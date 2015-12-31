@@ -289,3 +289,9 @@ if [ -d "/opt/local/go" ]; then
   export GOPATH=$HOME/go
   export PATH=$GOPATH/bin:$PATH
 fi
+
+# sdk man settings.
+if [ -d "${HOME}/.sdkman" ]; then
+  export SDKMAN_DIR="${HOME}/.sdkman"
+  [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+fi
