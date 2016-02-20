@@ -1,4 +1,4 @@
-inherit_from: .rubocop-todo.yml
+inherit_from: .rubocop_todo.yml
 
 # Use UTF-8 as the source file encoding.
 Encoding:
