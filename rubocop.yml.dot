@@ -1,11 +1,15 @@
 inherit_from: .rubocop_todo.yml
 
-# Use UTF-8 as the source file encoding.
-Encoding:
-  Enabled: false
-
 # Use only ascii symbols in comments.
 AsciiComments:
+  Enabled: false
+
+# Line Length
+Metrics/LineLength:
+  Max: 120
+
+# Use UTF-8 as the source file encoding.
+Style/Encoding:
   Enabled: false
 
 # Document classes and non-namespace modules.
