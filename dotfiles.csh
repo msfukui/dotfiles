@@ -28,8 +28,9 @@ if ( !(-d "${HOME}/.vim/bundle") ) then
   mkdir -p "${HOME}/.vim/bundle"
 endif
 if ( !(-d "${HOME}/.vim/bundle/neobundle.vim") ) then
-  cd "${HOME}/.vim/bundle"
+  pushd "${HOME}/.vim/bundle"
   git clone git://github.com/Shougo/neobundle.vim neobundle.vim
+  popd
 endif
 
 # sl コマンドがなければコンパイルしてコピー。
