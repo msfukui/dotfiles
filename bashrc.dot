@@ -243,6 +243,8 @@ if [ -d "${HOME}/.rbenv/bin" ]; then
   eval "$(rbenv init -)"
 fi
 alias be='bundle exec'
+alias bu='bundle update'
+alias bi='bundle install'
 
 # plenv configuration.
 if [ -d "${HOME}/.plenv/bin" ]; then

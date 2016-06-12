@@ -95,3 +95,8 @@ fi
 if [ -d "/Applications/Postgres93.app/Contents/MacOS/bin" ]; then
   export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 fi
+
+# maven settings.
+if [ -d "$HOME/java/apache-maven/bin" ]; then
+  export PATH=$HOME/java/apache-maven/bin:$PATH
+fi

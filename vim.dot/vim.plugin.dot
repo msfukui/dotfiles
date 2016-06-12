@@ -69,9 +69,6 @@ NeoBundle 'project.tar.gz'
 " 最初からディレクトリを全部展開した状態にする。
 autocmd BufAdd .vimprojects silent! %foldopen!
 
-" syntastic （シンタックスチェック）
-"NeoBundle 'scrooloose/syntastic'
-
 " smartchr （キー入力補完）
 NeoBundle 'kana/vim-smartchr'
 " = 入力時に両端に半角空白
@@ -145,9 +142,14 @@ NeoBundle 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers = ['rubocop']
 " check xml syntax.
 let g:syntastic_xml_checkers = ['xmllint']
-" check when opening files, too.
-" if only saving files, this flag is 0.
-let g:syntastic_check_on_open = 1
+" check java syntax.
+let g:syntastic_java_javac_config_file_enabled = 1
+let g:syntastic_java_javac_config_file = "$HOME/.syntastic_javac_config"
+" check java checkstyle settings.
+let g:syntastic_java_checkstyle_classpath = "$HOME/java/checkstyle/checkstyle-*-all.jar"
+" check when only saving files.
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 " active mode when only ruby files.
 let g:syntastic_mode_map = { "mode": "passive",
                             \"active_filetypes": ["ruby","xml","java","groovy"],
