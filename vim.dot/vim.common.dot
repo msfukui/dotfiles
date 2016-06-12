@@ -27,23 +27,6 @@ set helplang=ja
 set t_Co=256
 syntax on
 
-"--
-" solarized の場合
-"--
-set background=dark
-let g:solarized_termcolors=256
-
-" I use xterm-256color as my terminfo on tmux 1.7 & Terminal.app on OS X Lion, so enable termtrans by manually.
-" see https://github.com/altercation/vim-colors-solarized
-let g:solarized_termtrans=1
-
-"colorscheme solarized
-"hi Normal     ctermbg=none ctermfg=lightgray
-"hi Comment    ctermfg=darkgray
-"hi LineNr     ctermbg=none ctermfg=darkgray
-"hi SpecialKey ctermbg=none ctermfg=black
-"hi FoldColumn ctermbg=none ctermfg=darkgreen
-
 " 全角空白文字をハイライトする
 scriptencoding utf-8
 augroup highlightIdegraphicSpace
@@ -52,16 +35,6 @@ augroup highlightIdegraphicSpace
   autocmd VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
-
-"--
-" molokai の場合
-"--
-"colorscheme molokai
-
-"--
-" jellybeans の場合
-"--
-colorscheme jellybeans
 
 "----------------------------------------
 " 画面表示の設定
