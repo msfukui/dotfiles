@@ -16,5 +16,6 @@ ndenv global ${setup_nodejs_version}
 ndenv rehash
 node -v
 
-npm install -g node-check-updates
+npm install -g npm-check-updates
+ndenv rehash
 ncu -v
