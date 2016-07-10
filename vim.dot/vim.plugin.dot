@@ -155,6 +155,9 @@ let g:syntastic_mode_map = { "mode": "passive",
                             \"active_filetypes": ["ruby","xml","java","groovy"],
                             \"passive_filetypes": [] }
 
+" Vue components syntax highlight.
+NeoBundle 'posva/vim-vue'
+
 if has('vim_starting')
   call neobundle#end()
 endif
