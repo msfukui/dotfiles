@@ -18,4 +18,4 @@ node -v
 
 npm install -g npm-check-updates
 ndenv rehash
-ncu -v
+ncu --version
