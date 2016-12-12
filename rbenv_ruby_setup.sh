@@ -5,7 +5,7 @@ if [ ! -d "${HOME}/.rbenv/bin" ]; then
   exit 1
 fi
 
-setup_ruby_version=2.3.1
+setup_ruby_version=2.3.3
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
