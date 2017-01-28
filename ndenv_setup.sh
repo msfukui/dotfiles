@@ -9,7 +9,7 @@ fi
 if [ ! -d "${HOME}/.ndenv/plugins/node-build" ]; then
   mkdir -p ${HOME}/.ndenv/plugins
   pushd ${HOME}/.ndenv/plugins
-  git clone git@github.com:riywo/node-build.git ${HOME}/.ndenv/plugins/node-build
+  git clone https://github.com/riywo/node-build ${HOME}/.ndenv/plugins/node-build
   popd
 fi
 
