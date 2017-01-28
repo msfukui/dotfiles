@@ -5,7 +5,7 @@ if [ ! -d "${HOME}/.ndenv/bin" ]; then
   exit 1
 fi
 
-setup_nodejs_version=4.4.7
+setup_nodejs_version=6.9.4
 
 export PATH="$HOME/.ndenv/bin:$PATH"
 eval "$(ndenv init -)"
