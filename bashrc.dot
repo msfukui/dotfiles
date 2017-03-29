@@ -287,7 +287,6 @@ alias g='git'
 
 # go settings.
 if [ -d "/opt/local/go" ]; then
-  export GOROOT=/opt/local/go
   export GOPATH=$HOME/go
   export PATH=$GOPATH/bin:$PATH
 fi
