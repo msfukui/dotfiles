@@ -28,12 +28,11 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 
 " オートコンプリートを有効にする。
-NeoBundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup = 1
-" 候補選択を英数字でできるようにする。
-" neocomplcache_enable_quick_match は廃止されたため別にキーバインドを設定。
-"imap <expr> -  pumvisible() ?
-"    \ "\<Plug>(neocomplcache_start_unite_quick_match)" : '-'
+NeoBundle 'Shougo/neocomplete'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_close_preview = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " unite.vim
 NeoBundle 'Shougo/unite.vim'
@@ -147,16 +146,31 @@ let g:syntastic_java_javac_config_file_enabled = 1
 let g:syntastic_java_javac_config_file = "$HOME/.syntastic_javac_config"
 " check java checkstyle settings.
 let g:syntastic_java_checkstyle_classpath = "$HOME/java/checkstyle/checkstyle-*-all.jar"
+" check golang syntax.
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 " check when only saving files.
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " active mode when only ruby files.
 let g:syntastic_mode_map = { "mode": "passive",
-                            \"active_filetypes": ["ruby","xml","java","groovy"],
+                            \"active_filetypes": ["ruby","xml","java","groovy","go"],
                             \"passive_filetypes": [] }
 
 " Vue components syntax highlight.
 NeoBundle 'posva/vim-vue'
+
+" golang support.
+NeoBundle 'fatih/vim-go'
+" highlight  
+let g:go_hightlight_functions = 1
+let g:go_hightlight_methods = 1
+let g:go_hightlight_structs = 1
+let g:go_hightlight_interfaces = 1
+let g:go_hightlight_operators = 1
+let g:go_hightlight_build_constraints = 1
+" display to infomation.
+let g:go_auto_type_info = 1
+set updatetime=100
 
 if has('vim_starting')
   call neobundle#end()
