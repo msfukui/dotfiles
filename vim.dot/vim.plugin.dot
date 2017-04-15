@@ -172,6 +172,9 @@ let g:go_hightlight_build_constraints = 1
 let g:go_auto_type_info = 1
 set updatetime=100
 
+" showtime.vim
+NeoBundle 'thinca/vim-showtime'
+
 if has('vim_starting')
   call neobundle#end()
 endif
