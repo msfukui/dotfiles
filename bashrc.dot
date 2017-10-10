@@ -290,6 +290,10 @@ if [ -d "/opt/local/go" ]; then
   export GOPATH=$HOME/go
   export PATH=$GOPATH/bin:$PATH
 fi
+if [ -d "/usr/local/go" ]; then
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+fi
 
 # sdk man settings.
 if [ -d "${HOME}/.sdkman" ]; then
