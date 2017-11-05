@@ -28,4 +28,9 @@ let g:solarized_termtrans=1
 "--
 " jellybeans の場合
 "--
-colorscheme jellybeans
+"colorscheme jellybeans
+
+"--
+" vim-hybrid の場合
+"--
+colorscheme vim-hybrid

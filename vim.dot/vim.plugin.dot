@@ -43,6 +43,8 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'altercation/vim-colors-solarized'
 " colorscheme 'jellybeans'
 NeoBundle 'nanotech/jellybeans.vim'
+" colorscheme 'vim-hybrid'
+NeoBundle 'w0ng/vim-hybrid'
 
 " ステータスラインをかっこよくする。
 "NeoBundle 'alpaca-tc/alpaca_powertabline'
