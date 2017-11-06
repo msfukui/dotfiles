@@ -6,12 +6,12 @@
 "--
 " solarized の場合
 "--
-set background=dark
-let g:solarized_termcolors=256
+"set background=dark
+"let g:solarized_termcolors=256
 
 " I use xterm-256color as my terminfo on tmux 1.7 & Terminal.app on OS X Lion, so enable termtrans by manually.
 " see https://github.com/altercation/vim-colors-solarized
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 
 "colorscheme solarized
 "hi Normal     ctermbg=none ctermfg=lightgray
@@ -33,4 +33,5 @@ let g:solarized_termtrans=1
 "--
 " vim-hybrid の場合
 "--
-colorscheme vim-hybrid
+set background=dark
+colorscheme hybrid
