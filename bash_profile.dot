@@ -53,14 +53,6 @@ if [ -x "/usr/local/heroku/bin/heroku" ] ; then
   PATH="/usr/local/heroku/bin:${PATH}"
 fi
 
-# keychain settings.
-if [ -x "/usr/bin/keychain" ]; then
-  keychain -q id_rsa
-  if [ -f "${HOME}/.keychain/$HOSTNAME-sh" ]; then
-    . ~/.keychain/$HOSTNAME-sh
-  fi
-fi
-
 # man -> jman
 if [ -x "/usr/local/bin/jman" ]; then
   alias man='env LANG=ja_JP.UTF-8 /usr/local/bin/jman'
@@ -84,8 +76,17 @@ if [ -x /opt/local/bin/port ]; then
   DYLD_FALLBACK_FRAMEWORK_PATH=$PORTS_HOME/Library/Frameworks:$DYLD_FALLBACK_FRAMEWORK_PATH
 fi
 
+# keychain settings.
+if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
+  keychain -q id_rsa
+  if [ -f "${HOME}/.keychain/$HOSTNAME-sh" ]; then
+    . ~/.keychain/$HOSTNAME-sh
+  fi
+fi
+
 # ls color settings
 if [ -x "/opt/local/bin/gdircolors" ]; then
+  # solarized for Mac
   test -r ~/.dircolors-solarized && eval "$(gdircolors ~/.dircolors-solarized)" || eval "$(gdircolors -b)"
 else
   test -r ~/.dircolors && eval "$(dircolors ~/.dircolors)" || eval "$(dircolors -b)"
