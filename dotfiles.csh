@@ -63,6 +63,6 @@ if ( -x /opt/local/bin/fortune ) then
   # mac は dat の形式が違うようなのでセットアップ時に毎回変換して上書きする。
   cd fortune
   foreach file ( *.dat )
-    strfile /opt/local/share/games/fortune/$file:r
+    sudo strfile /opt/local/share/games/fortune/$file:r
   end
 endif
