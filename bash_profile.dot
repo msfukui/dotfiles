@@ -99,5 +99,5 @@ fi
 
 # fortune cookies
 if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
-  fortune jojo meigen 2ch starwars | printf "\e[34m$(cat)\n\e[m"
+  fortune jojo meigen 2ch starwars | printf "\e[33m$(cat)\n\e[m"
 fi
