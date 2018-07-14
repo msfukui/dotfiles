@@ -46,6 +46,16 @@ if ( !(-f "${HOME}/bin/sl") ) then
 endif
 
 # fortune コマンドがあれば追加データをコピー。
+# for windows & *nix
 if ( -x /usr/bin/fortune ) then
   cp -p fortune/* /usr/share/games/fortunes/
+endif
+# for mac(mac ports)
+if ( -x /opt/local/bin/fortune ) then
+  sudo cp fortune/* /opt/local/share/games/fortune/
+  # mac は dat の形式が違うようなのでセットアップ時に毎回変換して上書きする。
+  cd fortune
+  foreach file ( *.dat )
+    strfile /opt/local/share/games/fortune/$file:r
+  end
 endif

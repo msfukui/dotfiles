@@ -23,11 +23,6 @@
 
 # User dependent .bash_profile file
 
-# fortune cookies
-if [ -x "/usr/bin/fortune" ]; then
-  fortune jojo meigen 2ch starwars
-fi
-
 # source the users bashrc if it exists
 if [ -f "${HOME}/.bashrc" ] ; then
   source "${HOME}/.bashrc"
@@ -100,4 +95,9 @@ fi
 # maven settings.
 if [ -d "$HOME/java/apache-maven/bin" ]; then
   export PATH=$HOME/java/apache-maven/bin:$PATH
+fi
+
+# fortune cookies
+if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
+  fortune jojo meigen 2ch starwars | printf "\e[34m$(cat)\n\e[m"
 fi
