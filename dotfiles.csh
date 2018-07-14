@@ -33,6 +33,13 @@ if ( !(-d "${HOME}/.vim/bundle/neobundle.vim") ) then
   popd
 endif
 
+# Mac Ports 経由での各種パッケージのインストール。
+if ( -x /opt/local/bin/port ) then
+  sudo port selfupdate
+  sudo port upgrade outdated
+  sudo port install coreutils openssl gawk nkf
+endif
+
 # sl コマンドがなければコンパイルしてコピー。
 if ( !(-f "${HOME}/bin/sl") ) then
   if ( !(-d "${HOME}/install") ) then
