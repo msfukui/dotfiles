@@ -37,7 +37,7 @@ endif
 if ( -x /opt/local/bin/port ) then
   sudo port selfupdate
   sudo port upgrade outdated
-  sudo port install coreutils openssl gawk nkf
+  sudo port install coreutils openssl gawk nkf fortune
 endif
 
 # sl コマンドがなければコンパイルしてコピー。
