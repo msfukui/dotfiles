@@ -179,6 +179,7 @@ NeoBundle 'thinca/vim-showtime'
 
 " pluntuml syntax highlight & :make
 NeoBundle 'aklt/plantuml-syntax'
+let g:plantuml_executable_script='~/bin/plantuml'
 
 if has('vim_starting')
   call neobundle#end()

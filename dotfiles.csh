@@ -23,6 +23,12 @@ if ( !(-d "${HOME}/bin") ) then
 endif
 cp -p bin/* ${HOME}/bin/
 
+# lib/ 配下のファイルもコピーする。
+if ( !(-d "${HOME}/lib") ) then
+  mkdir ${HOME}/lib
+endif
+cp -p lib/* ${HOME}/lib/
+
 # neobundle.vim だけはなければ手で取ってくる。
 if ( !(-d "${HOME}/.vim/bundle") ) then
   mkdir -p "${HOME}/.vim/bundle"
