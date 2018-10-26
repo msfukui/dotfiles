@@ -177,6 +177,9 @@ set updatetime=100
 " showtime.vim
 NeoBundle 'thinca/vim-showtime'
 
+" pluntuml syntax highlight & :make
+NeoBundle 'aklt/plantuml-syntax'
+
 if has('vim_starting')
   call neobundle#end()
 endif
