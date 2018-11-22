@@ -181,6 +181,9 @@ NeoBundle 'thinca/vim-showtime'
 NeoBundle 'aklt/plantuml-syntax'
 let g:plantuml_executable_script='~/bin/plantuml'
 
+" HELP ドキュメントの日本語化
+NeoBundle 'vim-jp/vimdoc-ja'
+
 if has('vim_starting')
   call neobundle#end()
 endif
