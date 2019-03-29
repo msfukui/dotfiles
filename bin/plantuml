@@ -1,4 +1,8 @@
 #!/bin/bash
 
 java -jar $HOME/lib/plantuml.jar -tpng $@
-open ${@%%.*}.png
+
+# Auto open file for MacOS
+if [ -d "/Applications/MacVim.app/Contents/MacOS" ]; then
+  open ${@%%.*}.png
+fi
