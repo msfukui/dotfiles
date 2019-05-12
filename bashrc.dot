@@ -252,10 +252,10 @@ if [ -d "${HOME}/.plenv/bin" ]; then
   eval "$(plenv init -)"
 fi
 
-# ndenv configuration
-if [ -d "${HOME}/.ndenv/bin" ]; then
-  export PATH="$HOME/.ndenv/bin:$PATH"
-  eval "$(ndenv init -)"
+# nodenv configuration
+if [ -d "${HOME}/.nodenv/bin" ]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
 fi
 
 # pythonbrew configuration.
