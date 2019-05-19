@@ -1,0 +1,170 @@
+#!/bin/bash
+
+#
+# maquee : 簡易マーキー表示スクリプト
+#
+# Written by msfukui
+#
+# Usage: maquee <string>
+#
+# c.f.
+#   https://github.com/itdaniher/bash-scripts-old/blob/master/marquee
+#
+
+_STRING="$*"
+
+[ -z "$*" ] && echo "Usage: $(basename $0) <string>" && exit 1
+
+# 途中で異常終了した場合の復帰処理
+exit_abnormaly()
+{
+  tput clear
+  echo ""
+  echo ""
+  tput cnorm
+  exit $1
+}
+for SIG in INT TERM
+do trap exit_abnormaly $SIG
+done
+
+# 表示間隔のタイマー
+_INTARVAL=.05
+
+#
+# terminal の表示領域を取得
+#
+# c.f.
+#   https://www.ibm.com/developerworks/jp/aix/library/au-learningtput/index.html
+#   https://nxmnpg.lemoda.net/ja/5/terminfo
+#
+which tput > /dev/null
+if [ "$?" -ne 0 ]; then
+  echo "Command 'tput' is not installed."
+  exit 2
+fi
+_X=`tput cols`
+_Y=`tput lines`
+
+# メッセージの長さチェック
+# terminal の幅が文字数の二倍未満なら OK とする
+[ $((${#_STRING}*2)) -gt ${_X} ] && echo "<string>'s length is too long." && exit 3
+
+#
+# 文字列の表示幅サイズと現在行を取得して最初の表示位置を決める
+# エスケープシーケンスで取得
+#
+# c.f.
+#   https://blog.n-z.jp/blog/2014-10-07-char-width-in-terminal.html
+#   https://qa.atmarkit.co.jp/q/2277
+#   http://ttssh2.osdn.jp/manual/ja/about/ctrlseq.html
+#
+# Mac 標準の `echo` は改行なしをサポートしていないっぽいので `gecho` の有無をチェック
+#
+ECHO_CMD=echo
+if [ `uname -s` == "Darwin" ]; then
+  ECHO_CMD=gecho
+  which $ECHO_CMD > /dev/null
+  if [ "$?" -ne 0 ]; then
+    echo "Command 'gecho' is not installed."
+    exit 4
+  fi
+fi
+$ECHO_CMD -ne "${_STRING}"'\e[6n'; read -d';' _STRING_SIZE; read -dR _STRING_SIZE; printf '\e[M\r'
+_STRING_SIZE=$((_STRING_SIZE - 1))
+_DEFAULT_POS=$((_X - _STRING_SIZE))
+
+# maquee を表示する行
+# 現在行の次の行をデフォルトとしたかったが取得方法がわからず一旦固定とした
+_DEFAULT_LINE_POS=2
+
+# 部分文字の表示サイズをターミナルのエスケープシーケンスで取得して _substring_size に設定する
+# 2文字幅と1文字幅の文字を判定する必要があるため用意している関数
+# 3文字以上の幅は一旦考えない
+set_substring_size()
+{
+  $ECHO_CMD -ne "$1"'\e[6n'; read -d';' _substring_size; read -dR _substring_size; printf '\e[M\r'
+  _substring_size=$((_substring_size - 1))
+}
+
+# 最初で使う表示部分のリスト作成
+j=0
+seq_list=()
+for i in $(seq 1 ${#_STRING})
+do
+  if [ ${#seq_list[@]} -eq 0 ]; then
+    last=""
+  else
+    last=${seq_list[${#seq_list[@]}-1]}
+  fi
+
+  substring=`echo ${_STRING} | cut -c${i}`
+  set_substring_size ${substring}
+
+  if [ ${_substring_size} -eq 2 ]; then
+    seq_list[$j]="${last}"
+    let j++
+  fi
+  seq_list[$j]="${last}${substring}"
+  let j++
+done
+
+#
+# 表示処理
+#
+
+# カーソルを消して位置を記憶
+tput civis
+#tput sc
+
+# 最初の部分表示
+# 2文字幅分の文字はタイミングを倍に遅らせながら出す
+for i in $(seq 0 $((_STRING_SIZE - 1)))
+do
+  tput clear
+  tput cup ${_DEFAULT_LINE_POS} $((_X - i - 1))
+  echo "${seq_list[$i]}"
+  sleep ${_INTARVAL}
+done
+
+# 途中の文字列表示
+# 1文字表示ずつずらしながら表示
+for i in $(seq 1 $((_DEFAULT_POS)))
+do
+  tput clear
+  tput cup ${_DEFAULT_LINE_POS} $((_DEFAULT_POS - i))
+  echo "${_STRING}"
+  sleep ${_INTARVAL}
+done
+
+# 最後の部分表示
+# 最後は単純に文字数分を1文字ずつ削除しながら表示する
+# 2文字幅の場合はタイミングを倍に遅らせながら消す
+for i in $(seq 1 ${#_STRING})
+do
+  last_print=`echo "${_STRING}" | cut -c$((i+1))-`
+
+  substring=`echo "${_STRING}" | cut -c${i}`
+  set_substring_size ${substring}
+
+  if [ ${_substring_size} -eq 2 ]; then
+    tput clear
+    tput cup ${_DEFAULT_LINE_POS} 0
+    echo " ${last_print}"
+    sleep ${_INTARVAL}
+  fi
+
+  tput clear
+  tput cup ${_DEFAULT_LINE_POS} 0
+  echo "${last_print}"
+  sleep ${_INTARVAL}
+done
+
+# 全部消えた表示を出して終わり
+tput clear
+tput cup ${_DEFAULT_LINE_POS} 0
+echo ""
+
+# カーソルの位置を戻して表示
+#tput rc
+tput cnorm
