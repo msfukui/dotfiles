@@ -29,11 +29,10 @@ gem update --system
 gem update
 rbenv rehash
 
-gem install bundler pry rubocop --no-ri --no-rdoc
+gem install bundler rubocop --no-ri --no-rdoc
 rbenv rehash
 
 ruby -v
 gem -v
 bundle -v
-pry -v
 rubocop -v

@@ -1,0 +1,16 @@
+#!/bin/bash -f
+
+if [ ! -d "${HOME}/.rbenv/bin" ]; then
+  echo "[error] rbenv is not set up."
+  exit 1
+fi
+
+pushd ~/.rbenv/plugins/ruby-build
+git pull origin master
+popd
+
+pushd ~/.rbenv
+git pull origin master
+popd
+
+rbenv rehash
