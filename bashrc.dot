@@ -259,7 +259,12 @@ if [ -d "${HOME}/.nodenv/bin" ]; then
 fi
 
 # pythonbrew configuration.
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+#[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+# pyenv configuration
+if [ -d "${HOME}/.pyenv/bin" ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 # tmuxinator configuration.
 #[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
