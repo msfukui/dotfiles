@@ -232,6 +232,22 @@ umask 027
 # alias cd=cd_func
 #
 
+# mac ports development settings.
+if [ -x /opt/local/bin/port ]; then
+  export PORTS_HOME=/opt/local
+  export PATH=$PORTS_HOME/bin:$PORTS_HOME/sbin:$PATH
+  export MANPATH=$PORTS_HOME/man:$MANPATH
+  export DISPLAY=:0.0
+  # ランタイムライブラリの場所 (for dyld)
+  #     By default, it is set to $(HOME)/lib:/usr/local/lib:/lib:/usr/lib.
+  # MacPorts のために DYLD_LIBRARY_PATH を使ってはいけない理由
+  #     http://apribase.net/2010/11/13/macports-dyld_library_path/
+  export DYLD_FALLBACK_LIBRARY_PATH=.:$PORTS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
+  # フレームワークの場所 (for dyld)
+  #     By default, it is set to /Library/Frameworks:/Network/Library/Frameworks:/System/Library/Frameworks
+  DYLD_FALLBACK_FRAMEWORK_PATH=$PORTS_HOME/Library/Frameworks:$DYLD_FALLBACK_FRAMEWORK_PATH
+fi
+
 # local command alias.
 if [ -x ~/bin/s2print ]; then
   alias h='s2print ~/server_name'
@@ -258,8 +274,6 @@ if [ -d "${HOME}/.nodenv/bin" ]; then
   eval "$(nodenv init -)"
 fi
 
-# pythonbrew configuration.
-#[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 # pyenv configuration
 if [ -d "${HOME}/.pyenv/bin" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"

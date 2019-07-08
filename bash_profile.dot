@@ -55,22 +55,6 @@ else
   alias man='env LANG=ja_JP.UTF-8 man'
 fi
 
-# mac ports development settings.
-if [ -x /opt/local/bin/port ]; then
-  export PORTS_HOME=/opt/local
-  export PATH=$PORTS_HOME/bin:$PORTS_HOME/sbin:$PATH
-  export MANPATH=$PORTS_HOME/man:$MANPATH
-  export DISPLAY=:0.0
-  # ランタイムライブラリの場所 (for dyld)
-  #     By default, it is set to $(HOME)/lib:/usr/local/lib:/lib:/usr/lib.
-  # MacPorts のために DYLD_LIBRARY_PATH を使ってはいけない理由
-  #     http://apribase.net/2010/11/13/macports-dyld_library_path/
-  export DYLD_FALLBACK_LIBRARY_PATH=.:$PORTS_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
-  # フレームワークの場所 (for dyld)
-  #     By default, it is set to /Library/Frameworks:/Network/Library/Frameworks:/System/Library/Frameworks
-  DYLD_FALLBACK_FRAMEWORK_PATH=$PORTS_HOME/Library/Frameworks:$DYLD_FALLBACK_FRAMEWORK_PATH
-fi
-
 # keychain settings.
 if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
   keychain -q id_rsa
@@ -97,12 +81,12 @@ if [ -d "$HOME/java/apache-maven/bin" ]; then
   export PATH=$HOME/java/apache-maven/bin:$PATH
 fi
 
-# fortune cookies
-if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
-  fortune jojo meigen 2ch starwars LegendOfTheGalacticHeroes | printf "\e[33m$(cat)\n\e[m"
-fi
-
 # proxy settings.
 if [ -f "${HOME}/.set_proxy" ] ; then
   source "${HOME}/.set_proxy"
+fi
+
+# fortune cookies
+if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
+  fortune jojo meigen 2ch starwars LegendOfTheGalacticHeroes | printf "\e[33m$(cat)\n\e[m"
 fi
