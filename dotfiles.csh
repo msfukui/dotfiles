@@ -1,5 +1,8 @@
 #!/bin/csh -f
 
+# argument : all -> mac port selfupdate & upgrade
+set OPT="$1"
+
 foreach file ( *.dot )
   if ( -d $file ) then
     cd $file
@@ -35,15 +38,17 @@ if ( !(-d "${HOME}/.vim/bundle") ) then
 endif
 if ( !(-d "${HOME}/.vim/bundle/neobundle.vim") ) then
   pushd "${HOME}/.vim/bundle"
-  git clone git://github.com/Shougo/neobundle.vim neobundle.vim
+  git clone https://github.com/Shougo/neobundle.vim neobundle.vim
   popd
 endif
 
 # Mac Ports 経由での各種パッケージのインストール。
 if ( -x /opt/local/bin/port ) then
-  sudo port selfupdate
-  sudo port upgrade outdated
-  sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go
+  if ( $OPT == "all" ) then
+    sudo port selfupdate
+    sudo port upgrade outdated
+    sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go
+  endif
 endif
 
 # sl コマンドがなければコンパイルしてコピー。
