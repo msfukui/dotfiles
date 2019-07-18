@@ -16,7 +16,13 @@ foreach file ( *.dot )
     end
     cd ..
   else
-    cp -p $file ${HOME}/.$file:r
+    if ( $file == "set_proxy.dot" ) then
+      if ( $OPT == "all" ) then
+        cp -p $file ${HOME}/.$file:r
+      endif
+    else
+      cp -p $file ${HOME}/.$file:r
+    endif
   endif
 end
 
