@@ -19,6 +19,8 @@ foreach file ( *.dot )
     if ( $file == "set_proxy.dot" ) then
       if ( $OPT == "all" ) then
         cp -p $file ${HOME}/.$file:r
+      else
+        echo "[MSG] $file copy skipped."
       endif
     else
       cp -p $file ${HOME}/.$file:r
@@ -54,6 +56,8 @@ if ( -x /opt/local/bin/port ) then
     sudo port selfupdate
     sudo port upgrade outdated
     sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go
+  else
+    echo "[MSG] Mac Ports install/update skipped."
   endif
 endif
 
@@ -80,6 +84,6 @@ if ( -x /opt/local/bin/fortune ) then
   # mac は dat の形式が違うようなのでセットアップ時に毎回変換して上書きする。
   cd fortune
   foreach file ( *.dat )
-    sudo strfile /opt/local/share/games/fortune/$file:r
+    sudo strfile /opt/local/share/games/fortune/$file:r > /dev/null
   end
 endif
