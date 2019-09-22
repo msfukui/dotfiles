@@ -135,7 +135,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Yggdroot/indentLine'
 let g:indentLine_color_term=239
 let g:indentLine_char='|'
-let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','python','php','c','cpp']
+let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','typescript','python','php','c','cpp']
 " js BDD tools
 "NeoBundle 'claco/jasmine.vim'
 
@@ -158,9 +158,21 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "passive",
                             \"active_filetypes": ["ruby","xml","java","groovy","go"],
                             \"passive_filetypes": [] }
+" check TypeScript syntax
+let g:syntastic_typescript_checks=['tsc','tslint']
+" TypeScript: find tsconfig.json
+function! FindTypescriptRoot()
+    return fnamemodify(findfile('tsconfig.json', './;'), ':h')
+endfunction
+let g:syntastic_typescript_tsc_args=['-p', FindTypescriptRoot()]
+let g:syntastic_typescript_tsc_fname = ''
 
 " Vue components syntax highlight.
 NeoBundle 'posva/vim-vue'
+
+" TypeScript support.
+NeoBundle 'leafgarland/typescript-vim'
+autocmd BufRead, BufNewFile *.ts setfiletype typescript
 
 " golang support.
 NeoBundle 'fatih/vim-go'
