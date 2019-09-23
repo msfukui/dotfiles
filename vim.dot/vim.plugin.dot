@@ -156,22 +156,24 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " active mode when only ruby files.
 let g:syntastic_mode_map = { "mode": "passive",
-                            \"active_filetypes": ["ruby","xml","java","groovy","go"],
+                            \"active_filetypes": ["ruby","xml","java","groovy","go","typescript"],
                             \"passive_filetypes": [] }
 " check TypeScript syntax
-let g:syntastic_typescript_checks=['tsc','tslint']
-" TypeScript: find tsconfig.json
-function! FindTypescriptRoot()
-    return fnamemodify(findfile('tsconfig.json', './;'), ':h')
-endfunction
-let g:syntastic_typescript_tsc_args=['-p', FindTypescriptRoot()]
-let g:syntastic_typescript_tsc_fname = ''
+"let g:syntastic_typescript_checks=['tsc','tslint']
+"function! FindTypescriptRoot()
+"    return fnamemodify(findfile('tsconfig.json', './;'), ':h')
+"endfunction
+"let g:syntastic_typescript_tsc_args=['-p', FindTypescriptRoot()]
+"let g:syntastic_typescript_tsc_fname = ''
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 " Vue components syntax highlight.
 NeoBundle 'posva/vim-vue'
 
 " TypeScript support.
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 autocmd BufRead, BufNewFile *.ts setfiletype typescript
 
 " golang support.
