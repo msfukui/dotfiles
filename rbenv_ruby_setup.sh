@@ -5,8 +5,21 @@ if [ ! -d "${HOME}/.rbenv/bin" ]; then
   exit 1
 fi
 
+if [ ! -d "${HOME}/.rbenv/plugins/ruby-build" ]; then
+  echo "[error] rbenv-ruby-build is not set up."
+  exit 2
+fi
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Update rbenv && ruby-build.
+pushd ${HOME}/.rbenv
+git pull origin master
+popd
+pushd ${HOME}/.rbenv/plugins/ruby-build
+git pull origin master
+popd
 
 if [ $# -gt 0 ]; then
   setup_ruby_version=$1
