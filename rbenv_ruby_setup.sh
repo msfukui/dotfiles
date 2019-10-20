@@ -29,7 +29,7 @@ gem update --system
 gem update
 rbenv rehash
 
-gem install bundler rubocop --no-ri --no-rdoc
+gem install bundler rubocop --no-document
 rbenv rehash
 
 ruby -v
