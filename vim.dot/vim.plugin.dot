@@ -28,11 +28,11 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 
 " オートコンプリートを有効にする。
-NeoBundle 'Shougo/neocomplete'
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_auto_close_preview = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+" NeoBundle 'Shougo/neocomplete'
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_auto_close_preview = 1
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " unite.vim
 NeoBundle 'Shougo/unite.vim'
@@ -73,8 +73,8 @@ autocmd BufAdd .vimprojects silent! %foldopen!
 " smartchr （キー入力補完）
 NeoBundle 'kana/vim-smartchr'
 inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-inoremap <expr> + smartchr#loop(' + ', ' += ', '+')
-inoremap <expr> - smartchr#loop(' - ', ' -= ', '-')
+" inoremap <expr> + smartchr#loop(' + ', ' += ', '+')
+" inoremap <expr> - smartchr#loop(' - ', ' -= ', '-')
 
 " tcomment（コメントアウトの簡略化）
 NeoBundle 'tomtom/tcomment_vim'
