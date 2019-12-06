@@ -1,4 +1,17 @@
 #!/usr/bin/env ruby
 
 require 'json'
-puts JSON.pretty_generate(JSON.load(STDIN.read))
+
+if ARGV[0] == '-r'
+  begin
+    puts JSON.generate(JSON.load(STDIN.read))
+  rescue JSON::ParserError => e
+    warn "ERROR: #{e}"
+  end
+else
+  begin
+    puts JSON.pretty_generate(JSON.load(STDIN.read))
+  rescue JSON::ParserError => e
+    warn "ERROR: #{e}"
+  end
+end
