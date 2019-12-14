@@ -16,8 +16,8 @@ foreach file ( *.dot )
     end
     cd ..
   else
-    if ( $file == "set_proxy.dot" ) then
-      if ( $OPT == "all" ) then
+    if ( ($file == "set_proxy.dot") || ($file == "gitconfig.dot") ) then
+      if ( ($OPT == "all") || !(-f ${HOME}/.$file:r) ) then
         cp -p $file ${HOME}/.$file:r
       else
         echo "[MSG] $file copy skipped."
