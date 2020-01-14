@@ -1,0 +1,13 @@
+BoldAsFont=-1
+Transparency=high
+CursorType=block
+Locale=ja_JP
+Charset=UTF-8
+MiddleClickAction=extend
+RightClickAction=paste
+Columns=120
+Rows=24
+Scrollbar=none
+Term=xterm-256color
+Font=M+ 1m
+FontHeight=12
