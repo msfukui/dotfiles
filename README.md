@@ -53,14 +53,6 @@ $ ./rbenv_ruby_setup.sh
 
 * Firefox
 
-* 7-zip
-
-* Thunderbird
-
-  インストール後、 https://support.mozilla.org/ja/kb/moving-thunderbird-data-to-a-new-computer でデータを移行。移行後の profile を使う場合はその後にフォルダ名を default の名前にする。
-
-  profile のデータは、その後 Dドライブに移動する。 https://www.1-firststep.com/archives/7809 を参照。
-
 * Slack
 
 * TeraPad （スタイル付きテキストのコピペ用）
@@ -236,9 +228,23 @@ https://github.com/tomislav/osx-terminal.app-colors-solarized
 
   https://github.com/msfukui/vagrantfile_centos7
 
-  を ${HOME}/vagrant/[環境名] に clone して環境にあわせて編集した上で、vagrant up で起動。
+  を ${HOME}/vagrant/[環境名] に clone して環境にあわせて編集した上で、`vagrant up` で起動。
 
-  proxy が必要な環境だと 最初の provision は失敗するが、vagrant ssh による接続はきっとできるはず。
+  proxy が必要な環境だと 最初の provision は失敗するが、`vagrant ssh` による接続はきっとできるはず。
+
+  設定f後は `vagrant ssh` で接続後、 `sudo su - root` で `root` になり、 `passwd [アカウント名]` でパスワードを初期化。
+
+  ホスト側の `~/.ssh/config` を作成して、以下の内容で接続を簡易化しておく。
+
+```
+Host [ホスト名]
+  HostName 127.0.0.1
+  Port 10022
+  User [アカウント名]
+  ForwardAgent yes
+```
+
+  これで `ssh [ホスト名]` だけで開発環境に接続できるようになる。
 
 ## Linux
 
