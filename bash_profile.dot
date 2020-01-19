@@ -55,6 +55,13 @@ else
   alias man='env LANG=ja_JP.UTF-8 man'
 fi
 
+# explorer -> open command setting.
+/usr/bin/which -s explorer
+ret=$?
+if [ $ret = 0 ]; then
+  alias open='explorer'
+fi
+
 # keychain settings.
 if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
   keychain -q id_rsa

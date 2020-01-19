@@ -74,17 +74,25 @@ endif
 
 # nkf コマンドがなければコンパイルしてインストール。
 if ( !(-f "/usr/local/bin/nkf") ) then
-  mkdir -p ${HOME}/install
-  rm -f ${HOME}/install/nkf-2.1.5.tar.gz
-  cp -p install/nkf-2.1.5.tar.gz ${HOME}/install/nkf-2.1.5.tar.gz
-  pushd ${HOME}/install
-  gzip -dc nkf-2.1.5.tar.gz | tar -xvf -
-  cd nkf-2.1.5
-  make
-  make install
-  cd ..
-  rm -fr nkf-2.1.5
-  popd
+  /usr/bin/which -s nkf
+  if ( $status != 0 ) then
+    mkdir -p ${HOME}/install
+    rm -f ${HOME}/install/nkf-2.1.5.tar.gz
+    cp -p install/nkf-2.1.5.tar.gz ${HOME}/install/nkf-2.1.5.tar.gz
+    pushd ${HOME}/install
+    gzip -dc nkf-2.1.5.tar.gz | tar -xvf -
+    cd nkf-2.1.5
+    make
+    /usr/bin/which -s sudo
+    if ( $status != 0 ) then
+      make install
+    else
+      sudo make install
+    endif
+    cd ..
+    rm -fr nkf-2.1.5
+    popd
+  endif
 endif
 
 # fortune コマンドがあれば追加データをコピー。
