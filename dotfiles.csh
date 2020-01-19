@@ -63,14 +63,28 @@ endif
 
 # sl コマンドがなければコンパイルしてコピー。
 if ( !(-f "${HOME}/bin/sl") ) then
-  if ( !(-d "${HOME}/install") ) then
-    mkdir ${HOME}/install
-  endif
+  mkdir -p ${HOME}/install
   rm -fr ${HOME}/install/sl
   cp -pr install/sl ${HOME}/install/sl
-  cd ${HOME}/install/sl
+  pushd ${HOME}/install/sl
   make
   cp -p sl ${HOME}/bin/
+  popd
+endif
+
+# nkf コマンドがなければコンパイルしてインストール。
+if ( !(-f "/usr/local/bin/nkf") ) then
+  mkdir -p ${HOME}/install
+  rm -f ${HOME}/install/nkf-2.1.5.tar.gz
+  cp -p install/nkf-2.1.5.tar.gz ${HOME}/install/nkf-2.1.5.tar.gz
+  pushd ${HOME}/install
+  gzip -dc nkf-2.1.5.tar.gz | tar -xvf -
+  cd nkf-2.1.5
+  make
+  make install
+  cd ..
+  rm -fr nkf-2.1.5
+  popd
 endif
 
 # fortune コマンドがあれば追加データをコピー。
@@ -82,8 +96,9 @@ endif
 if ( -x /opt/local/bin/fortune ) then
   sudo cp fortune/* /opt/local/share/games/fortune/
   # mac は dat の形式が違うようなのでセットアップ時に毎回変換して上書きする。
-  cd fortune
+  pushd fortune
   foreach file ( *.dat )
     sudo strfile /opt/local/share/games/fortune/$file:r > /dev/null
   end
+  popd
 endif
