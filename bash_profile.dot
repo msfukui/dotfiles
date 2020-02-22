@@ -56,10 +56,10 @@ else
 fi
 
 # explorer -> open command setting.
-/usr/bin/which -s explorer
+/usr/bin/which -s start
 ret=$?
 if [ $ret = 0 ]; then
-  alias open='explorer'
+  alias open='start'
 fi
 
 # keychain settings.
