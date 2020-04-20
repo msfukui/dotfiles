@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+s =  ARGV[0] || ""
+
+print '＿人'
+s.size.times do
+  print '人'
+end
+print "人＿\n"
+
+print '＞　'
+print s
+print "　＜\n"
+
+print '￣Y^'
+s.size.times do
+  print 'Y^'
+end
+print "Y￣\n"
