@@ -153,8 +153,10 @@ xcode-select --install
 
 ```
 $ sudo port selfupdate
-$ sudo port install coreutil openssl openjdk keychain
+$ sudo port install coreutil openjdk[xx] fortune ncurses
 ```
+
+[xx] は openjdk のその時点での最新を。
 
 ### トラックパッドの設定
 
