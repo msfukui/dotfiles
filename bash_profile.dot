@@ -97,3 +97,6 @@ fi
 if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
   fortune jojo meigen 2ch starwars LegendOfTheGalacticHeroes | printf "\e[33m$(cat)\n\e[m"
 fi
+
+# macos zsh -> bash setting
+export BASH_SILENCE_DEPRECATION_WARNING=1
