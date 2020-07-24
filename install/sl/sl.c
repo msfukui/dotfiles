@@ -32,7 +32,7 @@
 #include <strings.h>
 #include <time.h>
 #ifdef LINUX20
-  #include <ncurses/curses.h>
+  #include <ncursesw/curses.h>
 #else
   #include <curses.h>
 #endif

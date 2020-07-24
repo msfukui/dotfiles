@@ -48,20 +48,6 @@ if [ -x "/usr/local/heroku/bin/heroku" ] ; then
   PATH="/usr/local/heroku/bin:${PATH}"
 fi
 
-# man -> jman
-if [ -x "/usr/local/bin/jman" ]; then
-  alias man='env LANG=ja_JP.UTF-8 /usr/local/bin/jman'
-else
-  alias man='env LANG=ja_JP.UTF-8 man'
-fi
-
-# explorer -> open command setting.
-/usr/bin/which -s start
-ret=$?
-if [ $ret = 0 ]; then
-  alias open='start'
-fi
-
 # keychain settings.
 if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
   keychain -q id_rsa
@@ -94,7 +80,7 @@ if [ -f "${HOME}/.set_proxy" ] ; then
 fi
 
 # fortune cookies
-if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" ]; then
+if [ -x "/usr/bin/fortune" -o -x "/opt/local/bin/fortune" -o -x "/usr/games/fortune" ]; then
   fortune jojo meigen 2ch starwars LegendOfTheGalacticHeroes | printf "\e[33m$(cat)\n\e[m"
 fi
 
