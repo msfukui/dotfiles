@@ -11,9 +11,9 @@ $ cd ${HOME}
 $ git clone https://github.com/msfukui/dotfiles.git
 ...
 $ cd dotfiles
-$ ./dotfiles.csh
+$ ./dotfiles.sh
 ...
-$ ./dotfiles_diff.csh
+$ ./dotfiles_diff.sh
 ...
 ```
 
@@ -41,85 +41,100 @@ $ ./rbenv_ruby_setup.sh
 ...
 ```
 
-# Pre and Post setting
+# Setting
 
 ## Windows10
 
+以下 Windows 10 Home 2004 の前提で。
+
 ### Install applications
 
-* Chrome
+* WSL2 (Linux 用 Windows サブシステム, 仮想マシンプラットフォーム)
 
-  インストール後、デフォルトのWebブラウザに設定する。
+    * Ubuntu 20.04 LTS (MS Store から)
 
-* Firefox
+* Windows Terminal (MS Store から)
 
-* Slack
+* Slack (MS Store から)
 
-* TeraPad （スタイル付きテキストのコピペ用）
-
-* Cygwin
-
-  一旦 chere, gcc-core, gcc-g++, git, fortune, keychain, libncurses-devel, make, openssl-devel, openssh, ruby, subversion, tcsh, vim を入れる
-
-* Graphviz （PlantUML の画像生成に必要なため）
-
-* Vagrant
-
-* VirtualBox
+* Google Chrome
 
 * Docker for Windows
 
 * VSCode（SettingSync を入れて設定内容を gist で同期）
 
-* Java （OpenJDK）
-
-  http://jdk.java.net/ から落としてきて雑に C:\Java\ に配置する。システムの環境変数 PATH に C:\java\bin を追加する。
-
 ### Font
 
-M+ 1m を取得してインストール。
+`Cascadia Code PL` (https://github.com/microsoft/cascadia-code/releases) で一旦様子見。
 
 ### アイコン画像の設定
 
-コントロールパネル - アカウントで設定。
+設定 - アカウント - ユーザーの情報 で設定。
 
 ### デスクトップを適当な画像に
 
 チラチラするのが嫌なので、デスクトップには落ち着いた画像を設定。
 
-スクリーンセーバーはお好みで。（ロックするから基本は使わない。）
+スクリーンセーバーはお好みで。（ Windows キー + L でロックするから基本は使わない。）
 
-### IME
+### MS-IME
 
-MS-IMEの表示で右クリックで「プロパティ」を開き、「詳細設定」ボタンを押して、以下の項目を MS-IME から ATOK に変更する。
-
-「編集操作」－「キー設定」
-
-「ローマ字／色の設定」－「色設定」
+MS-IMEのアイコンを右クリックで「設定」を開き、キーとタッチのカスタマイズのキーテンプレートを MS-IME から ATOK に変更。
 
 ### タスクバーアイコンの全表示設定を ON に
 
 コントロールパネルの「個人用設定」-「タスクバー」で「タスクバーに表示するアイコンを選択します」をクリック。
 
-「常にすべてのアイコンを通知領域に表示する」をONにします。
+「常にすべてのアイコンを通知領域に表示する」をONに。
 
 ### VSCode
 
-SettingsSync を入れて gist の token を設定した後、設定内容一式を同期する。
+SettingsSync を入れて gist の token を設定した後、設定内容一式を同期。
 
-### Cygwin
+### Ubuntu 20.04 LTS
 
-keychain にモンキーパッチをあてる。
+* 追加コンポーネントのインストール
 
-/usr/bin/keychain の 814 行目に。（keychain 2.7.1 の場合）
+    dotfiles を入れる前に、
 
-```
-815             *\ SHA256:[0-9a-zA-Z\+\/=]*)
-816                 # The new OpenSSH 6.8+ format, we hope
-817                 # 1024 SHA256:aAbBcCdDeEfFgG /home/barney/.ssh/id_dsa (DSA)
-818                 echo "$ef_line" | cut -f2 -d' '
-819                 ;;
-```
+    `sudo apt install gcc fortune ncurses-dev make libssl-dev openssh xterm`
+
+    でインストールしておく。
+
+* `.netrc` の設定
+
+    github.com から personal access token を払い出して設定。
+
+    GitHub には https で clone / push / pull する。
+
+### Boot Camp 周りの設定
+
+Boot Camp 経由の起動の場合は、追加で以下の設定を入れる。
+
+* トラックパッドのドライバのインストール
+
+    標準のドライバだとできることがかなり限られるので、以下から代わりのドライバをインストール。
+
+    https://github.com/imbushuo/mac-precision-touchpad
+
+* MS-IME のキーバインド設定
+
+    英数キーとかなキーの感覚を mac とそろえる。
+
+    MS-IMEのアイコンを右クリックで「設定」を開き、キーとタッチのカスタマイズの無変換キーを "MS-IME オフ"、変換キーを "MS-IME オン" に設定。
+
+* 左 Command キーを Ctrl キーに
+
+    mac の 操作キーと感覚をそろえる。
+
+    以下の設定を .reg ファイルとして保存して、ダブルクリックしてレジストリに反映。
+
+    ```
+    Windows Registry Editor Version 5.00
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+    "Scancode Map" = hex:00,00,00,00,00,00,00,00,04,00,00,00,5b,e0,1d,00,1d,00,5b,e0,1d,e0,5c,e0,00,00,00,00
+    ```
 
 ## Mac
 
