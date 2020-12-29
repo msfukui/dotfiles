@@ -1,4 +1,4 @@
-#!/bin/bash -f
+#!/bin/bash
 
 if [ ! -d "${HOME}/.rbenv/bin" ]; then
   pushd ${HOME}

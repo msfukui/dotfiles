@@ -1,4 +1,4 @@
-#!/bin/bash -f
+#!/bin/bash
 
 if [ ! -d "${HOME}/.nodenv/bin" ]; then
   echo "[error] nodenv is not set up."

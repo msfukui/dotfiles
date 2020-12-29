@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # argument : all -> mac port selfupdate & upgrade
 OPT="$1"
@@ -55,7 +55,7 @@ fi
 
 # Mac Ports 経由での各種パッケージのインストール。
 if [ -x /opt/local/bin/port ]; then
-  if [ $OPT = "all" ]; then
+  if [ "${OPT}" = "all" ]; then
     sudo port selfupdate
     sudo port upgrade outdated
     sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go
