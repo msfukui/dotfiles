@@ -324,3 +324,13 @@ fi
 if [ -d "${HOME}/.local/bin" ]; then
   export PATH=${HOME}/.local/bin:$PATH
 fi
+
+# enable kubeadm completion
+if [ -x /usr/bin/kubeadm ] || [ -x /usr/local/bin/kubeadm ]; then
+  source <(kubeadm completion bash)
+fi
+
+# enable kubectl completion
+if [ -x /usr/bin/kubectl ] || [ -x /usr/local/bin/kubectl ]; then
+  source <(kubectl completion bash)
+fi
