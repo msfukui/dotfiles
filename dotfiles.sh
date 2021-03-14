@@ -64,6 +64,15 @@ if [ -x /opt/local/bin/port ]; then
   fi
 fi
 
+# macOS で利用する bash の shell を最新に差し替え
+if [ -x /opt/local/bin/port ]; then
+  if [ ! -x /opt/local/bin/bash ]; then
+    sudo port install bash
+    sudo sh -c 'echo /opt/local/bin/bash >> /etc/shells'
+    chsh -s /opt/local/bin/bash
+  fi
+fi
+
 # sl コマンドがなければコンパイルしてコピー。
 if [ ! -f "${HOME}/bin/sl" ]; then
   mkdir -p ${HOME}/install
