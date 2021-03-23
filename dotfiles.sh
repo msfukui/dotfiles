@@ -67,7 +67,7 @@ fi
 # macOS で利用する bash の shell を最新に差し替え
 if [ -x /opt/local/bin/port ]; then
   if [ ! -x /opt/local/bin/bash ]; then
-    sudo port install bash
+    sudo port install bash bash-completion
     sudo sh -c 'echo /opt/local/bin/bash >> /etc/shells'
     chsh -s /opt/local/bin/bash
   fi
