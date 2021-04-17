@@ -58,7 +58,7 @@ if [ -x /opt/local/bin/port ]; then
   if [ "${OPT}" = "all" ]; then
     sudo port selfupdate
     sudo port upgrade outdated
-    sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go
+    sudo port install coreutils openssl keychain gawk nkf fortune ocaml opam go argocd
   else
     echo "[MSG] Mac Ports install/update skipped."
   fi
