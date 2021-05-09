@@ -5,7 +5,12 @@ if [ ! -d "${HOME}/.nodenv/bin" ]; then
   exit 1
 fi
 
-setup_nodejs_version=10.15.3
+if [ $# -gt 0 ]; then
+  setup_nodejs_version=$1
+else
+  setup_nodejs_version=14.16.1
+fi
+echo "setup_nodejs_version: $setup_nodejs_version"
 
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
