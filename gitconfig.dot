@@ -19,4 +19,4 @@
   df = diff
   tg = for-each-ref --sort=-taggerdate --format=\"%(taggerdate:short) %(tag) %(taggername) %(subject)\" refs/tags
 [init]
-	defaultBranch = main
+  defaultBranch = main
