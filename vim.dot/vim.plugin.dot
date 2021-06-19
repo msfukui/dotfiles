@@ -188,6 +188,8 @@ let g:go_hightlight_build_constraints = 1
 " display to infomation.
 let g:go_auto_type_info = 1
 set updatetime=100
+" :GoAlternate alias
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
 " showtime.vim
 NeoBundle 'thinca/vim-showtime'
