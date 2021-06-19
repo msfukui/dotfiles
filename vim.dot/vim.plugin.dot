@@ -26,7 +26,7 @@ let g:lightline = {
 \ }
 
 " project.vim
-Plug 'project.tar.gz'
+Plug 'vim-scripts/project.tar.gz'
 :let g:proj_flags = "imstc"
 :nmap <silent> <Leader>P <Plug>ToggleProject
 autocmd BufAdd .vimprojects silent! %foldopen!
@@ -121,7 +121,7 @@ set updatetime=100
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
 " Rails support
-Plug 'rails.vim'
+Plug 'tpope/vim-rails'
 " CoffeeScript support
 " syntax high-light + auto-compile
 Plug 'kchmck/vim-coffee-script'

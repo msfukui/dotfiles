@@ -44,7 +44,7 @@ fi
 cp -p lib/* ${HOME}/lib/
 
 # neobundle.vim だけはなければ手で取ってくる。
-if [ ! -f "${HOME}/.vim/bundle/neobundle.vim" ]; then
+if [ ! -d "${HOME}/.vim/bundle/neobundle.vim" ]; then
   mkdir -p "${HOME}/.vim/bundle"
   pushd "${HOME}/.vim/bundle" > /dev/null
   git clone https://github.com/Shougo/neobundle.vim neobundle.vim
