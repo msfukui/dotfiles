@@ -167,8 +167,10 @@ set noundofile
 "----------------------------------------
 
 " <C-n>, <C-m> で :cnext, :cprevious, 端に着いたら一番最初, 一番最後に戻る
-nnoremap <C-n> :<C-u>try<bar>cnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>cfirst<bar>endtry<CR>
-nnoremap <C-m> :<C-u>try<bar>cprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>clast<bar>endtry<CR>
+command CNextToggle     try<bar>cnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>cfirst<bar>endtry
+command CPreviousToggle try<bar>cprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>clast<bar>endtry
+nnoremap <C-n> :<C-u>CNextToggle<CR>
+nnoremap <C-m> :<C-u>CPreviousToggle<CR>
 " Quickfix を閉じる
 nnoremap <leader>a :<C-u>cclose<CR>
 
