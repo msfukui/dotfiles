@@ -187,13 +187,6 @@ function! MyPatch()
 endfunction
 
 "--
-" Smarty 用のファイルタイプ設定
-"--
-"au BufRead,BufNewFile *.html set filetype=smarty
-"au BufRead,BufNewFile *.tmpl set filetype=smarty
-"au BufRead,BufNewFile *.inc  set filetype=smarty
-
-"--
 " 各言語の文法チェック＆固有の定義
 "--
 " Ruby
