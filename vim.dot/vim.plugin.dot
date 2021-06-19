@@ -33,10 +33,11 @@ autocmd BufAdd .vimprojects silent! %foldopen!
 
 " smartchr
 Plug 'kana/vim-smartchr'
-inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-inoremap <expr> + smartchr#loop(' + ',' += ', '+')
-inoremap <expr> - smartchr#loop(' - ',' -= ', '-')
-inoremap <expr> : smartchr#loop(' := ', ':')
+inoremap <expr> = smartchr#loop('=',' = ',' == ',' === ')
+inoremap <expr> ! smartchr#loop('!',' != ', ' !== ')
+inoremap <expr> + smartchr#loop('+',' += ')
+inoremap <expr> - smartchr#loop('-',' -= ')
+inoremap <expr> : smartchr#loop(':',' := ')
 
 " tcomment(gcc, visual-mode: gc)
 Plug 'tomtom/tcomment_vim'
@@ -107,18 +108,6 @@ Plug 'posva/vim-vue'
 
 " golang support.
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-" highlight  
-let g:go_hightlight_functions=1
-let g:go_hightlight_methods=1
-let g:go_hightlight_structs=1
-let g:go_hightlight_interfaces=1
-let g:go_hightlight_operators=1
-let g:go_hightlight_build_constraints=1
-" display to infomation.
-let g:go_auto_type_info=1
-set updatetime=100
-" :GoAlternate alias
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 
 " Rails support
 Plug 'tpope/vim-rails'

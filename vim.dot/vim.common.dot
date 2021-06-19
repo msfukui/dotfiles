@@ -163,6 +163,82 @@ augroup END
 set noundofile
 
 "----------------------------------------
+" Quickfix の設定
+"----------------------------------------
+
+" <C-n>, <C-m> で :cnext, :cprevious, 端に着いたら一番最初, 一番最後に戻る
+nnoremap <C-n> :<C-u>try<bar>cnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>cfirst<bar>endtry<CR>
+nnoremap <C-m> :<C-u>try<bar>cprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>clast<bar>endtry<CR>
+" Quickfix を閉じる
+nnoremap <leader>a :<C-u>cclose<CR>
+
+"----------------------------------------
+" 各言語の文法チェック＆固有の定義
+"----------------------------------------
+
+" Ruby
+au Filetype ruby nmap <leader>b <ESC>:!ruby -cW%<CR>
+au FileType ruby setlocal makeprg=ruby\ -c\ %
+au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+let ruby_folding=1
+
+" PHP
+au Filetype php nmap <leader>b <ESC>:!php -l%<CR>
+au FileType php setlocal makeprg=php\ -l\ %
+au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+let php_sql_query=1
+let php_htmlInStrings=1
+let php_noShortTags=1
+let php_folding=1
+
+" Golang
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>s :<C-u>GoSameIdsToggle<CR>
+let g:go_list_type="quickfix"
+let g:go_hightlight_types=1
+let g:go_hightlight_functions=1
+let g:go_hightlight_methods=1
+let g:go_hightlight_structs=1
+let g:go_hightlight_interfaces=1
+let g:go_hightlight_operators=1
+let g:go_hightlight_build_constraints=1
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
+" :GoAlternate alias
+autocmd Filetype go command! -bang A  call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+let g:go_metalinter_autosave=1
+let g:go_auto_type_info=1
+set updatetime=100
+
+" CoffeeScript
+au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
+
+" Java
+" Eclim Settings.
+autocmd FileType java nnoremap <silent> <buffer> <leader>i :<C-u>JavaImport<cr>
+autocmd FileType java nnoremap <silent> <buffer> <leader>d :<C-u>JavaDocSearch -x declarations<cr>
+autocmd FileType java nnoremap <silent> <buffer> <cr>      :<C-u>JavaSearchContext<cr>
+autocmd FileType java let g:EclimJavaSearchSingleResult='edit'
+
+"----------------------------------------
 " その他の設定
 "----------------------------------------
 
@@ -186,36 +262,6 @@ function! MyPatch()
    call system($VIM."\\'.'patch -o " . v:fname_out . " " . v:fname_in . " < " . v:fname_diff)
 endfunction
 
-"--
-" 各言語の文法チェック＆固有の定義
-"--
-" Ruby
-au Filetype ruby :map <C-n> <ESC>:!ruby -cW%<CR>
-au FileType ruby setlocal makeprg=ruby\ -c\ %
-au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let ruby_folding=1
-" PHP
-au Filetype php  :map <C-n> <ESC>:!php -l%<CR>
-au FileType php setlocal makeprg=php\ -l\ %
-au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_sql_query=1
-let php_htmlInStrings=1
-let php_noShortTags=1
-let php_folding=1
-" Golang
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
-endif
-" CoffeeScript
-au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
-autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
-" Java
-" Eclim Settings.
-autocmd FileType java nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-autocmd FileType java nnoremap <silent> <buffer> <leader>d :JavaDocSearch -x declarations<cr>
-autocmd FileType java nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
-autocmd FileType java let g:EclimJavaSearchSingleResult = 'edit'
-
 "----------------------------------------
 " キーマップの設定
 "----------------------------------------
@@ -228,7 +274,7 @@ nnoremap <F1> K
 nnoremap <F8> :source %<CR>
 " 強制全保存終了を無効化
 nnoremap ZZ <Nop>
-" カーソルを j k では表示行で移動する。物理行移動は<C-n>,<C-p>
+" カーソルを j k では表示行で移動する。
 " キーボードマクロには物理行移動を推奨
 " h l は行末、行頭を超えることが可能に設定(whichwrap)
 nnoremap <Down> gj
