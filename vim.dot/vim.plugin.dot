@@ -106,7 +106,7 @@ autocmd BufRead, BufNewFile *.ts setfiletype typescript
 Plug 'posva/vim-vue'
 
 " golang support.
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " highlight  
 let g:go_hightlight_functions=1
 let g:go_hightlight_methods=1
