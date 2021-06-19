@@ -42,10 +42,9 @@ gem update --system
 gem update
 rbenv rehash
 
-gem install bundler rubocop --no-document
+gem install rubocop --no-document
 rbenv rehash
 
 ruby -v
 gem -v
-bundle -v
 rubocop -v
