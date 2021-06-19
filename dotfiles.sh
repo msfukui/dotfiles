@@ -47,10 +47,15 @@ cp -p lib/* ${HOME}/lib/
 if [ ! -d "${HOME}/.vim/bundle" ]; then
   mkdir -p "${HOME}/.vim/bundle"
 fi
-if [ ! -d "${HOME}/.vim/bundle/neobundle.vim" ]; then
+if [ ! -f "${HOME}/.vim/bundle/neobundle.vim" ]; then
   pushd "${HOME}/.vim/bundle" > /dev/null
   git clone https://github.com/Shougo/neobundle.vim neobundle.vim
   popd > /dev/null
+fi
+# vim-plug だけはなければ手で取ってくる。
+if [ ! -f "${HOME}/.vim/autoload/plug.vim" ]; then
+  curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # Mac Ports 経由での各種パッケージのインストール。
