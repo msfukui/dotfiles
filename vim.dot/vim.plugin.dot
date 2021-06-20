@@ -35,8 +35,8 @@ autocmd BufAdd .vimprojects silent! %foldopen!
 Plug 'kana/vim-smartchr'
 inoremap <expr> = smartchr#loop('=',' = ',' == ',' === ')
 inoremap <expr> ! smartchr#loop('!',' != ', ' !== ')
-inoremap <expr> + smartchr#loop('+',' += ')
-inoremap <expr> - smartchr#loop('-',' -= ')
+inoremap <expr> + smartchr#loop('+',' + ',' += ')
+inoremap <expr> - smartchr#loop('-',' - ',' -= ')
 inoremap <expr> : smartchr#loop(':',' := ')
 
 " tcomment(gcc, visual-mode: gc)
