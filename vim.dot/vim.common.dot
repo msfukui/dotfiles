@@ -106,6 +106,14 @@ set ambiwidth=double
 
 " クリップボードを共有
 set clipboard+=unnamed
+" WSL2の場合は Clip.exe を経由してクリップボードを共有する
+if system('uname -r | grep -i microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
+
 " 8進数を無効にする。<C-a>,<C-x>に影響する
 set nrformats-=octal
 " キーコードやマッピングされたキー列が完了するのを待つ時間(ミリ秒)

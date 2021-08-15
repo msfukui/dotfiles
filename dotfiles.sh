@@ -43,13 +43,6 @@ if [ ! -d "${HOME}/lib" ]; then
 fi
 cp -p lib/* ${HOME}/lib/
 
-# neobundle.vim だけはなければ手で取ってくる。
-if [ ! -d "${HOME}/.vim/bundle/neobundle.vim" ]; then
-  mkdir -p "${HOME}/.vim/bundle"
-  pushd "${HOME}/.vim/bundle" > /dev/null
-  git clone https://github.com/Shougo/neobundle.vim neobundle.vim
-  popd > /dev/null
-fi
 # vim-plug だけはなければ手で取ってくる。
 if [ ! -f "${HOME}/.vim/autoload/plug.vim" ]; then
   curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
@@ -133,4 +126,9 @@ if [ -x /opt/local/bin/fortune ]; then
     sudo strfile /opt/local/share/games/fortune/${file%.*} > /dev/null
   done
   popd > /dev/null
+fi
+
+# WSL2 なら Vim の Clipboard 付きをセットアップする。
+if uname -r | grep -qi microsoft; then
+  sudo apt install -y vim-gtk
 fi
