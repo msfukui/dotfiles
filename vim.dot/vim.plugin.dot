@@ -37,7 +37,7 @@ inoremap <expr> = smartchr#loop('=',' = ',' == ',' === ')
 inoremap <expr> ! smartchr#loop('!',' != ', ' !== ')
 inoremap <expr> + smartchr#loop('+',' + ',' += ','++')
 inoremap <expr> - smartchr#loop('-',' - ',' -= ','--')
-inoremap <expr> : smartchr#loop(':',' := ')
+inoremap <expr> : smartchr#loop(':',' := ','::')
 
 " tcomment(gcc, visual-mode: gc)
 Plug 'tomtom/tcomment_vim'
