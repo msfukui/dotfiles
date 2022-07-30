@@ -122,11 +122,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 # alias la='ls -A'                              # all but . and ..
 
 # ls settings
-if [ -x "/opt/local/bin/gls" ]; then
-  alias ls='gls -CF --color=auto'
-else
-  alias ls='ls -CF --color=auto'
-fi
+alias ls='ls -CF --color=auto'
 
 alias more="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
 alias less="more"
@@ -240,7 +236,7 @@ umask 027
 # mac ports development settings.
 if [ -x /opt/local/bin/port ]; then
   export PORTS_HOME=/opt/local
-  export PATH=$PORTS_HOME/bin:$PORTS_HOME/sbin:$PATH
+  export PATH=$PORTS_HOME/bin:$PORTS_HOME/sbin:$PORTS_HOME/libexec/gnubin:$PATH
   export MANPATH=$PORTS_HOME/man:$MANPATH
   export DISPLAY=:0.0
   # ランタイムライブラリの場所 (for dyld)
