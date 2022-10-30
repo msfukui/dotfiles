@@ -63,6 +63,20 @@ if [ -x /opt/local/bin/port ]; then
   fi
 fi
 
+# WSL2 なら各パッケージをインストールする
+if uname -r | grep -qi microsoft; then
+  if [ "${OPT}" = "all" ]; then
+    sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+    sudo apt install -y coreutils openssl keychain gawk nkf fortune
+    sudo apt install -y ocaml opam
+    sudo apt install -y golang
+    go install github.com/securego/gosec/v2/cmd/gosec@latest
+    go install honnef.co/go/tools/cmd/staticcheck@latest
+  else
+    echo "[MSG] apt install/update skipped."
+  fi
+fi
+
 # macOS で利用する bash の shell を最新に差し替え
 if [ -x /opt/local/bin/port ]; then
   if [ ! -x /opt/local/bin/bash ]; then
