@@ -301,6 +301,14 @@ nnoremap <C-]> g<C-]>
 "----------------------------------------
 " 挿入モード
 "----------------------------------------
+" 補完設定
+" 最初の一つ目を選択済みにして挿入はしない
+set completeopt=menuone,noinsert
+" 補完表示時のEnterで改行をしない
+inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
+" 上下で補完を選択する
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 
 "----------------------------------------
 " ビジュアルモード
