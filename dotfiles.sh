@@ -72,6 +72,8 @@ if uname -r | grep -qi microsoft; then
     sudo apt install -y golang
     go install github.com/securego/gosec/v2/cmd/gosec@latest
     go install honnef.co/go/tools/cmd/staticcheck@latest
+    # WSL2 なら Vim の Clipboard 付きをセットアップする。
+    sudo apt install -y vim-gtk
   else
     echo "[MSG] apt install/update skipped."
   fi
@@ -140,9 +142,4 @@ if [ -x /opt/local/bin/fortune ]; then
     sudo strfile /opt/local/share/games/fortune/${file%.*} > /dev/null
   done
   popd > /dev/null
-fi
-
-# WSL2 なら Vim の Clipboard 付きをセットアップする。
-if uname -r | grep -qi microsoft; then
-  sudo apt install -y vim-gtk
 fi
