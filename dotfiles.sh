@@ -58,6 +58,7 @@ if [ -x /opt/local/bin/port ]; then
     sudo port install ocaml opam
     sudo port install go gosec staticcheck
     sudo port install argocd
+    go install golang.org/x/tools/cmd/goimports@latest
   else
     echo "[MSG] Mac Ports install/update skipped."
   fi
@@ -72,6 +73,7 @@ if uname -r | grep -qi microsoft; then
     sudo apt install -y golang
     go install github.com/securego/gosec/v2/cmd/gosec@latest
     go install honnef.co/go/tools/cmd/staticcheck@latest
+    go install golang.org/x/tools/cmd/goimports@latest
     # WSL2 なら Vim の Clipboard 付きをセットアップする。
     sudo apt install -y vim-gtk
   else
