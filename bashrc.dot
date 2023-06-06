@@ -340,3 +340,9 @@ fi
 if [ -d "${HOME}/dev/flutter/bin" ]; then
   export PATH=${PATH}:${HOME}/dev/flutter/bin
 fi
+
+# android studio(command line tools) settings
+if [ -d "${HOME}/Android/SDK/cmdline-tools/latest/bin" ]; then
+  export ANDROID_HOME=$HOME/Android/SDK
+  export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+fi

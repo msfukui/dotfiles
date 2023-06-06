@@ -76,6 +76,7 @@ if uname -r | grep -qi microsoft; then
     go install golang.org/x/tools/cmd/goimports@latest
     # WSL2 なら Vim の Clipboard 付きをセットアップする。
     sudo apt install -y vim-gtk
+    sudo apt install default-jdk -y
   else
     echo "[MSG] apt install/update skipped."
   fi

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# FLUTTER_VERSION:
+#   visit "https://docs.flutter.dev/get-started/install/linux"
+#   See "Install Flutter manually", version number
 FLUTTER_VERSION=3.10.3
 
 FLUTTER_DOWNLOAD_FILE="flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
