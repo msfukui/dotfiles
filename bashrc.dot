@@ -343,6 +343,11 @@ fi
 
 # android studio(command line tools) settings
 if [ -d "${HOME}/Android/SDK/cmdline-tools/latest/bin" ]; then
-  export ANDROID_HOME=$HOME/Android/SDK
-  export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+  export ANDROID_HOME=${HOME}/Android/SDK
+  export PATH=$PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
+fi
+
+# adb settings
+if [ ! "${ANDROID_HOME}" = "" ] && [ -d "${ANDROID_HOME}/platform-tools" ]; then
+  export PATH=$PATH:${ANDROID_HOME}/platform-tools
 fi

@@ -25,3 +25,4 @@ if [ ! -d "${HOME}/Android/SDK/cmdline-tools/latest/bin" ]; then
 fi
 
 sdkmanager --update
+sdkmanager --install "platform-tools"
