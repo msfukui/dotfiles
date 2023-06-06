@@ -335,3 +335,8 @@ fi
 if [ -x /usr/bin/kubectl ] || [ -x /usr/local/bin/kubectl ]; then
   source <(kubectl completion bash)
 fi
+
+# flutter settings
+if [ -d "${HOME}/dev/flutter/bin" ]; then
+  export PATH=${PATH}:${HOME}/dev/flutter/bin
+fi
