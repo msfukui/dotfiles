@@ -49,10 +49,12 @@ if [ -x "/usr/local/heroku/bin/heroku" ] ; then
 fi
 
 # keychain settings.
-if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
-  keychain -q id_rsa
-  if [ -f "${HOME}/.keychain/$HOSTNAME-sh" ]; then
-    . ~/.keychain/$HOSTNAME-sh
+if [ -d "${HOME}/.ssh" ]; then
+  if [ -x "/usr/bin/keychain" -o -x "/opt/local/bin/keychain" ]; then
+    keychain -q id_rsa
+    if [ -f "${HOME}/.keychain/$HOSTNAME-sh" ]; then
+      . ~/.keychain/$HOSTNAME-sh
+    fi
   fi
 fi
 
