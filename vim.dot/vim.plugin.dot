@@ -127,6 +127,12 @@ Plug 'thinca/vim-showtime'
 Plug 'aklt/plantuml-syntax'
 let g:plantuml_executable_script=expand('~/bin/plantuml')
 
+" Flutter support.
+Plug 'dart-lang/dart-vim-plugin'
+let g:dart_html_in_string = v:true
+let g:dart_style_guide = 2
+let g:dart_format_on_save = v:true
+
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
 
