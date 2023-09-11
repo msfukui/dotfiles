@@ -1,6 +1,6 @@
 ﻿"========================================
 " ~/.vim/.vim.common
-" author: m.fukui
+" author: @msfukui
 "========================================
 
 "----------------------------------------
@@ -13,7 +13,7 @@ set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,
 set fileformats=unix,dos,mac
 
 "----------------------------------------
-" help言語設定
+" help 言語設定
 "----------------------------------------
 
 " 英語は書かなくても検索対称にしてくれる。
@@ -196,58 +196,21 @@ let ruby_folding=1
 au Filetype php nmap <leader>b <ESC>:!php -l%<CR>
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_sql_query=1
-let php_htmlInStrings=1
-let php_noShortTags=1
 let php_folding=1
-
-" Golang
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim
-endif
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>s :<C-u>GoSameIdsToggle<CR>
-let g:go_list_type="quickfix"
-let g:go_hightlight_types=1
-let g:go_hightlight_functions=1
-let g:go_hightlight_methods=1
-let g:go_hightlight_structs=1
-let g:go_hightlight_interfaces=1
-let g:go_hightlight_operators=1
-let g:go_hightlight_build_constraints=1
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2
-" :GoAlternate alias
-autocmd Filetype go command! -bang A  call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-let g:go_metalinter_autosave=1
-let g:go_auto_type_info=1
-set updatetime=100
-let g:go_fmt_command = "goimports"
 
 " CoffeeScript
 au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
 autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 
-" Java
-" Eclim Settings.
-autocmd FileType java nnoremap <silent> <buffer> <leader>i :<C-u>JavaImport<cr>
-autocmd FileType java nnoremap <silent> <buffer> <leader>d :<C-u>JavaDocSearch -x declarations<cr>
-autocmd FileType java nnoremap <silent> <buffer> <cr>      :<C-u>JavaSearchContext<cr>
-autocmd FileType java let g:EclimJavaSearchSingleResult='edit'
+"----------------------------------------
+" LSP/補完の設定
+"----------------------------------------
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+let g:lsp_text_edit_enabled = 1
 
 "----------------------------------------
 " その他の設定

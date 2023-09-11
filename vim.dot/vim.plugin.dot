@@ -1,6 +1,6 @@
 "========================================
 " .vim.plugin
-" author: m.fukui
+" author: @msfukui
 "========================================
 
 "----------------------------------------
@@ -42,83 +42,19 @@ inoremap <expr> : smartchr#loop(':',' := ','::')
 " tcomment(gcc, visual-mode: gc)
 Plug 'tomtom/tcomment_vim'
 
-" Quickrun
-Plug 'thinca/vim-quickrun'
-
-" EasyMotion
-Plug 'Lokaltog/vim-easymotion'
-
-" Vim Markdown
-Plug 'plasticboy/vim-markdown'
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 let g:vim_markdown_folding_disabled=1
-
-" alpaca_update_tags
-Plug 'alpaca-tc/alpaca_tags'
-let g:alpaca_tags#ctags_bin='/usr/bin/ctags'
-let g:alpaca_tags#config={
-\ '_'   : '-R --sort=yes --languages=+Ruby --languages=-css,scss,html',
-\ 'js'  : '--languages=+js',
-\ 'ruby': '--languages=+Ruby',
-\ }
-augroup AlpacaTagsAuto
-  autocmd!
-  if exists(':AlpacaTags')
-    autocmd BufWritePost Gemfile AlpacaTagsBundle
-    autocmd BufEnter * AlpacaTagsSet
-    autocmd BufWritePost * AlpacaTagsUpdate
-  endif
-augroup END
-
-Plug 'scrooloose/syntastic'
-" check ruby syntax.
-let g:syntastic_ruby_checkers=['rubocop']
-" check xml syntax.
-let g:syntastic_xml_checkers=['xmllint']
-" check java syntax.
-let g:syntastic_java_javac_config_file_enabled=1
-let g:syntastic_java_javac_config_file="$HOME/.syntastic_javac_config"
-" check java checkstyle settings.
-let g:syntastic_java_checkstyle_classpath="$HOME/java/checkstyle/checkstyle-*-all.jar"
-" check golang syntax.
-let g:syntastic_go_checkers=['golint', 'govet', 'errcheck']
-" check when only saving files.
-let g:syntastic_check_on_open=0
-let g:syntastic_check_on_wq=0
-" active mode when only ruby files.
-let g:syntastic_mode_map={ "mode": "passive",
-                            \"active_filetypes": ["ruby","xml","java","groovy","go","typescript"],
-                            \"passive_filetypes": [] }
-" check TypeScript syntax
-"let g:syntastic_typescript_checks=['tsc','tslint']
-"function! FindTypescriptRoot()
-"    return fnamemodify(findfile('tsconfig.json', './;'), ':h')
-"endfunction
-"let g:syntastic_typescript_tsc_args=['-p', FindTypescriptRoot()]
-"let g:syntastic_typescript_tsc_fname=''
-let g:tsuquyomi_disable_quickfix=1
-let g:syntastic_typescript_checkers=['tsuquyomi']
-
-" TypeScript support.
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-autocmd BufRead, BufNewFile *.ts setfiletype typescript
 
 " Vue components syntax highlight.
 Plug 'posva/vim-vue'
 
-" golang support.
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-
-" Rails support
-Plug 'tpope/vim-rails'
-" CoffeeScript support
-" syntax high-light + auto-compile
-Plug 'kchmck/vim-coffee-script'
 " coloring indents
 Plug 'Yggdroot/indentLine'
 let g:indentLine_color_term=239
 let g:indentLine_char='|'
-let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','typescript','python','php','c','cpp']
+let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','typescript','python','php','c','cpp','dart','go']
 
 " showtime.vim
 Plug 'thinca/vim-showtime'
@@ -127,15 +63,33 @@ Plug 'thinca/vim-showtime'
 Plug 'aklt/plantuml-syntax'
 let g:plantuml_executable_script=expand('~/bin/plantuml')
 
+" CoffeeScript support
+" syntax high-light + auto-compile
+Plug 'kchmck/vim-coffee-script'
+
+" TypeScript support(Compiler settings, Syntax highlighting)
+Plug 'leafgarland/typescript-vim'
+
+" Go support
+Plug 'mattn/vim-goimports'
+
 " Flutter support.
 Plug 'dart-lang/dart-vim-plugin'
 let g:dart_html_in_string = v:true
 let g:dart_style_guide = 2
 let g:dart_format_on_save = v:true
 
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
-let g:lsc_auto_map = v:true
+" LSP Support & Auto complete setting
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
+" EditorConfig support
+Plug 'editorconfig/editorconfig-vim'
 
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
