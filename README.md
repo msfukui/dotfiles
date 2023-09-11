@@ -23,7 +23,7 @@ $ ./dotfiles_diff.sh
 $ cd ${HOME}
 $ vim
 ...
-:NeoBundleInstall
+:PlugInstall
 ...
 :q
 $ vim
@@ -51,21 +51,19 @@ $ ./rbenv_ruby_setup.sh
 
 * WSL2 (Linux 用 Windows サブシステム, 仮想マシンプラットフォーム)
 
-    * Ubuntu 20.04 LTS (MS Store から)
+    * Ubuntu 22.04 LTS (MS Store から)
 
 * Windows Terminal (MS Store から)
 
 * Slack (MS Store から)
 
+* PowerToy (MS Store から)
+
 * Google Chrome
-
-* Docker for Windows
-
-* VSCode（SettingSync を入れて設定内容を gist で同期）
 
 ### Font
 
-`Cascadia Code PL` (https://github.com/microsoft/cascadia-code/releases) で一旦様子見。
+`Cascadia Code PL` (https://github.com/microsoft/cascadia-code/releases)
 
 ### アイコン画像の設定
 
@@ -87,11 +85,7 @@ MS-IMEのアイコンを右クリックで「設定」を開き、キーとタ�
 
 「常にすべてのアイコンを通知領域に表示する」をONに。
 
-### VSCode
-
-SettingsSync を入れて gist の token を設定した後、設定内容一式を同期。
-
-### Ubuntu 20.04 LTS
+### Ubuntu 22.04 LTS
 
 * 追加コンポーネントのインストール
 
@@ -117,46 +111,23 @@ Boot Camp 経由の起動の場合は、追加で以下の設定を入れる。
 
     https://github.com/imbushuo/mac-precision-touchpad
 
-* MS-IME のキーバインド設定
+### 英字キーボード
 
-    英数キーとかなキーの感覚を mac とそろえる。
-
-    MS-IMEのアイコンを右クリックで「設定」を開き、キーとタッチのカスタマイズの無変換キーを "MS-IME オフ"、変換キーを "MS-IME オン" に設定。
-
-* 左 Command キーを Ctrl キーに
-
-    mac の 操作キーと感覚をそろえる。
-
-    以下の設定を .reg ファイルとして保存して、ダブルクリックしてレジストリに反映。
-
-    ```
-    Windows Registry Editor Version 5.00
-
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-    "Scancode Map" = hex:00,00,00,00,00,00,00,00,04,00,00,00,5b,e0,1d,00,1d,00,5b,e0,1d,e0,5c,e0,00,00,00,00
-    ```
+設定後に PC 再起動が必要、設定変更後は Ctrl + Space で IME を切り替える設定を入れる。
 
 ## Mac
 
 ### Install native Applications
 
-* Chrome（インストール後、システム環境設定 - 一般で、デフォルトのWebブラウザに設定）
-
-* Firefox
+* Chrome（デフォルトのWebブラウザは Safari のままで）
 
 * Slack（AppStoreから）
 
-* Microsoft Remote Desktop（AppStoreから）
-
 * Xcode（AppStoreから）
 
-* MacVim（Kaoriya版で）
+* MacVim
 
 * Mac Ports（Homebrew でもいいけど。。）
-
-* Vagrant
-
-* VirtualBox
 
 ### Xcode のコマンドユーティリティのインストール
 
@@ -192,14 +163,6 @@ $ sudo port install coreutil openjdk[xx] fortune ncurses
   アプリケーションを選んで + ボタンで「画面をロック」を作成して Cmd + L に割り当て。
 
   （High Sierra 以降で設定可能です。）
-
-* Option と Ctrl の入れ替え
-
-  システム環境設定 - キーボードのキーボードの右下にある「修飾キー」で設定します。
-
-  Ctrl を Option に。
-
-  Option と Fn を Ctrl に。
 
 * デスクトップの切り替え（Windows風に）
 
@@ -238,56 +201,6 @@ https://github.com/tomislav/osx-terminal.app-colors-solarized
 ダウンロードした設定の Solarized Dark.terminal を選択してプロファイルにロード
 
 そのプロファイルをデフォルトに設定。
-
-### VirtualBox + Vagrant
-
-* CentOS7 の場合
-
-  https://github.com/msfukui/vagrantfile_centos7
-
-  を ${HOME}/vagrant/[環境名] に clone して環境にあわせて編集した上で、`vagrant up` で起動。
-
-  proxy が必要な環境だと 最初の provision は失敗するが、`vagrant ssh` による接続はきっとできるはず。
-
-  設定f後は `vagrant ssh` で接続後、 `sudo su - root` で `root` になり、 `passwd [アカウント名]` でパスワードを初期化。
-
-  ホスト側の `~/.ssh/config` を作成して、以下の内容で接続を簡易化しておく。
-
-```
-Host [ホスト名]
-  HostName 127.0.0.1
-  Port 10022
-  User [アカウント名]
-  ForwardAgent yes
-```
-
-  これで `ssh [ホスト名]` だけで開発環境に接続できるようになる。
-
-## Linux
-
-### proxy 周りの設定（必要な場合）
-
-/etc/yum.conf を開いて、末尾に以下のエントリを追加。
-
-（provision で設定できるようにすれば不要になるんだけどさぼってる。）
-
-```
-proxy=http://[IP]:[port]
-proxy_username=[account]
-proxy_password=[password]
-```
-
-root で visudo で sudoers を開き、適度な場所に以下のエントリを追加。
-
-（proxy の環境変数に英小文字を使っている場合は、英小文字で書かないと引き継いでくれないので注意。）
-
-（初期の provision 時の設定ファイルを直せば不要になるんだけどさぼってる。）
-
-```
-Defaults    env_keep += "http_proxy https_proxy"
-```
-
-その他 vagrant up --provision を成功させるには、vagrant アカウントの .bashrc あたりに proxy の環境変数の設定を追加する必要もあるけど省略。
 
 ### その他入れた方がよさそうなアプリケーション
 
