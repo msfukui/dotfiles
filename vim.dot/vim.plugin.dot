@@ -72,6 +72,7 @@ Plug 'leafgarland/typescript-vim'
 
 " Go support
 Plug 'mattn/vim-goimports'
+let g:goimports_simplify = 1
 
 " Flutter support.
 Plug 'dart-lang/dart-vim-plugin'
