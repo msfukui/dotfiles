@@ -9,22 +9,22 @@ set nocompatible
 " 各種プラグイン設定
 "----------------------------------------
 
-source ~/.vim/.vim.plugin
+source ~/.vim/plugin.vim
 
 "----------------------------------------
 " システム共通設定
 "----------------------------------------
 
-source ~/.vim/.vim.common
+source ~/.vim/common.vim
 
 "----------------------------------------
 " シンタックス・ハイライト設定
 "----------------------------------------
 
 if has('mac')
-  source ~/.vim/.vim.syntax.mac
+  source ~/.vim/syntax.mac.vim
 else
-  source ~/.vim/.vim.syntax
+  source ~/.vim/syntax.vim
 endif
 
 "----------------------------------------

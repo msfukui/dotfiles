@@ -5,20 +5,7 @@ OPT="$1"
 
 for file in *.dot
 do
-  if [ -d $file ]; then
-    mkdir -p ${HOME}/.${file%.*}
-    cd $file
-    for subfile in *.dot
-    do
-      if [ -d $subfile ]; then
-        rm -fr ${HOME}/.${file%.*}/${subfile%.*}
-        cp -pr $subfile ${HOME}/.${file%.*}/${subfile%.*}
-      else
-        cp -p $subfile ${HOME}/.${file%.*}/.${subfile%.*}
-      fi
-    done
-    cd ..
-  else
+  if [ -f $file ]; then
     if [ "$file" = "set_proxy.dot" ] || [ "$file" = "gitconfig.dot" ]; then
       if [ "$OPT" = "all" ] || [ ! -f ${HOME}/.${file%.*} ]; then
         cp -p $file ${HOME}/.${file%.*}
@@ -32,16 +19,16 @@ do
 done
 
 # bin/ 配下のスクリプトもコピーする。
-if [ ! -d "${HOME}/bin" ]; then
-  mkdir ${HOME}/bin
-fi
+mkdir -p ${HOME}/bin
 cp -p bin/* ${HOME}/bin/
 
 # lib/ 配下のファイルもコピーする。
-if [ ! -d "${HOME}/lib" ]; then
-  mkdir ${HOME}/lib
-fi
+mkdir -p ${HOME}/lib
 cp -p lib/* ${HOME}/lib/
+
+# vim 関連の設定をまとめてコピーする。
+mkdir -p ${HOME}/.vim
+cp -pr vim.dot/* ${HOME}/.vim
 
 # vim-plug だけはなければ手で取ってくる。
 if [ ! -f "${HOME}/.vim/autoload/plug.vim" ]; then

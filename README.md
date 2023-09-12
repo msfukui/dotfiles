@@ -4,7 +4,7 @@
 
 # Setting
 
-## dotfiles setting.
+## dotfiles setting
 
 ```sh
 $ cd ${HOME}
@@ -17,7 +17,7 @@ $ ./dotfiles_diff.sh
 ...
 ```
 
-## Vim setting.
+## Vim setting
 
 ```sh
 $ cd ${HOME}
@@ -31,10 +31,10 @@ $ vim
 :q
 ```
 
-## rbenv & ruby setting.
+## CRuby setting
 
 ```sh
-$ cd ${HOME}/dotfiles
+$ cd ${HOME}/dotfiles/settings
 $ ./rbenv_setup.sh
 ...
 $ ./rbenv_ruby_setup.sh
@@ -125,7 +125,7 @@ Boot Camp 経由の起動の場合は、追加で以下の設定を入れる。
 
 * Xcode（AppStoreから）
 
-* MacVim
+* MacVim (https://macvim.org/)
 
 * Mac Ports（Homebrew でもいいけど。。）
 
