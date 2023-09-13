@@ -27,9 +27,12 @@ let g:lightline = {
 
 " project.vim
 Plug 'vim-scripts/project.tar.gz'
-:let g:proj_flags = "imstc"
-:nmap <silent> <Leader>P <Plug>ToggleProject
-autocmd BufAdd .vimprojects silent! %foldopen!
+let g:proj_flags = "imstc"
+nmap <silent> <Leader>P <Plug>ToggleProject
+augroup plugin_project_loading
+  au!
+  au BufAdd .vimprojects silent! %foldopen!
+augroup END
 
 " smartchr
 Plug 'kana/vim-smartchr'
@@ -94,6 +97,12 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Finder
 Plug 'ctrlpvim/ctrlp.vim'
+
+" Auto close parentheses
+Plug 'cohama/lexima.vim'
+
+" Alternate files mapping
+Plug 'tpope/vim-projectionist'
 
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'

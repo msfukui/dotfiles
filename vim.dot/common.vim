@@ -30,9 +30,9 @@ syntax on
 " 全角空白文字をハイライトする
 scriptencoding utf-8
 augroup highlightIdegraphicSpace
-  autocmd!
-  autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
-  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+  au!
+  au ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
+  au VimEnter,WinEnter * match IdeographicSpace /　/
 augroup END
 highlight IdeographicSpace term=underline ctermbg=DarkMagenta guibg=DarkMagenta
 
@@ -109,8 +109,8 @@ set clipboard+=unnamed
 " WSL2の場合は Clip.exe を経由してクリップボードを共有する
 if system('uname -r | grep -i microsoft') != ''
   augroup myYank
-    autocmd!
-    autocmd TextYankPost * :call system('clip.exe', @")
+    au!
+    au TextYankPost * :call system('clip.exe', @")
   augroup END
 endif
 
@@ -167,8 +167,8 @@ set nobackup
 set history=50
 " ファイルを開いたら前回のカーソル位置へ移動
 augroup vimrcEx
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
+  au!
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g`\"" | endif
 augroup END
 " .*.un~ ファイルを作らない様にする。
 " >= 7.4.227
@@ -191,20 +191,37 @@ nnoremap <leader>a :<C-u>cclose<CR>
 "----------------------------------------
 
 " Ruby
-au Filetype ruby nmap <leader>b <ESC>:!ruby -cW%<CR>
-au FileType ruby setlocal makeprg=ruby\ -c\ %
-au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let ruby_folding=1
+augroup ruby_loading
+  au!
+  au FileType ruby nmap <leader>b <ESC>:!ruby -cW%<CR>
+  au FileType ruby setlocal makeprg=ruby\ -c\ %
+  au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+  au FileType ruby setlocal shiftwidth=2
+  au FileType ruby setlocal expandtab
+augroup END
 
 " PHP
-au Filetype php nmap <leader>b <ESC>:!php -l%<CR>
-au FileType php setlocal makeprg=php\ -l\ %
-au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-let php_folding=1
+augroup php_loading
+  au!
+  au FileType php nmap <leader>b <ESC>:!php -l%<CR>
+  au FileType php setlocal makeprg=php\ -l\ %
+  au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+augroup END
 
 " CoffeeScript
-au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
-autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
+augroup coffee_loading
+  au!
+  au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
+  au FileType coffee setlocal sw=2 sts=2 ts=2 et
+  au FileType coffee setlocal shiftwidth=2
+  au FileType coffee setlocal expandtab
+augroup END
+
+" Groovy
+augroup groovy_loading
+  au!
+  au BufRead,BufNewFile *.gradle set filetype=groovy
+augroup END
 
 "----------------------------------------
 " LSP/補完の設定
@@ -223,7 +240,7 @@ endfunction
 
 augroup lsp_install
   au!
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  au User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 
