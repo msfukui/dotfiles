@@ -247,8 +247,9 @@ let g:lsp_preview_float = 1
 "----------------------------------------
 
 "--
-" スニペット(vim-vsnip)のキーバインド
+" スニペット(vim-vsnip)の保存先とキーバインド
 "--
+let g:vsnip_snippet_dir = expand($HOME . '/.vim/vsnip')
 " Expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
