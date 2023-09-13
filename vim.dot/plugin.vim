@@ -92,6 +92,9 @@ Plug 'hrsh7th/vim-vsnip-integ'
 " EditorConfig support
 Plug 'editorconfig/editorconfig-vim'
 
+" Finder
+Plug 'ctrlpvim/ctrlp.vim'
+
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
 
