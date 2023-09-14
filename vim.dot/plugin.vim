@@ -104,6 +104,9 @@ Plug 'cohama/lexima.vim'
 " Alternate files mapping
 Plug 'tpope/vim-projectionist'
 
+" Github Copilot
+Plug 'github/copilot.vim'
+
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
 
