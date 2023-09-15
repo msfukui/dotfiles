@@ -20,6 +20,11 @@ hi LineNr     ctermbg=none ctermfg=darkgray
 hi SpecialKey ctermbg=none ctermfg=black
 hi FoldColumn ctermbg=none ctermfg=darkgreen
 
+" Workaround a problem with solarized and vim-gitgutter.
+" https://github.com/airblade/vim-gitgutter/issues/696
+highlight! link SignColumn LineNr
+autocmd ColorScheme * highlight! link SignColumn LineNr
+
 "--
 " molokai の場合
 "--

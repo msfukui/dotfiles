@@ -76,6 +76,7 @@ Plug 'leafgarland/typescript-vim'
 " Go support
 Plug 'mattn/vim-goimports'
 let g:goimports_simplify = 1
+Plug 'mattn/vim-gomod'
 
 " Flutter support.
 Plug 'dart-lang/dart-vim-plugin'
@@ -106,6 +107,9 @@ Plug 'tpope/vim-projectionist'
 
 " Github Copilot
 Plug 'github/copilot.vim'
+
+" Git support
+Plug 'airblade/vim-gitgutter'
 
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
