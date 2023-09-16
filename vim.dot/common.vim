@@ -206,6 +206,9 @@ augroup php_loading
   au FileType php nmap <leader>b <ESC>:!php -l%<CR>
   au FileType php setlocal makeprg=php\ -l\ %
   au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+  au FileType php setlocal shiftwidth=4
+  au FileType php setlocal expandtab
+  au BufWritePost *.php silent! call PhpCsFixerFixFile()
 augroup END
 
 " CoffeeScript

@@ -84,6 +84,10 @@ let g:dart_html_in_string = v:true
 let g:dart_style_guide = 2
 let g:dart_format_on_save = v:true
 
+" PHP support.
+Plug 'stephpy/vim-php-cs-fixer'
+let g:php_cs_fixer_path = "vendor/bin/php-cs-fixer"
+
 " LSP Support & Auto complete setting
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -98,6 +102,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Finder
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 
 " Auto close parentheses
 Plug 'cohama/lexima.vim'
