@@ -112,6 +112,8 @@ Plug 'tpope/vim-projectionist'
 
 " Github Copilot
 Plug 'github/copilot.vim'
+inoremap <silent> <C-j> <Plug>(copilot-next)
+inoremap <silent> <C-k> <Plug>(copilot-previous)
 
 " Git support
 Plug 'airblade/vim-gitgutter'
