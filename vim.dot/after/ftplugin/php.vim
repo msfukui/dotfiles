@@ -8,9 +8,15 @@ au User ProjectionistDetect
 \ call projectionist#append(getcwd(),
 \ {
 \    'src/*.php': {
-\      'alternate': 'tests/{}Test.php'
+\      'alternate': ['tests/{}Test.php', 'tests/Unit/{}Test.php', 'tests/Feature/{}Test.php']
 \    },
 \    'tests/*Test.php': {
+\      'alternate': 'src/{}.php'
+\    },
+\    'tests/Unit/*Test.php': {
+\      'alternate': 'src/{}.php'
+\    },
+\    'tests/Feature/*Test.php': {
 \      'alternate': 'src/{}.php'
 \    },
 \ })
