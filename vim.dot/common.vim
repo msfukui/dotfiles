@@ -209,6 +209,7 @@ augroup php_loading
   au FileType php setlocal shiftwidth=4
   au FileType php setlocal expandtab
   au BufWritePost *.php silent! call PhpCsFixerFixFile()
+  au BufNewFile *.php 0r $HOME/.vim/templates/template.php
 augroup END
 
 " CoffeeScript
