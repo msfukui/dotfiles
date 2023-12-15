@@ -1,0 +1,51 @@
+" -- IntelliJ IDEA IdeaVim Settings --
+
+" -- commons
+" 検索語をハイライト
+set hlsearch
+" コマンドのタイムラグをなくす
+set ttimeoutlen=1
+" スクロールした時 常に下に表示するバッファ行の数
+set scrolloff=5
+" ベル音を鳴らさない
+set visualbell
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+" 検索時に大文字を含んでいたら大/小を区別
+set smartcase
+" swapfileなし
+set noswapfile
+" クリップボードの共有化
+set clipboard=unnamedplus
+" メソッド移動
+nnoremap [m :<C-u>action MethodUp<CR>
+nnoremap ]m :<C-u>action MethodDown<CR>
+
+" -- easy,motion
+set easymotion
+" sで開始
+nmap s <Plug>(easymotion-s2)
+
+" -- vim surround
+set surround
+
+" -- vim multiple-cursors
+set multiple-cursors
+" Ctrl+kで発動
+map <C-k> <A-n>
+
+" -- vim commentary
+set commentary
+
+" -- vim replace with register
+set ReplaceWithRegister
+" _で発動. ダブルクォーテーションの中を置換したいなら _i"
+map _ gr
+
+" -- vim textobj
+set argtextobj
+
+" -- vim textobj-entire
+set textobj-entire
