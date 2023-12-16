@@ -1,6 +1,8 @@
 " -- IntelliJ IDEA IdeaVim Settings --
 
 " -- commons
+" リーダーをバックスラッシュに設定
+let mapleader = "\"
 " 検索語をハイライト
 set hlsearch
 " コマンドのタイムラグをなくす
@@ -15,6 +17,8 @@ set incsearch
 set ignorecase
 " 検索時に大文字を含んでいたら大/小を区別
 set smartcase
+" ESC連打で検索のハイライトを消す
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " swapfileなし
 set noswapfile
 " クリップボードの共有化
@@ -22,30 +26,35 @@ set clipboard=unnamedplus
 " メソッド移動
 nnoremap [m :<C-u>action MethodUp<CR>
 nnoremap ]m :<C-u>action MethodDown<CR>
+" 変更行への移動
+nnoremap [c :<C-u>action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :<C-u>action VcsShowNextChangeMarker<CR>
+" エラー行への移動
+nnoremap [q :<C-u>action GotoPreviousError<CR>
+nnoremap ]q :<C-u>action GotoNextError<CR>
+" 設定ファイルの編集と再読み込み
+nnoremap <Leader>ev :<C-u>vsplit ~/.ideavimrc<CR>
+nnoremap <Leader>sv :<C-u>source ~/.ideavimrc<CR>
+" ポップアップ表示
+nnoremap <Leader>k :action ShowHoverInfo<CR>
+nnoremap <Leader>a :action GotoAction<CR>
 
 " -- easy,motion
 set easymotion
-" sで開始
+" s で開始
 nmap s <Plug>(easymotion-s2)
 
 " -- vim surround
 set surround
 
-" -- vim multiple-cursors
-set multiple-cursors
-" Ctrl+kで発動
-map <C-k> <A-n>
-
 " -- vim commentary
 set commentary
-
-" -- vim replace with register
-set ReplaceWithRegister
-" _で発動. ダブルクォーテーションの中を置換したいなら _i"
-map _ gr
 
 " -- vim textobj
 set argtextobj
 
 " -- vim textobj-entire
 set textobj-entire
+
+" -- ctrl-p settings
+nnoremap <C-p> :action GotoFile<CR>
