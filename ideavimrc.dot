@@ -1,8 +1,6 @@
 " -- IntelliJ IDEA IdeaVim Settings --
 
 " -- commons
-" リーダーをバックスラッシュに設定
-let mapleader = "\"
 " 検索語をハイライト
 set hlsearch
 " コマンドのタイムラグをなくす
@@ -35,9 +33,16 @@ nnoremap ]q :<C-u>action GotoNextError<CR>
 " 設定ファイルの編集と再読み込み
 nnoremap <Leader>ev :<C-u>vsplit ~/.ideavimrc<CR>
 nnoremap <Leader>sv :<C-u>source ~/.ideavimrc<CR>
-" ポップアップ表示
+" ホバー情報表示
 nnoremap <Leader>k :action ShowHoverInfo<CR>
+" アクション表示
 nnoremap <Leader>a :action GotoAction<CR>
+" ファイル構造表示
+nnoremap <Leader>f :action FileStructurePopup<CR>
+" ターミナルウインドウ表示
+nnoremap <Leader>w :action ActivateTerminalToolWindow<CR>
+" プロジェクトウインドウ表示
+nnoremap <Leader>p :action ActivateProjectToolWindow<CR>
 
 " -- easy,motion
 set easymotion

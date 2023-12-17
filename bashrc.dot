@@ -356,3 +356,8 @@ if [ ! "${ANDROID_HOME}" = "" ] && [ -d "${ANDROID_HOME}/platform-tools" ]; then
     export ADB_SERVER_SOCKET=tcp:$WINDOWS_IP:5037
   fi
 fi
+
+# IntelliJ IDEA settings
+if [ -d "/Applications/IntelliJ IDEA.app/Contents/MacOS" ]; then
+  export PATH=$PATH:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
+fi
