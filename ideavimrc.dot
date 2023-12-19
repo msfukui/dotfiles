@@ -46,8 +46,11 @@ nnoremap <Leader>p :action ActivateProjectToolWindow<CR>
 
 " -- easy,motion
 set easymotion
-" s で開始
-nmap s <Plug>(easymotion-s2)
+
+" -- vim NERDTree
+set NERDTree
+nmap <leader>e :NERDTreeFind<cr>
+nmap <leader>E :NERDTreeToggle<cr>
 
 " -- vim surround
 set surround
@@ -60,6 +63,13 @@ set argtextobj
 
 " -- vim textobj-entire
 set textobj-entire
+
+" -- vim highlightedyank
+set highlightedyank
+
+" -- vim IdeaVimExtension
+" Normalモードでは常に IME を OFF にする
+set keep-english-in-normal
 
 " -- ctrl-p settings
 nnoremap <C-p> :action GotoFile<CR>
