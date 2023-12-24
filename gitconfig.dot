@@ -9,7 +9,7 @@
   default = matching
 [core]
   quotepath = false
-	ignorecase = false
+  ignorecase = false
 [alias]
   mylog = log --graph --name-status --pretty=format:\"%C(red)%h %C(green)%an %Creset%s %C(yellow)%d%Creset\"
   today = "log --oneline --since='12 hour ago'"
