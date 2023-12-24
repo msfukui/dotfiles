@@ -43,6 +43,10 @@ nnoremap <Leader>f :action FileStructurePopup<CR>
 nnoremap <Leader>w :action ActivateTerminalToolWindow<CR>
 " プロジェクトウインドウ表示
 nnoremap <Leader>p :action ActivateProjectToolWindow<CR>
+" 実行
+nnoremap <Leader>r :action Run<CR>
+" デバッグ
+nnoremap <Leader>d :action Debug<CR>
 
 " -- easy,motion
 set easymotion
