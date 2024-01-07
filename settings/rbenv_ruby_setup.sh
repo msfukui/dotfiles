@@ -31,7 +31,7 @@ echo "setup_ruby_version: $setup_ruby_version"
 rbenv rehash
 # for macports
 if [ -x /opt/local/bin/port ]; then
-  RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/local --with-readline-dir=/opt/local" rbenv install ${setup_ruby_version}
+  RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/local --with-libyaml-dir=/opt/local --with-gmp-dir=/opt/local" rbenv install ${setup_ruby_version}
 else
   rbenv install ${setup_ruby_version}
 fi
