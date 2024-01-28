@@ -361,3 +361,16 @@ fi
 if [ -d "/Applications/IntelliJ IDEA.app/Contents/MacOS" ]; then
   export PATH=$PATH:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
 fi
+
+# VimWiki settings
+wiki () {
+  if [[ $# == 0 ]]
+  then
+    vim +"VimwikiIndex"
+  elif [[ $1 == 'git' ]]
+  then
+    git -C ~/vimwiki/ ${@:2}
+  else
+    echo 'Usage: vimwiki [git] [args ...]'
+  fi
+}

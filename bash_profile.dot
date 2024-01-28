@@ -98,3 +98,8 @@ fi
 
 # macos zsh -> bash setting
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Added by Toolbox App
+if [ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/scripts" ]; then
+  export PATH="$PATH:${HOME}/Library/Application Support/JetBrains/Toolbox/scripts"
+fi

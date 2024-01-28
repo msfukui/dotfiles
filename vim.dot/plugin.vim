@@ -121,6 +121,13 @@ Plug 'airblade/vim-gitgutter'
 " Vim help for Japanese
 Plug 'vim-jp/vimdoc-ja'
 
+" VimWiki
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_key_mappings = { 'table_mappings': 0 }
+
 if has('vim_starting')
   call plug#end()
 endif
