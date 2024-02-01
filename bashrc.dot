@@ -367,10 +367,24 @@ wiki () {
   if [[ $# == 0 ]]
   then
     vim +"VimwikiIndex"
-  elif [[ $1 == 'git' ]]
-  then
-    git -C ~/vimwiki/ ${@:2}
   else
-    echo 'Usage: vimwiki [git] [args ...]'
+    subcommand=$1
+    shift
+    params=''
+    for param in "$@"
+    do
+      if [[ $param == *' '* ]]
+      then
+        params="${params} \"${param}\""
+      else
+        params="${params} ${param}"
+      fi
+    done
+    if [[ $params == '' ]]
+    then
+      git -C ~/vimwiki/ $subcommand
+    else
+      eval git -C ~/vimwiki/ $subcommand "$params"
+    fi
   fi
 }
