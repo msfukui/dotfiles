@@ -364,24 +364,26 @@ fi
 
 # VimWiki settings
 wiki () {
-  if [[ $# == 0 ]]
-  then
+  if [[ $# == 0 ]]; then
     vim +"VimwikiIndex"
+  elif [[ $1 == "daily" ]]; then
+    message="daily commit and push: `date '+%Y-%m-%d'`"
+    git -C ~/vimwiki/ add .
+    git -C ~/vimwiki/ commit -m "$message"
+    git -C ~/vimwiki/ push
   else
     subcommand=$1
     shift
     params=''
     for param in "$@"
     do
-      if [[ $param == *' '* ]]
-      then
+      if [[ $param == *' '* ]]; then
         params="${params} \"${param}\""
       else
         params="${params} ${param}"
       fi
     done
-    if [[ $params == '' ]]
-    then
+    if [[ $params == '' ]]; then
       git -C ~/vimwiki/ $subcommand
     else
       eval git -C ~/vimwiki/ $subcommand "$params"
