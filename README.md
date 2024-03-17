@@ -129,6 +129,8 @@ Boot Camp 経由の起動の場合は、追加で以下の設定を入れる。
 
 * Mac Ports（Homebrew でもいいけど。。）
 
+* Karabiner-Elements（https://karabiner-elements.pqrs.org/）
+
 ### Xcode のコマンドユーティリティのインストール
 
 ```
@@ -150,45 +152,55 @@ $ sudo port install coreutil openjdk[xx] fortune ncurses
 
 全てのタブのチェックを入れる。
 
-三本指のドラッグは、システム環境設定 - アクセシビリティの「マウスとトラックパッド」の「トラックパッドオプション」の中にある。
+三本指のドラッグは、システム環境設定 - アクセシビリティの「ポインタコントロール」の「トラックパッドオプション」の中にある。
 
-「ドラッグを有効にする」をOnにして「3本指のドラッグ」を選択。
+「ドラッグにトラックパッドを使用」をOnにして「ドラッグ方法」に「3本指のドラッグ」を選択。
 
 ### ショートカットキーの設定
 
 * 画面ロック（Windows風に）
 
-  システム環境設定 - キーボードのショートカットタブで設定します。
+  システム環境設定 - キーボードの「キーボードショートカット」の「アプリのショートカット」で設定します。
 
-  アプリケーションを選んで + ボタンで「画面をロック」を作成して Cmd + L に割り当て。
-
-  （High Sierra 以降で設定可能です。）
+  + ボタンで「アプリケーション」に「すべてのアプリケーション」を選んで「画面をロック」（Sonoma 以降では「ロック画面」）を作成して Cmd + L に割り当て。
 
 * デスクトップの切り替え（Windows風に）
 
-  システム環境設定 - キーボードのショートカットタブで設定します。
+  システム環境設定 - キーボードの「キーボードショートカット」の「Mission Control」で設定します。
 
-  Mission Control を選んで「左の操作スペースに移動」を Ctrl + Cmd + ←に、「右の操作スペースに移動」を Ctrl + Cmd + →に割り当て。
+  Mission Control を開いて「左の操作スペースに移動」を Ctrl + Cmd + ←に、「右の操作スペースに移動」を Ctrl + Cmd + →に割り当て。
+
+* Spotlight 検索のショートカットキーを変更（誤入力防止のため）
+
+  システム環境設定 - キーボードの「キーボードショートカット」の「Spotlight」で設定します。
+
+  「Spotlight検索を表示」を Ctrl + Cmd + Space に割り当て。
 
 ### アイコン画像の設定
 
 システム環境設定 - ユーザーとグループで。
 
-### DockのサイズをMaxに
+### Dock のサイズをMaxに
 
-システム環境設定 - Dockで。
+システム環境設定 - デスクトップと Dock で。
 
-表示は最低限のものに絞る。
+Dock に表示するアイコンは最低限のものに絞る。
 
-### デスクトップを無地に
+### ２画面時の操作スペースを個別にしない（Dock の表示が別画面に移動するのが嫌なので）
 
-チラチラするのが嫌なので、デスクトップには無地で落ち着いた色を設定。
+システム環境設定 - デスクトップと Dock で。
 
-スクリーンセーバーはお好みで。（ロックするから基本は使わない。）
+一番下にある「ディスプレイ毎に個別の操作スペース」をオフに。
+
+### デスクトップはお好みで
+
+Sonoma からは動的な壁紙が使えるのでそれを使うのがおすすめ。
+
+スクリーンセーバーも連動して動くのであわせて設定しておく。
 
 ### Terminal の設定を solarized に
 
-こちら clone して、
+こちら適当なディレクトリに clone して、
 
 https://github.com/tomislav/osx-terminal.app-colors-solarized
 
@@ -201,6 +213,20 @@ https://github.com/tomislav/osx-terminal.app-colors-solarized
 ダウンロードした設定の Solarized Dark.terminal を選択してプロファイルにロード
 
 そのプロファイルをデフォルトに設定。
+
+### Karaibiner-Elements の設定
+
+#### 共通の設定
+
+* 「Simple Modifications」で caps_lock を left_control に変更
+
+* 「Complex Modifications」で「Add predefined rule」を選択して以下のルールを追加
+
+    「コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな）(rev 3)」
+
+#### Windows 用キーボードの場合の設定
+
+* 「Simple Modification」で left_alt を left_command に, left_gui を left_option に, right_alt を right_command に変更
 
 ### その他入れた方がよさそうなアプリケーション
 
