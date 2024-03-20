@@ -82,8 +82,15 @@ fi
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
 #PS1="\[\e]2;\u@\H \w\a\e[32;1m\]$\[\e[0m\] "
-set DIRS=`dirs`
-PS1="[ \W]\$ "
+PS1="\$ "
+
+# RPROMPT setting
+function __command_rprompt() {
+  local rprompt="[ $(dirs)]"
+    local num=$(($COLUMNS - ${#rprompt} - 2))
+    printf "%${num}s$rprompt\\r" ''
+}
+PROMPT_COMMAND=__command_rprompt
 
 # Aliases
 #
@@ -301,7 +308,7 @@ if [ -f ~/bin/git-completion.bash ]; then
   source ~/bin/git-prompt.sh
   source ~/bin/git-completion.bash
   GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='[ \W]$(__git_ps1)\$ '
+  export PS1='$(__git_ps1)\$ '
 fi
 alias g='git'
 
