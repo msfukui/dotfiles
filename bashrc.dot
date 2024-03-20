@@ -367,6 +367,7 @@ fi
 # IntelliJ IDEA settings
 if [ -d "/Applications/IntelliJ IDEA.app/Contents/MacOS" ]; then
   export PATH=$PATH:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
+  alias i='idea'
 fi
 
 # VimWiki settings
@@ -397,3 +398,11 @@ wiki () {
     fi
   fi
 }
+
+# fzf setting
+if [ -x "/opt/local/bin/fzf" ]; then
+  eval "$(fzf --bash)"
+fi
+if [ -x "/usr/bin/fzf" ]; then
+  eval "$(fzf --bash)"
+fi

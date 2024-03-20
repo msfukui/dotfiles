@@ -41,7 +41,7 @@ if [ -x /opt/local/bin/port ]; then
   if [ "${OPT}" = "all" ]; then
     sudo port selfupdate
     sudo port upgrade outdated
-    sudo port install coreutils openssl libyaml gmp keychain gawk nkf fortune
+    sudo port install coreutils openssl libyaml gmp keychain gawk nkf fortune fzf
     sudo port install ocaml opam
     sudo port install go gosec staticcheck
     go install golang.org/x/tools/cmd/goimports@latest
@@ -54,7 +54,7 @@ fi
 if uname -r | grep -qi microsoft; then
   if [ "${OPT}" = "all" ]; then
     sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
-    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune
+    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune fzf
     sudo apt install -y ocaml opam
     sudo apt install -y golang
     go install github.com/securego/gosec/v2/cmd/gosec@latest
