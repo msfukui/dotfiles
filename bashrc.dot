@@ -134,6 +134,9 @@ alias ls='ls -CF --color=auto'
 alias more="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
 alias less="more"
 
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # vim & editor settings
 if [ -d "/Applications/MacVim.app/Contents/MacOS" ]; then
   # MacVim Alias
@@ -405,4 +408,18 @@ if [ -x "/opt/local/bin/fzf" ]; then
 fi
 if [ -x "/usr/bin/fzf" ]; then
   eval "$(fzf --bash)"
+fi
+# fzf-tab-completion
+# cf. https://github.com/lincheney/fzf-tab-completion
+if [ -f ~/bin/fzf-bash-completion.sh ]; then
+  source ~/bin/fzf-bash-completion.sh
+  bind -x '"\t": fzf_bash_completion'
+fi
+
+# docker completion settings
+if [ -f /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion ]; then
+  source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
+fi
+if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]; then
+  source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 fi
