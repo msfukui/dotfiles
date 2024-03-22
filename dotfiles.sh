@@ -41,7 +41,7 @@ if [ -x /opt/local/bin/port ]; then
   if [ "${OPT}" = "all" ]; then
     sudo port selfupdate
     sudo port upgrade outdated
-    sudo port install coreutils openssl libyaml gmp keychain gawk nkf fortune fzf
+    sudo port install coreutils gsed openssl libyaml gmp keychain gawk nkf fortune fzf
     sudo port install ocaml opam
     sudo port install go gosec staticcheck
     go install golang.org/x/tools/cmd/goimports@latest
