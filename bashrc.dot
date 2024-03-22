@@ -134,8 +134,9 @@ alias ls='ls -CF --color=auto'
 alias more="\less '-X -r -i -E -P?f--More-- (%pb\%):--More--.'"
 alias less="more"
 
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias cd='cd '
+alias '...'='../..'
+alias '....'='../../..'
 
 # vim & editor settings
 if [ -d "/Applications/MacVim.app/Contents/MacOS" ]; then
