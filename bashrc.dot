@@ -407,6 +407,7 @@ wiki () {
     fi
   fi
 }
+___git_complete wiki __git_main
 
 # fzf setting
 if [ -x "/opt/local/bin/fzf" ]; then
