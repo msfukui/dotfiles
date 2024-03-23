@@ -308,7 +308,12 @@ if [ -d "/lib/pkgconfig" ]; then
 fi
 
 # git settings
-if [ -f ~/bin/git-completion.bash ]; then
+if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
+  source /opt/local/share/git/contrib/completion/git-completion.bash
+  source /opt/local/share/git/contrib/completion/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='$(__git_ps1)\$ '
+elif [ -f ~/bin/git-completion.bash ]; then
   source ~/bin/git-prompt.sh
   source ~/bin/git-completion.bash
   GIT_PS1_SHOWDIRTYSTATE=true
