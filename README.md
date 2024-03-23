@@ -214,6 +214,12 @@ https://github.com/tomislav/osx-terminal.app-colors-solarized
 
 そのプロファイルをデフォルトに設定。
 
+Terminal のサイズはウィンドウタブから 132 * 30,
+
+フォントはテキストタブから Monaco の 18,
+
+キーボードタブの「メタキーとして Option キーを使用」にチェックを入れておくと幸せになれる。
+
 ### Karaibiner-Elements の設定
 
 #### 共通の設定
