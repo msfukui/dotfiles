@@ -340,6 +340,15 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]>
 
+" Alt key を normal mode で有効にする
+nmap <ESC>w <A-w>
+nmap <ESC>v <A-v>
+nmap <ESC>j <A-j>
+nmap <ESC>k <A-k>
+nmap <ESC>o <A-o>
+nmap <ESC>; <A-;>
+nmap <ESC>/ <A-/>
+
 "----------------------------------------
 " 挿入モード
 "----------------------------------------
@@ -359,3 +368,42 @@ inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 "----------------------------------------
 " コマンドモード
 "----------------------------------------
+
+"----------------------------------------
+" ターミナルモード
+"----------------------------------------
+" Alt key を Terminal 内の Vim でも有効にする
+tmap <ESC>w <A-w>
+tmap <ESC>v <A-v>
+tmap <ESC>j <A-j>
+tmap <ESC>k <A-k>
+tmap <ESC>o <A-o>
+tmap <ESC>; <A-;>
+tmap <ESC>/ <A-/>
+
+" ターミナルモードのキーマップ変更 (C-w をシェルで有効に)
+set termwinkey=<A-w>
+" ターミナルジョブモードで垂直分割した右ウインドウを開く
+noremap <A-v> :vs<CR><C-w>l:term ++curwin<CR>
+" ウインドウ間移動
+noremap  <A-j> <C-w>w
+inoremap <A-j> <Esc><C-w>w
+tnoremap <A-j> <C-\><C-n><C-w>w
+" ウィンドウ間を逆に移動
+noremap  <A-k> <C-w>W
+inoremap <A-k> <Esc><C-w>W
+tnoremap <A-k> <C-\><C-n><C-w>W
+" 他のウィンドウを閉じて最大化する
+noremap  <A-o> <C-w>o
+inoremap <A-o> <Esc><C-w>o
+tnoremap <A-o> <C-\><C-n><C-w>o
+" コマンドラインモードに移行
+noremap  <A-;> :
+inoremap <A-;> <Esc><C-o>:
+tnoremap <A-;> <C-\><C-n><C-w>:
+noremap  <A-/> /
+inoremap <A-/> <Esc><C-o>/
+tnoremap <A-/> <C-\><C-n>/
+" ウインドウ操作時にターミナルノーマルモードの場合は
+" 自動でジョブモードに切り替える
+autocmd WinEnter * if &buftype ==# 'terminal' | normal i | endif

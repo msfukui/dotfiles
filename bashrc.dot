@@ -87,7 +87,7 @@ PS1="\$ "
 # RPROMPT setting
 function __command_rprompt() {
   local rprompt="[ $(dirs)]"
-    local num=$(($COLUMNS - ${#rprompt} - 2))
+    local num=$(($COLUMNS - ${#rprompt} - 5))
     printf "%${num}s$rprompt\\r" ''
 }
 PROMPT_COMMAND=__command_rprompt
