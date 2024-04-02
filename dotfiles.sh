@@ -41,10 +41,11 @@ if [ -x /opt/local/bin/port ]; then
   if [ "${OPT}" = "all" ]; then
     sudo port selfupdate
     sudo port upgrade outdated
-    sudo port install coreutils gsed openssl libyaml gmp keychain gawk nkf fortune fzf git
+    sudo port install coreutils gsed openssl libyaml gmp keychain gawk nkf fortune fzf git gh
     sudo port install ocaml opam
     sudo port install go gosec staticcheck
     go install golang.org/x/tools/cmd/goimports@latest
+    gh extension install https://github.com/nektos/gh-act
   else
     echo "[MSG] Mac Ports install/update skipped."
   fi
@@ -54,7 +55,7 @@ fi
 if uname -r | grep -qi microsoft; then
   if [ "${OPT}" = "all" ]; then
     sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
-    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune fzf git
+    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune fzf git gh
     sudo apt install -y ocaml opam
     sudo apt install -y golang
     go install github.com/securego/gosec/v2/cmd/gosec@latest

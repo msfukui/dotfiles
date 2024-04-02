@@ -103,6 +103,7 @@ Plug 'editorconfig/editorconfig-vim'
 " Finder
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_show_hidden = 1
 
 " Auto close parentheses
 Plug 'cohama/lexima.vim'

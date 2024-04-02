@@ -342,6 +342,8 @@ nnoremap <C-]> g<C-]>
 
 " Alt key を normal mode で有効にする
 nmap <ESC>w <A-w>
+nmap <ESC>t <A-t>
+nmap <ESC>s <A-s>
 nmap <ESC>v <A-v>
 nmap <ESC>j <A-j>
 nmap <ESC>k <A-k>
@@ -374,6 +376,8 @@ inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 "----------------------------------------
 " Alt key を Terminal 内の Vim でも有効にする
 tmap <ESC>w <A-w>
+tmap <ESC>t <A-t>
+tmap <ESC>s <A-s>
 tmap <ESC>v <A-v>
 tmap <ESC>j <A-j>
 tmap <ESC>k <A-k>
@@ -384,25 +388,26 @@ tmap <ESC>/ <A-/>
 " ターミナルモードのキーマップ変更 (C-w をシェルで有効に)
 set termwinkey=<A-w>
 " ターミナルジョブモードで垂直分割した右ウインドウを開く
-noremap <A-v> :vs<CR><C-w>l:term ++curwin<CR>
+noremap <A-t> :vs<CR><C-w>l:term ++curwin<CR>
+" ターミナルジョブモードからノーマルモードに切り替える
+tnoremap <A-t> <C-\><C-n><CR>
+" 水平分割した上ウィンドウを開く
+noremap <A-s> :sp<CR>
+" 垂直分割した右ウィンドウを開く
+noremap <A-v> :vs<CR>
 " ウインドウ間移動
 noremap  <A-j> <C-w>w
-inoremap <A-j> <Esc><C-w>w
 tnoremap <A-j> <C-\><C-n><C-w>w
 " ウィンドウ間を逆に移動
 noremap  <A-k> <C-w>W
-inoremap <A-k> <Esc><C-w>W
 tnoremap <A-k> <C-\><C-n><C-w>W
 " 他のウィンドウを閉じて最大化する
 noremap  <A-o> <C-w>o
-inoremap <A-o> <Esc><C-w>o
 tnoremap <A-o> <C-\><C-n><C-w>o
 " コマンドラインモードに移行
 noremap  <A-;> :
-inoremap <A-;> <Esc><C-o>:
 tnoremap <A-;> <C-\><C-n><C-w>:
 noremap  <A-/> /
-inoremap <A-/> <Esc><C-o>/
 tnoremap <A-/> <C-\><C-n>/
 " ウインドウ操作時にターミナルノーマルモードの場合は
 " 自動でジョブモードに切り替える
