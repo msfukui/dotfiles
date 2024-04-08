@@ -314,6 +314,12 @@ function! MyPatch()
    call system($VIM."\\'.'patch -o " . v:fname_out . " " . v:fname_in . " < " . v:fname_diff)
 endfunction
 
+" netrw のデフォルト設定
+" tree表示
+let g:netrw_liststyle=3
+" バナーを非表示
+let g:netrw_banner=0
+
 "----------------------------------------
 " キーマップの設定
 "----------------------------------------

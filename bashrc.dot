@@ -145,6 +145,7 @@ if [ -d "/Applications/MacVim.app/Contents/MacOS" ]; then
   alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
   alias view='/Applications/MacVim.app/Contents/MacOS/Vim'
   alias vimdiff='/Applications/MacVim.app/Contents/MacOS/Vim'
+  alias v='/Applications/MacVim.app/Contents/MacOS/Vim .'
   if [ "$EDITOR" = "" ]; then
     export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
   fi
@@ -153,9 +154,11 @@ else
     if [ -x /usr/local/bin/view ]; then
       export EDITOR="/usr/local/bin/view"
       alias view="/usr/local/bin/view"
+      alias v="/usr/local/bin/vim ."
     elif [ -x /usr/bin/view ]; then
       export EDITOR="/usr/bin/view"
       alias view="/usr/bin/view"
+      alias v="/usr/bin/vim ."
     fi
   fi
 fi
