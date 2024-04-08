@@ -319,6 +319,10 @@ endfunction
 let g:netrw_liststyle=3
 " バナーを非表示
 let g:netrw_banner=0
+" 右に分割して開く
+let g:netrw_altv=1
+" 開いたウィンドウの幅(%)
+let g:netrw_winsize=75
 
 "----------------------------------------
 " キーマップの設定
