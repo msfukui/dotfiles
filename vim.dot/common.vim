@@ -323,6 +323,8 @@ let g:netrw_banner=0
 let g:netrw_altv=1
 " 開いたウィンドウの幅(%)
 let g:netrw_winsize=75
+" 隠しファイルを表示/非表示
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 
 "----------------------------------------
 " キーマップの設定
