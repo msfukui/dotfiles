@@ -456,8 +456,7 @@ cc_commit () {
     local str="git commit -m \"$1: \""
   fi
   local left="$(echo "$READLINE_LINE" | cut -b -$((READLINE_POINT+1)))"
-  local right="$(echo "$READLINE_LINE" | cut -b $((READLINE_POINT+2))-)"
-  READLINE_LINE="$left$str$right"
+  READLINE_LINE="$left$str"
   let READLINE_POINT+=$((${#str}-1))
 }
 bind -x '"\C-f": cc_commit_fix'
