@@ -433,3 +433,32 @@ fi
 if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]; then
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 fi
+
+# conventional commits settings
+cc_commit_fix () {
+  cc_commit "fix"
+}
+cc_commit_feat () {
+  cc_commit "feat"
+}
+cc_commit () {
+  if [ "$1" = "" ]; then
+    return
+  fi
+  git rev-parse 2> /dev/null
+  if [ "$?" != "0" ]; then
+    return
+  fi
+  local num="$(git branch --contains | cut -d' ' -f2 | cut -d'.' -f1)"
+  if [[ "$num" =~ ^[0-9]+$ ]]; then
+    local str="git commit -m \"$1: #$num \""
+  else
+    local str="git commit -m \"$1: \""
+  fi
+  local left="$(echo "$READLINE_LINE" | cut -b -$((READLINE_POINT+1)))"
+  local right="$(echo "$READLINE_LINE" | cut -b $((READLINE_POINT+2))-)"
+  READLINE_LINE="$left$str$right"
+  let READLINE_POINT+=$((${#str}-1))
+}
+bind -x '"\C-f": cc_commit_fix'
+bind -x '"\C-e": cc_commit_feat'
