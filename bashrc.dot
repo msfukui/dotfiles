@@ -450,13 +450,15 @@ cc_command () {
   local str_pull="git pull origin $branchname"
   local str_add="git add "
   local str_push="git push origin $branchname"
-  local str_commit_empty_fix="git commit --allow-empty -m \"fix: #\""
-  local str_commit_empty_feat="git commit --allow-empty -m \"feat: #\""
 
   if [[ "$issue" =~ ^[0-9]+$ ]]; then
+    local str_commit_empty_fix="git commit --allow-empty -m \"fix: #$issue \""
+    local str_commit_empty_feat="git commit --allow-empty -m \"feat: #$issue \""
     local str_commit_fix="git commit -m \"fix: #$issue \""
     local str_commit_feat="git commit -m \"feat: #$issue \""
   else
+    local str_commit_empty_fix="git commit --allow-empty -m \"fix: \""
+    local str_commit_empty_feat="git commit --allow-empty -m \"feat: \""
     local str_commit_fix="git commit -m \"fix: \""
     local str_commit_feat="git commit -m \"feat: \""
   fi
