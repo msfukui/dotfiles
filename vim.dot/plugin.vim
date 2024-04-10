@@ -129,6 +129,10 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 let g:vimwiki_global_ext = 0
 let g:vimwiki_key_mappings = { 'table_mappings': 0 }
 
+" Preview markdown in browser
+Plug 'previm/previm'
+let g:previm_open_cmd = 'open -a "Google Chrome"'
+
 if has('vim_starting')
   call plug#end()
 endif

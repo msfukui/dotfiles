@@ -216,7 +216,7 @@ https://github.com/tomislav/osx-terminal.app-colors-solarized
 
 Terminal のサイズはウィンドウタブから 132 * 30,
 
-フォントはテキストタブから Monaco の 18,
+フォントはテキストタブから Monaco の 18, (その後 Moralerspace Neon Regular 18 に変更)
 
 キーボードタブの「メタキーとして Option キーを使用」にチェックを入れておくと幸せになれる。
 
