@@ -435,29 +435,35 @@ if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]
 fi
 
 # conventional commits settings
-cc_commit_fix () {
-  cc_commit "fix"
-}
-cc_commit_feat () {
-  cc_commit "feat"
-}
-cc_commit () {
-  if [ "$1" = "" ]; then
-    return
-  fi
+cc_command () {
   git rev-parse 2> /dev/null
   if [ "$?" != "0" ]; then
     return
   fi
-  local num="$(git branch --contains | cut -d' ' -f2 | cut -d'.' -f1)"
-  if [[ "$num" =~ ^[0-9]+$ ]]; then
-    local str="git commit -m \"$1: #$num \""
-  else
-    local str="git commit -m \"$1: \""
+
+  local branchname="$(git branch --contains | cut -d' ' -f2)"
+  if [ "$branchname" = "" ]; then
+    return
   fi
-  local left="$(echo "$READLINE_LINE" | cut -b -$((READLINE_POINT+1)))"
-  READLINE_LINE="$left$str"
+  local issue="$(git branch --contains | cut -d' ' -f2 | cut -d'.' -f1)"
+
+  local str_pull="git pull origin $branchname"
+  local str_add="git add "
+  local str_push="git push origin $branchname"
+  local str_commit_empty_fix="git commit --allow-empty -m \"fix: #\""
+  local str_commit_empty_feat="git commit --allow-empty -m \"feat: #\""
+
+  if [[ "$issue" =~ ^[0-9]+$ ]]; then
+    local str_commit_fix="git commit -m \"fix: #$issue \""
+    local str_commit_feat="git commit -m \"feat: #$issue \""
+  else
+    local str_commit_fix="git commit -m \"fix: \""
+    local str_commit_feat="git commit -m \"feat: \""
+  fi
+
+  local str="$(printf "$str_pull\n$str_commit_empty_fix\n$str_commit_empty_feat\n$str_add\n$str_commit_fix\n$str_commit_feat\n$str_push\n" | fzf)"
+  local before="$(echo "$READLINE_LINE" | cut -b -$((READLINE_POINT+1)))"
+  READLINE_LINE="$before$str"
   let READLINE_POINT+=$((${#str}-1))
 }
-bind -x '"\C-f": cc_commit_fix'
-bind -x '"\C-e": cc_commit_feat'
+bind -x '"\C-p": cc_command'
