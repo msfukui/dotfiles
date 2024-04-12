@@ -454,18 +454,25 @@ cc_command () {
   if [[ "$issue" =~ ^[0-9]+$ ]]; then
     local str_commit_empty_fix="git commit --allow-empty -m \"fix: #$issue \""
     local str_commit_empty_feat="git commit --allow-empty -m \"feat: #$issue \""
+    local str_commit_empty_test="git commit --allow-empty -m \"test: #$issue \""
     local str_commit_fix="git commit -m \"fix: #$issue \""
     local str_commit_feat="git commit -m \"feat: #$issue \""
+    local str_commit_test="git commit -m \"test: #$issue \""
   else
     local str_commit_empty_fix="git commit --allow-empty -m \"fix: \""
     local str_commit_empty_feat="git commit --allow-empty -m \"feat: \""
+    local str_commit_empty_test="git commit --allow-empty -m \"test: \""
     local str_commit_fix="git commit -m \"fix: \""
     local str_commit_feat="git commit -m \"feat: \""
+    local str_commit_test="git commit -m \"test: \""
   fi
 
-  local str="$(printf "$str_add\n$str_commit_fix\n$str_commit_feat\n$str_push\n$str_pull\n$str_commit_empty_fix\n$str_commit_empty_feat\n" | fzf)"
-  local before="$(echo "$READLINE_LINE" | cut -b -$((READLINE_POINT+1)))"
-  READLINE_LINE="$before$str"
-  let READLINE_POINT+=$((${#str}-1))
+  local str="$(printf "$str_add\n$str_commit_fix\n$str_commit_feat\n$str_commit_test\n$str_push\n$str_pull\n$str_commit_empty_fix\n$str_commit_empty_feat\n$str_commit_empty_test" | fzf)"
+  if [ "$str" = "" ]; then
+    return
+  fi
+
+  READLINE_LINE="$str"
+  let READLINE_POINT=$((${#str}-1))
 }
 bind -x '"\C-p": cc_command'
