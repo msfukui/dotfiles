@@ -467,7 +467,7 @@ cc_command () {
     local str_commit_test="git commit -m \"test: \""
   fi
 
-  local str="$(printf "$str_add\n$str_commit_fix\n$str_commit_feat\n$str_commit_test\n$str_push\n$str_pull\n$str_commit_empty_fix\n$str_commit_empty_feat\n$str_commit_empty_test" | fzf)"
+  local str="$(printf "$str_add\n$str_commit_fix\n$str_commit_feat\n$str_commit_test\n$str_push\n$str_pull\n$str_commit_empty_fix\n$str_commit_empty_feat\n$str_commit_empty_test" | fzf -q "$READLINE_LINE")"
   if [ "$str" = "" ]; then
     return
   fi

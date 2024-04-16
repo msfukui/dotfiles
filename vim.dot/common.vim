@@ -325,6 +325,8 @@ let g:netrw_altv=1
 let g:netrw_winsize=80
 " 隠しファイルを表示/非表示
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
+" ファイルを縦分割で開く
+let g:netrw_browse_split=2
 
 "----------------------------------------
 " キーマップの設定
