@@ -239,7 +239,6 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <Leader>d <plug>(lsp-type-definition)
   nmap <buffer> <Leader>r <plug>(lsp-references)
   nmap <buffer> <Leader>i <plug>(lsp-implementation)
-  inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
 
 augroup lsp_install
@@ -364,14 +363,19 @@ nmap <ESC>/ <A-/>
 "----------------------------------------
 " 挿入モード
 "----------------------------------------
+" lexima.vim の <CR> の設定が競合しているため無効にする
+" cf. https://github.com/cohama/lexima.vim/issues/65
+let g:lexima_no_default_rules = 1
+call lexima#set_default_rules()
+call lexima#insmode#map_hook('before', '<CR>', '')
 " 補完設定
-" 最初の一つ目を選択済みにして挿入はしない
+" 初期状態は一番上の選択肢を選択して挿入はしない
 set completeopt=menuone,noinsert
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 " 上下で補完を選択する
-inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
-inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
+inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"
 
 "----------------------------------------
 " ビジュアルモード
