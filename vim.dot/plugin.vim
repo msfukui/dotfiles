@@ -21,9 +21,17 @@ Plug 'w0ng/vim-hybrid'
 
 " status line
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-\ }
+      \ 'colorscheme': 'jellybeans',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
 
 " project.vim
 Plug 'vim-scripts/project.tar.gz'
@@ -124,14 +132,16 @@ Plug 'vim-jp/vimdoc-ja'
 
 " VimWiki
 Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
 let g:vimwiki_key_mappings = { 'table_mappings': 0 }
 
 " Preview markdown in browser
 Plug 'previm/previm'
 let g:previm_open_cmd = 'open -a "Google Chrome"'
+
+" Extend netrw
+Plug 'tpope/vim-vinegar'
 
 if has('vim_starting')
   call plug#end()
