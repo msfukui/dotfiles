@@ -95,7 +95,7 @@ let g:dart_format_on_save = v:true
 " PHP support.
 Plug 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_path = 'vendor/bin/php-cs-fixer'
-Plug 'vdebug/vdebug'
+Plug 'vim-vdebug/vdebug'
 let g:vdebug_force_ascii = 1
 let g:vdebug_options= {
   \    "port" : 9003,
@@ -152,6 +152,9 @@ let g:previm_open_cmd = 'open -a "Google Chrome"'
 
 " Extend netrw
 Plug 'tpope/vim-vinegar'
+
+" Find and Change root directory
+Plug 'mattn/vim-findroot'
 
 if has('vim_starting')
   call plug#end()
