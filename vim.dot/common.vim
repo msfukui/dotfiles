@@ -69,7 +69,7 @@ set foldlevel=100
 set fdm=syntax
 " カレント行の強調表示
 set cursorline
-set cursorlineopt=line
+set cursorlineopt=number
 
 "----------------------------------------
 " ステータスラインの設定
