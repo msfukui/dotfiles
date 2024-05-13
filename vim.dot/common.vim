@@ -67,6 +67,9 @@ set wrap
 set foldlevel=100
 " 折りたたみの種類はシンタックスキーワードで認識させる
 set fdm=syntax
+" カレント行の強調表示
+set cursorline
+set cursorlineopt=line
 
 "----------------------------------------
 " ステータスラインの設定
