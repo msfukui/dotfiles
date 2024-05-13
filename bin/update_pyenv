@@ -1,0 +1,12 @@
+#!/bin/bash -f
+
+if [ ! -d "${HOME}/.pyenv/bin" ]; then
+  echo "[error] pyenv is not set up."
+  exit 1
+fi
+
+pushd ~/.pyenv
+git pull origin master
+popd
+
+pyenv rehash

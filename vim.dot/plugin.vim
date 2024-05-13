@@ -94,7 +94,17 @@ let g:dart_format_on_save = v:true
 
 " PHP support.
 Plug 'stephpy/vim-php-cs-fixer'
-let g:php_cs_fixer_path = "vendor/bin/php-cs-fixer"
+let g:php_cs_fixer_path = 'vendor/bin/php-cs-fixer'
+Plug 'vim-vdebug/vdebug'
+let g:vdebug_force_ascii = 1
+let g:vdebug_options= {
+  \    "port" : 9003,
+  \    "break_on_open" : 0,
+  \    "path_maps" : {
+  \        '/app' : $PWD
+  \    },
+  \    "window_arrangement" : ["DebuggerWatch", "DebuggerStack"]
+  \ }
 
 " LSP Support & Auto complete setting
 Plug 'prabirshrestha/vim-lsp'
@@ -142,6 +152,9 @@ let g:previm_open_cmd = 'open -a "Google Chrome"'
 
 " Extend netrw
 Plug 'tpope/vim-vinegar'
+
+" Find and Change root directory
+Plug 'mattn/vim-findroot'
 
 if has('vim_starting')
   call plug#end()
