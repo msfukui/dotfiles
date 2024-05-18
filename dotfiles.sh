@@ -43,6 +43,7 @@ if [ -x /opt/local/bin/port ]; then
     sudo port upgrade outdated
     sudo port install coreutils gsed openssl libyaml gmp keychain gawk nkf fortune fzf git gh
     sudo port install ocaml opam
+    sudo port install rust cargo
     sudo port install go gosec staticcheck
     go install golang.org/x/tools/cmd/goimports@latest
     gh extension install https://github.com/nektos/gh-act

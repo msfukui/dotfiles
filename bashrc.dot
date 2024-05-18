@@ -334,6 +334,11 @@ if [ -d "/usr/local/go" ]; then
   export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 fi
 
+# rust settings.
+if [ -d "${HOME}/.cargo/bin" ]; then
+  export PATH="${HOME}/.cargo/bin:$PATH"
+fi
+
 # sdk man settings.
 if [ -d "${HOME}/.sdkman" ]; then
   export SDKMAN_DIR="${HOME}/.sdkman"
