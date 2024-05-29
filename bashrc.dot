@@ -480,5 +480,5 @@ bind -x '"\C-p": cc_command'
 
 # cmatrix setting
 if [ -x "/opt/local/bin/cmatrix" ] || [ -x "/usr/bin/cmatrix" ]; then
-  alias m='cmatrix -b'
+  alias m='cmatrix -ba -u 2'
 fi
