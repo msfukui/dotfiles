@@ -152,6 +152,8 @@ let g:previm_open_cmd = 'open -a "Google Chrome"'
 
 " Extend netrw
 Plug 'tpope/vim-vinegar'
+" vimwiki に合わせて既定の - の代わりに <BS> をマッピング
+nnoremap <BS> <Plug>VinegarUp
 
 " Find and Change root directory
 Plug 'mattn/vim-findroot'
