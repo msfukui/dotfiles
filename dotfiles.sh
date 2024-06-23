@@ -57,7 +57,7 @@ fi
 if uname -r | grep -qi microsoft; then
   if [ "${OPT}" = "all" ]; then
     sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
-    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune fzf git gh
+    sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune git gh
     sudo apt install -y ocaml opam
     sudo apt install -y golang
     sudo apt install -y cmatrix
@@ -67,6 +67,12 @@ if uname -r | grep -qi microsoft; then
     # WSL2 なら Vim の Clipboard 付きをセットアップする。
     sudo apt install -y vim-gtk
     sudo apt install default-jdk -y
+    # fzf は個別にセットアップする。
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --no-key-bindings --no-completion --no-update-rc
+    sudo cp -p ~/.fzf/bin/fzf /usr/bin
+    sudo chmod 755 /usr/bin/fzf
+    sudo chown root:root /usr/bin/fzf
   else
     echo "[MSG] apt install/update skipped."
   fi
