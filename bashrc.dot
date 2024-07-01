@@ -263,11 +263,6 @@ if [ -x /opt/local/bin/port ]; then
   DYLD_FALLBACK_FRAMEWORK_PATH=$PORTS_HOME/Library/Frameworks:$DYLD_FALLBACK_FRAMEWORK_PATH
 fi
 
-# local command alias.
-if [ -x ~/bin/s2print ]; then
-  alias h='s2print ~/server_name'
-fi
-
 # rbenv configuration
 if [ -d "${HOME}/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -316,9 +311,9 @@ if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
   source /opt/local/share/git/contrib/completion/git-prompt.sh
   GIT_PS1_SHOWDIRTYSTATE=true
   export PS1='$(__git_ps1)\$ '
-elif [ -f ~/bin/git-completion.bash ]; then
-  source ~/bin/git-prompt.sh
-  source ~/bin/git-completion.bash
+elif [ -f ${HOME}/bin/git-completion.bash ]; then
+  source ${HOME}/bin/git-prompt.sh
+  source ${HOME}/bin/git-completion.bash
   GIT_PS1_SHOWDIRTYSTATE=true
   export PS1='$(__git_ps1)\$ '
 fi
@@ -389,13 +384,17 @@ fi
 
 # VimWiki settings
 wiki () {
+  if [ ! -d ${HOME}/vimwiki ]; then
+    echo "vimwiki directory not found."
+    return
+  fi
   if [[ $# == 0 ]]; then
     vim +"VimwikiIndex"
   elif [[ $1 == "daily" ]]; then
     message="daily commit and push: `date '+%Y-%m-%d'`"
-    git -C ~/vimwiki/ add .
-    git -C ~/vimwiki/ commit -m "$message"
-    git -C ~/vimwiki/ push
+    git -C ${HOME}/vimwiki/ add .
+    git -C ${HOME}/vimwiki/ commit -m "$message"
+    git -C ${HOME}/vimwiki/ push
   else
     subcommand=$1
     shift
@@ -409,9 +408,9 @@ wiki () {
       fi
     done
     if [[ $params == '' ]]; then
-      git -C ~/vimwiki/ $subcommand
+      git -C ${HOME}/vimwiki/ $subcommand
     else
-      eval git -C ~/vimwiki/ $subcommand "$params"
+      eval git -C ${HOME}/vimwiki/ $subcommand "$params"
     fi
   fi
 }
@@ -426,8 +425,8 @@ if [ -x "/usr/bin/fzf" ]; then
 fi
 # fzf-tab-completion
 # cf. https://github.com/lincheney/fzf-tab-completion
-if [ -f ~/bin/fzf-bash-completion.sh ]; then
-  source ~/bin/fzf-bash-completion.sh
+if [ -f ${HOME}/bin/fzf-bash-completion.sh ]; then
+  source ${HOME}/bin/fzf-bash-completion.sh
   bind -x '"\t": fzf_bash_completion'
 fi
 
