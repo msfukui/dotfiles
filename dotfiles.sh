@@ -64,8 +64,7 @@ if uname -r | grep -qi microsoft; then
     go install github.com/securego/gosec/v2/cmd/gosec@latest
     go install honnef.co/go/tools/cmd/staticcheck@latest
     go install golang.org/x/tools/cmd/goimports@latest
-    # WSL2 なら Vim の Clipboard 付きをセットアップする。
-    sudo apt install -y vim-gtk
+    sudo apt install -y vim
     sudo apt install default-jdk -y
     # fzf は個別にセットアップする。
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
