@@ -481,3 +481,8 @@ bind -x '"\C-p": cc_command'
 if [ -x "/opt/local/bin/cmatrix" ] || [ -x "/usr/bin/cmatrix" ]; then
   alias m='cmatrix -ba -u 2'
 fi
+
+# toipe setting
+if [ -x "$HOME/.cargo/bin/toipe" ]; then
+  alias t='toipe'
+fi
