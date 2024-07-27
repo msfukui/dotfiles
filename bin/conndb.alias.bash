@@ -47,7 +47,7 @@ function conndb() {
   fi
 
   echo "ssh ${host} -NL ${local_port}:${database}:${db_port} &"
-  #command ssh ${host} -NL ${local_port}:${database}:${db_port} &
+  command ssh ${host} -NL ${local_port}:${database}:${db_port} &
 }
 
 _conndb() {
