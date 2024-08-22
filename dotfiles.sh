@@ -45,6 +45,7 @@ if [ -x /opt/local/bin/port ]; then
     sudo port install ocaml opam
     sudo port install rust cargo
     sudo port install go gosec staticcheck
+    sudo port install elixir
     sudo port install cmatrix
     go install golang.org/x/tools/cmd/goimports@latest
     gh extension install https://github.com/nektos/gh-act
@@ -60,6 +61,7 @@ if uname -r | grep -qi microsoft; then
     sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune git gh
     sudo apt install -y ocaml opam
     sudo apt install -y golang
+    sudo apt install -y elixir
     sudo apt install -y cmatrix
     go install github.com/securego/gosec/v2/cmd/gosec@latest
     go install honnef.co/go/tools/cmd/staticcheck@latest
