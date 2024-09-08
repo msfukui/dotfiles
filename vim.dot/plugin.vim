@@ -65,7 +65,11 @@ Plug 'posva/vim-vue'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_color_term=239
 let g:indentLine_char='|'
-let g:indentLine_fileType=['coffee','ruby','haml','css','scss','javascript','typescript','python','php','c','cpp','dart','go']
+let g:indentLine_fileType=[
+      \ 'coffee','ruby','haml','css','scss','javascript','typescript',
+      \ 'python','php','c','cpp','dart','go','elixir',
+      \ 'html','vim','vue','yaml','json','markdown','vimwiki'
+      \ ]
 
 " showtime.vim
 Plug 'thinca/vim-showtime'
@@ -98,13 +102,16 @@ let g:php_cs_fixer_path = 'vendor/bin/php-cs-fixer'
 Plug 'vim-vdebug/vdebug', { 'on': 'VdebugStart', 'for': 'php' }
 let g:vdebug_force_ascii = 1
 let g:vdebug_options= {
-  \    "port" : 9003,
-  \    "break_on_open" : 0,
-  \    "path_maps" : {
-  \        '/app' : $PWD
-  \    },
-  \    "window_arrangement" : ["DebuggerWatch", "DebuggerStack"]
-  \ }
+      \    "port" : 9003,
+      \    "break_on_open" : 0,
+      \    "path_maps" : {
+      \        '/app' : $PWD
+      \    },
+      \    "window_arrangement" : ["DebuggerWatch", "DebuggerStack"]
+      \ }
+
+" Elixir support
+Plug 'elixir-editors/vim-elixir'
 
 " LSP Support & Auto complete setting
 Plug 'prabirshrestha/vim-lsp'
