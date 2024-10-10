@@ -166,6 +166,23 @@ nmap <BS> <Plug>VinegarUp
 " Find and Change root directory
 Plug 'mattn/vim-findroot'
 
+" Prettier
+" Plug 'prettier/vim-prettier', {
+"       \ 'do': 'npm install',
+"       \ 'for': [
+"       \ 'javascript', 'typescript',
+"       \ 'css', 'less', 'scss',
+"       \ 'graphql',
+"       \ 'markdown',
+"       \ 'vue', 'svelte',
+"       \ 'yaml',
+"       \ 'html'
+"       \ ]
+"       \}
+
+Plug 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+
 if has('vim_starting')
   call plug#end()
 endif

@@ -230,6 +230,13 @@ augroup groovy_loading
   au BufRead,BufNewFile *.gradle set filetype=groovy
 augroup END
 
+" Json
+augroup json_loading
+  au!
+  " <leader>p に :%!jq '.' を割り当てる
+  autocmd FileType json,jsonp nnoremap <buffer> <leader>p :%!jq '.'<CR>
+augroup END
+
 "----------------------------------------
 " LSP/補完の設定
 "----------------------------------------
