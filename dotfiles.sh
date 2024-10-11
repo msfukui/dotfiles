@@ -45,6 +45,7 @@ if [ -x /opt/local/bin/port ]; then
     sudo port install ocaml opam
     sudo port install rust cargo
     sudo port install go gosec staticcheck
+    sudo port install kubectl
     sudo port install elixir
     sudo port install cmatrix
     go install golang.org/x/tools/cmd/goimports@latest
@@ -61,6 +62,13 @@ if uname -r | grep -qi microsoft; then
     sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune git gh
     sudo apt install -y ocaml opam
     sudo apt install -y golang
+    sudo apt install -y apt-transport-https ca-certificates curl gnupg
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
+    sudo apt update -y
+    sudo apt install -y kubectl
     sudo apt install -y elixir
     sudo apt install -y cmatrix
     go install github.com/securego/gosec/v2/cmd/gosec@latest
