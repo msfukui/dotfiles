@@ -54,9 +54,9 @@ inoremap <expr> : smartchr#loop(':',' := ','::')
 Plug 'tomtom/tcomment_vim'
 
 " Markdown
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-let g:vim_markdown_folding_disabled=1
+" Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
+" let g:vim_markdown_folding_disabled=1
 
 " Vue components syntax highlight.
 Plug 'posva/vim-vue'
@@ -99,16 +99,16 @@ let g:dart_format_on_save = v:true
 " PHP support.
 Plug 'stephpy/vim-php-cs-fixer'
 let g:php_cs_fixer_path = 'vendor/bin/php-cs-fixer'
-Plug 'vim-vdebug/vdebug', { 'on': 'VdebugStart', 'for': 'php' }
-let g:vdebug_force_ascii = 1
-let g:vdebug_options= {
-      \    "port" : 9003,
-      \    "break_on_open" : 0,
-      \    "path_maps" : {
-      \        '/app' : $PWD
-      \    },
-      \    "window_arrangement" : ["DebuggerWatch", "DebuggerStack"]
-      \ }
+" Plug 'vim-vdebug/vdebug', { 'on': 'VdebugStart', 'for': 'php' }
+" let g:vdebug_force_ascii = 1
+" let g:vdebug_options= {
+"       \    "port" : 9003,
+"       \    "break_on_open" : 0,
+"       \    "path_maps" : {
+"       \        '/app' : $PWD
+"       \    },
+"       \    "window_arrangement" : ["DebuggerWatch", "DebuggerStack"]
+"       \ }
 
 " Elixir support
 Plug 'elixir-editors/vim-elixir'
