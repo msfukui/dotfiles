@@ -10,3 +10,8 @@ do
     diff ${HOME}/.${file%.*} $file
   fi
 done
+
+if [ -d bin ]; then
+  echo "[bin]"
+  diff -r ${HOME}/bin bin
+fi
