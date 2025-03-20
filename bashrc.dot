@@ -68,6 +68,21 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
+# git settings
+if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
+  source /opt/local/share/git/contrib/completion/git-completion.bash
+  source /opt/local/share/git/contrib/completion/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='$(__git_ps1)\$ '
+# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+elif [ -f ${HOME}/bin/git-completion.bash ]; then
+  source ${HOME}/bin/git-prompt.sh
+  source ${HOME}/bin/git-completion.bash
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='$(__git_ps1)\$ '
+fi
+alias g='git'
+
 # History Options
 #
 # Don't put duplicate lines in the history.
@@ -303,21 +318,6 @@ if [ -d "/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH="/lib/pkgconfig"
 fi
 
-# git settings
-if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
-  source /opt/local/share/git/contrib/completion/git-completion.bash
-  source /opt/local/share/git/contrib/completion/git-prompt.sh
-  GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='$(__git_ps1)\$ '
-# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
-elif [ -f ${HOME}/bin/git-completion.bash ]; then
-  source ${HOME}/bin/git-prompt.sh
-  source ${HOME}/bin/git-completion.bash
-  GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='$(__git_ps1)\$ '
-fi
-alias g='git'
-
 # go settings.
 if [ -d "/opt/local/go" ]; then
   export GOPATH=$HOME/go
@@ -381,49 +381,6 @@ if [ -d "/Applications/IntelliJ IDEA.app/Contents/MacOS" ]; then
   alias i='idea'
 fi
 
-# Vim 'v' command setting
-v () {
-  if [ "$1" == "" ]; then
-    vim .
-  else
-    vim $*
-  fi
-}
-
-# VimWiki settings
-wiki () {
-  if [ ! -d ${HOME}/vimwiki ]; then
-    echo "vimwiki directory not found."
-    return
-  fi
-  if [[ $# == 0 ]]; then
-    vim +"VimwikiIndex"
-  elif [[ $1 == "daily" ]]; then
-    message="daily commit and push: `date '+%Y-%m-%d'`"
-    git -C ${HOME}/vimwiki/ add .
-    git -C ${HOME}/vimwiki/ commit -m "$message"
-    git -C ${HOME}/vimwiki/ push
-  else
-    subcommand=$1
-    shift
-    params=''
-    for param in "$@"
-    do
-      if [[ $param == *' '* ]]; then
-        params="${params} \"${param}\""
-      else
-        params="${params} ${param}"
-      fi
-    done
-    if [[ $params == '' ]]; then
-      git -C ${HOME}/vimwiki/ $subcommand
-    else
-      eval git -C ${HOME}/vimwiki/ $subcommand "$params"
-    fi
-  fi
-}
-___git_complete wiki __git_main
-
 # fzf setting
 if [ -x "/opt/local/bin/fzf" ]; then
   eval "$(fzf --bash)"
@@ -445,61 +402,6 @@ fi
 if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]; then
   source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 fi
-
-# conventional commits settings
-cc_command () {
-  git rev-parse 2> /dev/null
-  if [ "$?" != "0" ]; then
-    return
-  fi
-
-  local branchname="$(git branch --contains | grep "^*" | cut -d' ' -f2)"
-  if [ "$branchname" = "" ]; then
-    return
-  fi
-  local issue="$(git branch --contains | grep "^*" | cut -d' ' -f2 | cut -d'.' -f1)"
-
-  local str_pull="git pull origin $branchname"
-  local str_add="git add  "
-  local str_push="git push origin $branchname"
-
-  if [[ "$issue" =~ ^[0-9]+$ ]]; then
-    local str_commit_empty="git commit --allow-empty -m \"chore: #$issue \""
-    local str_commit_build="git commit -m \"build: #$issue \""
-    local str_commit_chore="git commit -m \"chore: #$issue \""
-    local str_commit_ci="git commit -m \"ci: #$issue \""
-    local str_commit_docs="git commit -m \"docs: #$issue \""
-    local str_commit_fix="git commit -m \"fix: #$issue \""
-    local str_commit_feat="git commit -m \"feat: #$issue \""
-    local str_commit_pref="git commit -m \"pref: #$issue \""
-    local str_commit_refactor="git commit -m \"refactor: #$issue \""
-    local str_commit_revert="git commit -m \"revert: #$issue \""
-    local str_commit_style="git commit -m \"style: #$issue \""
-    local str_commit_test="git commit -m \"test: #$issue \""
-  else
-    local str_commit_empty="git commit --allow-empty -m \"chore: \""
-    local str_commit_build="git commit -m \"build: \""
-    local str_commit_chore="git commit -m \"chore: \""
-    local str_commit_ci="git commit -m \"ci: \""
-    local str_commit_docs="git commit -m \"docs: \""
-    local str_commit_fix="git commit -m \"fix: \""
-    local str_commit_feat="git commit -m \"feat: \""
-    local str_commit_pref="git commit -m \"pref: \""
-    local str_commit_refactor="git commit -m \"refactor: \""
-    local str_commit_revert="git commit -m \"revert: \""
-    local str_commit_style="git commit -m \"style: \""
-    local str_commit_test="git commit -m \"test: \""
-  fi
-
-  local str="$(printf "$str_add\n$str_commit_build\n$str_commit_chore\n$str_commit_ci\n$str_commit_docs\n$str_commit_fix\n$str_commit_feat\n$str_commit_pref\n$str_commit_refactor\n$str_commit_revert\n$str_commit_style\n$str_commit_test\n$str_commit_empty\n$str_push\n$str_pull" | fzf -q "$READLINE_LINE")"
-  if [ "$str" = "" ]; then
-    return
-  fi
-
-  READLINE_LINE="$str"
-  let READLINE_POINT=$((${#str}-1))
-}
-bind -x '"\C-p": cc_command'
 
 # cmatrix setting
 if [ -x "/opt/local/bin/cmatrix" ] || [ -x "/usr/bin/cmatrix" ]; then
