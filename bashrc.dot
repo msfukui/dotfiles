@@ -309,6 +309,7 @@ if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
   source /opt/local/share/git/contrib/completion/git-prompt.sh
   GIT_PS1_SHOWDIRTYSTATE=true
   export PS1='$(__git_ps1)\$ '
+# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 elif [ -f ${HOME}/bin/git-completion.bash ]; then
   source ${HOME}/bin/git-prompt.sh
   source ${HOME}/bin/git-completion.bash

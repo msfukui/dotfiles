@@ -1,0 +1,9 @@
+#!/bin/bash
+
+install_dir=`dirname "$0"`
+
+# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+curl -o ${install_dir}/git-completion.bash https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-completion.bash
+
+# cf. https://github.com/lincheney/fzf-tab-completion/blob/master/bash/fzf-bash-completion.sh
+curl -o ${install_dir}/fzf-bash-completion.sh https://raw.githubusercontent.com/lincheney/fzf-tab-completion/refs/heads/master/bash/fzf-bash-completion.sh
