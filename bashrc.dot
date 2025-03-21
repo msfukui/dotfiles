@@ -68,21 +68,6 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
-# git settings
-if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
-  source /opt/local/share/git/contrib/completion/git-completion.bash
-  source /opt/local/share/git/contrib/completion/git-prompt.sh
-  GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='$(__git_ps1)\$ '
-# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
-elif [ -f ${HOME}/bin/git-completion.bash ]; then
-  source ${HOME}/bin/git-prompt.sh
-  source ${HOME}/bin/git-completion.bash
-  GIT_PS1_SHOWDIRTYSTATE=true
-  export PS1='$(__git_ps1)\$ '
-fi
-alias g='git'
-
 # History Options
 #
 # Don't put duplicate lines in the history.
@@ -106,6 +91,21 @@ PS1="\$ "
 #     printf "%${num}s$rprompt\\r" ''
 # }
 # PROMPT_COMMAND=__command_rprompt
+
+# git settings
+if [ -f /opt/local/share/git/contrib/completion/git-completion.bash ]; then
+  source /opt/local/share/git/contrib/completion/git-completion.bash
+  source /opt/local/share/git/contrib/completion/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='$(__git_ps1)\$ '
+# cf. https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+elif [ -f ${HOME}/bin/git-completion.bash ]; then
+  source ${HOME}/bin/git-completion.bash
+  source ${HOME}/bin/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=true
+  export PS1='$(__git_ps1)\$ '
+fi
+alias g='git'
 
 # Aliases
 #
