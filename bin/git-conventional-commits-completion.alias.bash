@@ -9,11 +9,11 @@ gcccc () {
     return
   fi
 
-  local branchname="$(git branch --contains | grep "^*" | cut -d' ' -f2)"
+  local branchname="$(git branch --show-current)"
   if [ "$branchname" = "" ]; then
     return
   fi
-  local issue="$(git branch --contains | grep "^*" | cut -d' ' -f2 | cut -d'.' -f1)"
+  local issue="$(git branch --show-current | cut -d'.' -f1)"
 
   local str_pull="git pull origin $branchname"
   local str_add="git add  "
