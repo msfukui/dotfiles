@@ -396,11 +396,8 @@ if [ -f ${HOME}/bin/fzf-bash-completion.sh ]; then
 fi
 
 # docker completion settings
-if [ -f /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion ]; then
-  source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
-fi
-if [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ]; then
-  source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+if [ -x /usr/local/bin/docker ] || [ -x /usr/bin/docker ]; then
+  source <(docker completion bash)
 fi
 
 # cmatrix setting
