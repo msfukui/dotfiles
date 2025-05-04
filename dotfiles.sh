@@ -6,7 +6,7 @@ OPT="$1"
 for file in *.dot
 do
   if [ -f $file ]; then
-    if [ "$file" = "set_proxy.dot" ] || [ "$file" = "gitconfig.dot" ]; then
+    if [ "$file" = "env.dot" ] || [ "$file" = "gitconfig.dot" ]; then
       if [ "$OPT" = "all" ] || [ ! -f ${HOME}/.${file%.*} ]; then
         cp -p $file ${HOME}/.${file%.*}
       else

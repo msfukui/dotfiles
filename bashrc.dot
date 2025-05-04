@@ -409,3 +409,8 @@ fi
 if [ -x "$HOME/.cargo/bin/toipe" ]; then
   alias t='toipe'
 fi
+
+# environment variables settings
+if [ -f "$HOME/.env" ]; then
+  source "$HOME/.env"
+fi

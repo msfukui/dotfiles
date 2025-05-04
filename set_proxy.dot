@@ -1,2 +1,0 @@
-#export http_proxy="http://[ID]:[PWD]@[IP]:[PORT]"
-#export https_proxy=${http_proxy}
