@@ -183,8 +183,11 @@ Plug 'mattn/vim-findroot'
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
+Plug 'thinca/vim-themis'
+
+Plug 'msfukui/vim-eof-marker-plugin'
+
 if has('vim_starting')
   call plug#end()
 endif
-
 filetype plugin indent on
