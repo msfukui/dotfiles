@@ -49,6 +49,8 @@ nnoremap <Leader>r :action RunClass<CR>
 nnoremap <Leader>d :action DebugClass<CR>
 " テストに移動
 nnoremap <Leader>t :action GotoTest<CR>
+" Claude Code を起動
+nnoremap <Leader>c :action com.anthropic.code.plugin.actions.OpenClaudeInTerminalAction<CR>
 
 " -- easy,motion
 set easymotion
