@@ -47,6 +47,7 @@ nnoremap <Leader>r :action RunClass<CR>
 nnoremap <Leader>d :action DebugClass<CR>
 " テストに移動
 nnoremap <Leader>t :action GotoTest<CR>
+command! A :action GotoTest
 " Claude Code を起動
 nnoremap <Leader>c :action com.anthropic.code.plugin.actions.OpenClaudeInTerminalAction<CR>
 
@@ -79,4 +80,3 @@ set keep-english-in-normal
 
 " -- ctrl-p settings
 nnoremap <C-p> :action GotoFile<CR>
-
