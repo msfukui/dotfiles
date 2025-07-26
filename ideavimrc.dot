@@ -35,8 +35,6 @@ nnoremap <Leader>ev :<C-u>vsplit ~/.ideavimrc<CR>
 nnoremap <Leader>sv :<C-u>source ~/.ideavimrc<CR>
 " ホバー情報表示
 nnoremap <Leader>k :action ShowHoverInfo<CR>
-" アクション表示
-nnoremap <Leader>a :action GotoAction<CR>
 " ファイル構造表示
 nnoremap <Leader>f :action FileStructurePopup<CR>
 " ターミナルウインドウ表示
@@ -81,3 +79,4 @@ set keep-english-in-normal
 
 " -- ctrl-p settings
 nnoremap <C-p> :action GotoFile<CR>
+
