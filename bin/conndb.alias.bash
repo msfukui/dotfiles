@@ -42,12 +42,12 @@ function conndb() {
 
   aws_profile=`get_database_to_aws-profile ${database}`
   if [ -z "$aws_profile" ] || [ "$AWS_PROFILE" != "$aws_profile" ]; then
-    echo "Error: Please login with 'aws sso login' before the database connecting."
+    echo "Error: Please login with 'aws sso login' before the database connecting. (${aws_profile}, ${AWS_PROFILE}, ${database})"
     return
   fi
 
-  echo "ssh ${host} -NL ${local_port}:${database}:${db_port} &"
-  command ssh ${host} -NL ${local_port}:${database}:${db_port} &
+  echo "Connecting to database '${database}' via host '${host}' (local_port: ${local_port}, db_port: ${db_port}, aws_profile: ${aws_profile}) ..."
+  aws ssm start-session --target "${host}" --profile "${aws_profile}" --document-name AWS-StartPortForwardingSessionToRemoteHost --parameters '{"host":["'"${database}"'"],"portNumber":["'"${db_port}"'"], "localPortNumber":["'"${local_port}"'"]}'
 }
 
 _conndb() {
