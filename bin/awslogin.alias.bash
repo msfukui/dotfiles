@@ -33,5 +33,9 @@ complete -F _awslogin awslogin
 function get_aws-profiles() {
   if [ -f ~/.aws/credentials ]; then
     grep '^\[' ~/.aws/credentials | tr -d '\]' | tr -d '['
+    return
+  fi
+  if [ -f ~/.aws/config ]; then
+    grep '^\[' ~/.aws/config | tr -d '\]' | tr -d '[' | cut -d' ' -f2
   fi
 }
