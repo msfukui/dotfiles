@@ -5,7 +5,7 @@ Style/AsciiComments:
   Enabled: false
 
 # Line Length
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 # Use UTF-8 as the source file encoding.
