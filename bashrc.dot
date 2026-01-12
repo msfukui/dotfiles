@@ -405,6 +405,52 @@ if [ -f ${HOME}/bin/fzf-bash-completion.sh ]; then
   bind -x '"\t": fzf_bash_completion'
 fi
 
+# z.sh setting
+# ref. https://github.com/rupa/z
+if [ -f "${HOME}/bin/z.sh" ]; then
+  source "${HOME}/bin/z.sh"
+  # z command with fzf
+  unalias z
+  z() {
+    local has_option=false
+    for arg in "$@"; do
+      if [[ "$arg" == -* ]]; then
+        has_option=true
+        break
+      fi
+    done
+
+    if [ "$has_option" = true ]; then
+      _z "$@" 2>&1
+      return
+    fi
+
+    if [ $# -eq 0 ]; then
+      local dir
+      dir=$(_z -l 2>&1 | fzf | sed 's/^[0-9,.]* *//')
+      if [ -n "$dir" ]; then
+        echo "cd $dir"
+        builtin cd "$dir"
+      fi
+    else
+      local candidates
+      candidates=$(_z -l "$@" 2>&1)
+      local count
+      count=$(echo "$candidates" | wc -l)
+
+      if [ "$count" -eq 1 ]; then
+        local dir
+        dir=$(echo "$candidates" | sed 's/^[0-9,.]* *//')
+        echo "z $@ -> cd $dir"
+        builtin cd "$dir"
+      else
+        _z "$@" 2>&1
+      fi
+    fi
+  }
+  complete -C '_z --complete "$COMP_LINE"' z
+fi
+
 # docker completion settings
 if [ -x /usr/local/bin/docker ] || [ -x /usr/bin/docker ]; then
   source <(docker completion bash)
