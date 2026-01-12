@@ -301,6 +301,11 @@ if [ -d "${HOME}/.plenv/bin" ]; then
   eval "$(plenv init -)"
 fi
 
+# pnpm setting
+if [ -x "$HOME/.local/share/pnpm/pnpm" ]; then
+  export PATH=$HOME/.local/share/pnpm:$PATH
+fi
+
 # nodenv configuration
 if [ -d "${HOME}/.nodenv/bin" ]; then
   export PATH="$HOME/.nodenv/bin:$PATH"

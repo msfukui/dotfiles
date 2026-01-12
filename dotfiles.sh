@@ -62,7 +62,7 @@ if uname -r | grep -qi microsoft; then
     sudo apt install -y coreutils openssl libyaml-dev keychain gawk nkf fortune git gh
     sudo apt install -y ocaml opam
     sudo apt install -y golang
-    sudo apt install -y apt-transport-https ca-certificates curl gnupg
+    sudo apt install -y apt-transport-https ca-certificates curl gnupg zlib1g-dev
     curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
