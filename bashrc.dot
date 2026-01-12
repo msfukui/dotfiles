@@ -434,7 +434,6 @@ if [ -f "${HOME}/bin/z.sh" ]; then
       local dir
       dir=$(_z -l 2>&1 | fzf | sed 's/^[0-9,.]* *//')
       if [ -n "$dir" ]; then
-        echo "cd $dir"
         builtin cd "$dir"
       fi
     else
@@ -446,7 +445,6 @@ if [ -f "${HOME}/bin/z.sh" ]; then
       if [ "$count" -eq 1 ]; then
         local dir
         dir=$(echo "$candidates" | sed 's/^[0-9,.]* *//')
-        echo "z $@ -> cd $dir"
         builtin cd "$dir"
       else
         _z "$@" 2>&1
