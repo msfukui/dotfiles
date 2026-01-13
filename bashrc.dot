@@ -391,6 +391,9 @@ if [ ! "${ANDROID_HOME}" = "" ] && [ -d "${ANDROID_HOME}/platform-tools" ]; then
 fi
 
 # IntelliJ IDEA settings
+if which idea &> /dev/null; then
+  alias i='idea'
+fi
 if [ -d "/Applications/IntelliJ IDEA.app/Contents/MacOS" ]; then
   export PATH=$PATH:/Applications/IntelliJ\ IDEA.app/Contents/MacOS
   alias i='idea'
