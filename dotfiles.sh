@@ -48,8 +48,12 @@ if [ -x /opt/local/bin/port ]; then
     sudo port install kubectl
     sudo port install elixir
     sudo port install cmatrix
-    go install golang.org/x/tools/cmd/goimports@latest
     gh extension install https://github.com/nektos/gh-act
+    go install github.com/securego/gosec/v2/cmd/gosec@latest
+    go install honnef.co/go/tools/cmd/staticcheck@latest
+    go install golang.org/x/tools/cmd/goimports@latest
+    go install github.com/x-motemen/ghq@latest
+    go install github.com/k1LoW/git-wt@latest
   else
     echo "[MSG] Mac Ports install/update skipped."
   fi
@@ -74,6 +78,8 @@ if uname -r | grep -qi microsoft; then
     go install github.com/securego/gosec/v2/cmd/gosec@latest
     go install honnef.co/go/tools/cmd/staticcheck@latest
     go install golang.org/x/tools/cmd/goimports@latest
+    go install github.com/x-motemen/ghq@latest
+    go install github.com/k1LoW/git-wt@latest
     sudo apt install -y vim
     sudo apt install default-jdk -y
     # fzf は個別にセットアップする。

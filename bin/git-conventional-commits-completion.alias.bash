@@ -47,7 +47,7 @@ gcccc () {
     local str_commit_test="git commit -m \"test: \""
   fi
 
-  local str="$(printf "$str_add\n$str_commit_build\n$str_commit_chore\n$str_commit_ci\n$str_commit_docs\n$str_commit_fix\n$str_commit_feat\n$str_commit_pref\n$str_commit_refactor\n$str_commit_revert\n$str_commit_style\n$str_commit_test\n$str_commit_empty\n$str_push\n$str_pull" | fzf -q "$READLINE_LINE")"
+  local str="$(printf "$str_add\n$str_commit_build\n$str_commit_chore\n$str_commit_ci\n$str_commit_docs\n$str_commit_fix\n$str_commit_feat\n$str_commit_pref\n$str_commit_refactor\n$str_commit_revert\n$str_commit_style\n$str_commit_test\n$str_commit_empty\n$str_push\n$str_pull" | fzf --height=40% --reverse -q "$READLINE_LINE")"
   if [ "$str" = "" ]; then
     return
   fi
