@@ -86,6 +86,10 @@ if &term =~? 'rxvt' || &term =~? 'xterm' || &term =~? 'st-'
     let &t_SR .= "\<Esc>[4 q"
     " ノーマルモード
     let &t_EI .= "\<Esc>[1 q"
+    " カーソルの設定を終了時に初期化
+    let &t_te = "\<Esc>[5 q" . &t_te
+    " カーソルの設定を最初に初期化
+    let &t_ti = "\<Esc>[1 q" . &t_ti
 endif
 
 "----------------------------------------
@@ -127,10 +131,10 @@ set ambiwidth=double
 " クリップボードを共有
 set clipboard+=unnamed
 " WSL2の場合は Clip.exe を経由してクリップボードを共有する
-if system('uname -r | grep -i microsoft') != ''
-  augroup myYank
-    au!
-    au TextYankPost * :call system('clip.exe', @")
+if exists('$WSL_DISTRO_NAME')
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system('iconv -t utf-16le | clip.exe', substitute(@0, '\n$', '', '')) | endif
   augroup END
 endif
 
