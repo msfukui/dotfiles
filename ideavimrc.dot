@@ -21,6 +21,12 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set noswapfile
 " クリップボードの共有化
 set clipboard=unnamedplus
+" カーソルキーで行末／行頭の移動可能に設定
+set whichwrap=b,s,h,l,[,],<,>
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=indent,eol,start
+" □ や○ の文字があってもカーソル位置がずれないようにする
+set ambiwidth=double
 " メソッド移動
 nnoremap [m :<C-u>action MethodUp<CR>
 nnoremap ]m :<C-u>action MethodDown<CR>

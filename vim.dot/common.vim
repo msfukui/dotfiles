@@ -81,7 +81,7 @@ if &term =~? 'rxvt' || &term =~? 'xterm' || &term =~? 'st-'
     " 5 -> 点滅縦棒
     " 6 -> 塗りつぶし縦棒
     " 挿入モード
-    let &t_SI .= "\<Esc>[6 q"
+    let &t_SI .= "\<Esc>[5 q"
     " 置換モード
     let &t_SR .= "\<Esc>[4 q"
     " ノーマルモード
