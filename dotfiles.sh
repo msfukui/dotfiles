@@ -84,6 +84,9 @@ if uname -r | grep -qi microsoft; then
     go install github.com/k1LoW/git-wt@latest
     sudo apt install -y vim
     sudo apt install default-jdk -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source "$HOME/.cargo/env"
+    cargo install --git https://github.com/zizmorcore/zizmor
     # fzf は個別にセットアップする。
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install --no-key-bindings --no-completion --no-update-rc
