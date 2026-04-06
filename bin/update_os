@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -x "/opt/local/bin/port" ]; then
+  # macports
+  sudo port selfupdate && sudo port upgrade outdated
+fi
+
+if [ -x "/usr/bin/apt" ]; then
+  # ubuntu apt
+  sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+fi
