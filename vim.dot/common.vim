@@ -384,6 +384,9 @@ nmap <ESC>o <A-o>
 nmap <ESC>; <A-;>
 nmap <ESC>/ <A-/>
 
+" 日付を挿入
+nnoremap <silent> <leader>d "=strftime('%Y-%m-%d')<CR>p
+
 "----------------------------------------
 " 挿入モード
 "----------------------------------------
@@ -400,6 +403,9 @@ inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 " 上下で補完を選択する
 inoremap <expr><C-j> pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr><C-k> pumvisible() ? "<Up>" : "<C-k>"
+
+" 日付を挿入
+inoremap <silent> <leader>d <C-r>=strftime('%Y-%m-%d')<CR>
 
 "----------------------------------------
 " ビジュアルモード
