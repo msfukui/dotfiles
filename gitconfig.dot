@@ -31,4 +31,7 @@
 [wt]
   basedir = .worktrees
 [ghq]
+  root = ~/projects
+  root = ~/studies
+  root = ~/IdeaProjects
   root = ~/Dev
