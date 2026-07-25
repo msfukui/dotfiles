@@ -493,7 +493,7 @@ if which ghq &> /dev/null; then
     if [ "$str" = "" ]; then
       return
     fi
-    READLINE_LINE="cd $(ghq root)/${str}"
+    READLINE_LINE="cd $(ghq list -p -e ${str})"
     READLINE_POINT=${#READLINE_LINE}
   }
   bind -x '"\C-]": cd-ghq'
