@@ -19,6 +19,7 @@ function conndb() {
   database_list=`get_conndb_database`
   if ! printf '%s\n' "${database_list[@]}" | grep -qx "${database}"; then
     echo "Usage: conndb <database>"
+    echo "${database} is not found in the database list."
     return
   fi
 

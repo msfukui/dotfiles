@@ -10,6 +10,7 @@ function awslogin() {
   env_list=`get_aws-profiles`
   if ! printf '%s\n' "${env_list[@]}" | grep -qx "${env}"; then
     echo "Usage: awslogin <profile-name>"
+    echo "(${env} is not a valid profile)"
     return
   fi
 
@@ -31,10 +32,6 @@ _awslogin() {
 complete -F _awslogin awslogin
 
 function get_aws-profiles() {
-  if [ -f ~/.aws/config ]; then
-    grep '^\[' ~/.aws/config | tr -d '\]' | tr -d '['
-    return
-  fi
   if [ -f ~/.aws/config ]; then
     grep '^\[' ~/.aws/config | tr -d '\]' | tr -d '[' | cut -d' ' -f2
   fi
